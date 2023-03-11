@@ -116,6 +116,47 @@ class Training
             return [];
         }
     }
+    /**
+     * 
+     * Méthode static qui permet de récupérer l'ID training
+     * 
+     * @param int $id
+     * 
+     * @return [type]
+     */
+    public static function existsId(int $id_trainings)
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT `id_trainings` FROM `trainings` WHERE `id_trainings` = ?;';
+        $sth = $pdo->prepare($sql);
+        if ($sth->execute([$id_trainings])) {
+            return $sth->fetchAll();
+        }
+    }
+    /**
+     * 
+     * Méthode permettant de récupérer toutes les données de la formation
+     * 
+     * @param int $id
+     * 
+     * @return mixed
+     * Retourne un objet issu de la class Training ou false
+     */
+    public static function get(int $id_trainings): object|bool
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `trainings` 
+                WHERE `id_trainings` = :id_trainings';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_trainings', $id_trainings, PDO::PARAM_INT);
+        
+        if ($sth->execute()) {
+            return $sth->fetch();
+        }
+    }
     
     
 }

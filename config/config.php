@@ -13,6 +13,7 @@ define('ERRORS', [
     3=>'Compte non trouvé',
     4=>'Aucune mise à jour n\'a été effectuée',
     5=>'Compte utilisateur non mis à jour, ce compte existe déjà',
+    6=>'Erreur lors de la récupération de la formation'
 ]);
 
 // INITIALIZATION MESSAGES

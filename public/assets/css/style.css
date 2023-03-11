@@ -371,17 +371,18 @@ th{
 td{
     color: #e8eddf !important;
 }
-#addCategory input, #addSubcategory input, #addArticle input, #addTraining input, #addVideo input{
+#addCategory input, #addSubcategory input, #addArticle input, #addTraining input, #addVideo input, #addSubmodule input, #addModule input {
     background-color: #202124;
     color: #e8eddf;
     font-weight: bold;
     font-size: large;
 }
-#addCategory input:hover, #addSubcategory input:hover, #addArticle input:hover, #addTraining input:hover, #addVideo input:hover{
+#addCategory input:hover, #addSubcategory input:hover, #addArticle input:hover, #addTraining input:hover, #addVideo input:hover,
+#addSubmodule input:hover, #addModule input:hover{
     background-color: #ff9b42;
     color: #111112;
 }
-#addCategory .btn, #addSubcategory .btn, #addArticle .btn, #addTraining .btn, #addVideo .btn {
+#addCategory .btn, #addSubcategory .btn, #addArticle .btn, #addTraining .btn, #addVideo .btn, #addSubmodule .btn, #addModule .btn{
     background-color: #1fbfff;
     color: #111112;
     font-weight: bold;
@@ -389,11 +390,19 @@ td{
     border: none;
     padding: 5px 50px;
 }
-
-#addArticle textarea, #addTraining textarea{
+#addArticle textarea, #addTraining textarea, #addSubmodule textarea, #addModule textarea{
     background-color: #202124;
     color: #e8eddf;
     font-size: large;
+}
+#addModule select{
+    background-color: #202124;
+    color: #e8eddf;
+    border: none;
+}
+#addModule select:hover{
+    background-color: #ff9b42 !important;
+    color: #111112;
 }
 
 /* CUSTUM FOOTER */

@@ -214,8 +214,6 @@ class User
         // EXECUTE REQUEST
         if ($sth->execute()) {
             return $sth-> fetch();
-            var_dump($sth);
-            die;
         }
     }
 

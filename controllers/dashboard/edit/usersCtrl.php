@@ -3,10 +3,11 @@
 require_once(__DIR__ . '/../../../models/User.php');
 
 try {
+    $id_users = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
+    // var_dump($id_user);
+    // die;
     
     $user = User::getUser($id_users);
-    // var_dump($user);
-    // die;
 
 } catch (\Throwable $th) {
     // header('Location: /controllers/errorCtrl.php');
