@@ -15,7 +15,6 @@
                         <tr>
                             <th scope="col">Nom</th>
                             <th scope="col">Prénom</th>
-                            <th scope="col">Email</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -26,7 +25,6 @@
                         <tr>
                             <td><?= htmlentities($user->lastname) ?></td>
                             <td><?= htmlentities($user->firstname) ?></td>
-                            <td><a href="emailto:<?= htmlentities($user->email) ?>"><?= htmlentities($user->email) ?></a></td>
                             <td><a href="/controllers/dashboard/edit/usersCtrl.php"><i class="bi bi-eye-fill"></i></a></td>
                         </tr>
                         <?php }

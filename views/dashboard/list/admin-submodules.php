@@ -17,6 +17,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Titre</th>
+                            <th scope="col">Module</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -26,6 +27,7 @@
                             ?>
                         <tr>
                             <td><?= htmlentities($submodule->title) ?></td>
+                            <td>Ajouter le module concerné</td>
                             <td><a href="#"><i class="bi bi-eye-fill"></i></a></td>
                         </tr>
                     <?php }

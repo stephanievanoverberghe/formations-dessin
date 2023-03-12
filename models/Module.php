@@ -95,7 +95,7 @@ class Module
     public function insert(): bool
     {
         // CREATE REQUEST
-        $sql = 'INSERT INTO `submodules` (`title`, `content`, `id_trainings`)
+        $sql = 'INSERT INTO `modules` (`title`, `content`, `id_trainings`)
                 VALUE (:title, :content, :id_trainings)';
         // PREPARE REQUEST
         $sth = $this->pdo->prepare($sql);
@@ -104,7 +104,9 @@ class Module
         $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
         $sth->bindValue(':id_trainings', $this->getId_trainings(), PDO::PARAM_STR);
 
-        return $sth->execute();
+        if($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
+        }
     }
     /**
      * 

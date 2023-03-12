@@ -17,7 +17,7 @@
                         role="form"
                         id="formModule"
                         method="POST"
-                        action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>?id=<?= $id ?? '' ?>"
+                        action=""
                         >
                         
                         <div class="form mb-4">
@@ -56,9 +56,9 @@
                                 required
                             >
                             <?php
-                            foreach ($trainings as $training) {
-                                $state = isset($module) && ($training->id == $module->getId_trainings()) ? "selected" : "";
-                                echo '<option value="' . $training->id . '" ' .  $state  . '>' . $training->title . '</option>';
+                            foreach ($allTrainings as $training) {
+                                $state = (isset($id_Trainings)) && ($training->id_trainings == $id_Trainings) ? "selected" : "";
+                                echo '<option value="' . $training->id_trainings . '" ' .  $state  . '>' . $training->title . '</option>';
                             } 
                             ?>
                             </select>

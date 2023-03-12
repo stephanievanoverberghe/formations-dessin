@@ -1,9 +1,11 @@
 <?php
 
+require_once(__DIR__ . '/../../../config/config.php');
 require_once(__DIR__ . '/../../../models/Submodule.php');
+require_once(__DIR__ . '/../../../models/Module.php');
 
 try{
-    $submodule = true;
+    $allModules = Module::getAll();
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -21,7 +23,7 @@ try{
         $id_modules = intval(trim(filter_input(INPUT_POST, 'id_modules', FILTER_SANITIZE_NUMBER_INT)));
         //On test si le champ n'est pas vide
         if ($id_modules == 0) {
-            $errors['id_modules'] = ERRORS[2];
+            $errors['id_modules'] = ERRORS[8];
         }
 
         // IF NOT ERRORS, SAVE TRAINING IN DATABASE
@@ -35,7 +37,7 @@ try{
             $response = $submodule->insert();
             
             if($response) {
-                $errors['global'] = 'La sousmodule a bien été ajouté';
+                $errors['global'] = 'Le sous module a bien été ajouté';
                 header('Location: /controllers/dashboard/list/admin-submodulesCtrl.php');
                 die;
             }
@@ -43,8 +45,8 @@ try{
     }
     
 } catch (\Throwable $th) {
-    // var_dump($th);
-    // die;
+    var_dump($th);
+    die;
     // header('Location: /controllers/errorCtrl.php');
     // die;
 }

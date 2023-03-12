@@ -87,7 +87,7 @@ a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     color: #111112;
-    font-size: 3.5em;
+    font-size: 5vw;
 }
 
 /* CUSTUMS BUTTONS */
@@ -395,14 +395,16 @@ td{
     color: #e8eddf;
     font-size: large;
 }
-#addModule select{
+#addModule select, #addSubmodule select{
     background-color: #202124;
     color: #e8eddf;
     border: none;
+    font-weight: bold;
 }
-#addModule select:hover{
+#addModule select:hover, #addSubmodule select:hover{
     background-color: #ff9b42 !important;
     color: #111112;
+    font-weight: bold;
 }
 
 /* CUSTUM FOOTER */

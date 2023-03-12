@@ -1,10 +1,12 @@
 <?php
 
+require_once(__DIR__ . '/../../../config/config.php');
 require_once(__DIR__ . '/../../../models/Module.php');
 require_once(__DIR__ . '/../../../models/Training.php');
 
 try{
-    $trainings = Training::getAll();
+    // Appel de la méthode static pour récupérer toutes les formations
+    $allTrainings = Training::getAll();
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -45,10 +47,8 @@ try{
     }
     
 } catch (\Throwable $th) {
-    var_dump($th);
+    header('Location: /controllers/errorCtrl.php');
     die;
-    // header('Location: /controllers/errorCtrl.php');
-    // die;
 }
 
 /* ************* VIEWS DISPLAYS **************************/

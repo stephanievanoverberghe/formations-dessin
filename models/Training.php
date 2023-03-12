@@ -10,6 +10,7 @@ class Training
     private string $created_at;
     private string $updated_at;
     private string $disabled_at;
+    private int $id_modules;
 
     private object $pdo;
 
@@ -75,7 +76,15 @@ class Training
     {
         return $this->disabled_at;
     }
-
+    // ID_MODULES GETTER AND SETTER ************************************************************************
+    public function setId_modules(int $id_modules): void
+    {
+        $this->id_modules = $id_modules;
+    }
+    public function getId_modules(): int
+    {
+        return $this->id_modules;
+    }
     /**
      * 
      * Méthode qui permet d'ajouter une formation à la base de données
@@ -85,16 +94,18 @@ class Training
     public function insert(): bool
     {
         // CREATE REQUEST
-        $sql = 'INSERT INTO `trainings` (`title`, `content`)
-                VALUE (:title, :content)';
+        $sql = 'INSERT INTO `trainings` (`title`, `content`, `id_modules`)
+                VALUE (:title, :content, :id_modules)';
         // PREPARE REQUEST
         $sth = $this->pdo->prepare($sql);
-
         // AFFECT VALUE
         $sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
         $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
+        $sth->bindValue(':id_modules', $this->getId_modules(), PDO::PARAM_STR);
 
-        return $sth->execute();
+        if($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
+        }
     }
     /**
      * 
@@ -116,47 +127,5 @@ class Training
             return [];
         }
     }
-    /**
-     * 
-     * Méthode static qui permet de récupérer l'ID training
-     * 
-     * @param int $id
-     * 
-     * @return [type]
-     */
-    public static function existsId(int $id_trainings)
-    {
-        $pdo = Database::getInstance();
-        $sql = 'SELECT `id_trainings` FROM `trainings` WHERE `id_trainings` = ?;';
-        $sth = $pdo->prepare($sql);
-        if ($sth->execute([$id_trainings])) {
-            return $sth->fetchAll();
-        }
-    }
-    /**
-     * 
-     * Méthode permettant de récupérer toutes les données de la formation
-     * 
-     * @param int $id
-     * 
-     * @return mixed
-     * Retourne un objet issu de la class Training ou false
-     */
-    public static function get(int $id_trainings): object|bool
-    {
-        // CREATE REQUEST
-        $sql = 'SELECT * FROM `trainings` 
-                WHERE `id_trainings` = :id_trainings';
-        // PREPARE REQUEST
-        $pdo = Database::getInstance();
-        $sth = $pdo->prepare($sql);
-        // AFFECT VALUE
-        $sth->bindValue(':id_trainings', $id_trainings, PDO::PARAM_INT);
-        
-        if ($sth->execute()) {
-            return $sth->fetch();
-        }
-    }
-    
-    
+
 }

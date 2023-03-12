@@ -16,7 +16,9 @@
                         class="mb-5 formSubmodule"
                         role="form"
                         id="formSubmodule"
-                        method="POST">
+                        method="POST"
+                        action=""
+                        >
                         <div class="form mb-4">
                             <!-- TITLE -->
                             <label for="title" class="form_label orange mt-5 mb-2">Titre
@@ -45,7 +47,7 @@
                             </textarea>
                             <div class="error"><?=$errors['content'] ?? ''?></div>
                             <!-- MODULE -->
-                            <label for="id_modules" class="form-label orange mb-2">Module *</label>
+                            <label for="id_modules" class="form-label orange mt-5 mb-2">Module *</label>
                             <select 
                                 name="id_modules" 
                                 id="id_modules"
@@ -53,9 +55,9 @@
                                 required
                             >
                             <?php
-                            foreach ($modules as $module) {
-                                $state = isset($submodule) && ($module->id == $submodule->getId_modules()) ? "selected" : "";
-                                echo '<option value="' . $module->id . '" ' .  $state  . '>' . $module->title . ' ' . '</option>';
+                            foreach ($allModules as $module) {
+                                $state = isset($id_modules) && ($module->id_modules == $id_modules) ? "selected" : "";
+                                echo '<option value="' . $module->id_modules . '" ' .  $state  . '>' . $module->title . ' ' . '</option>';
                             } 
                             ?>
                             </select>

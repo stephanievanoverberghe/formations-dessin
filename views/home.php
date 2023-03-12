@@ -2,10 +2,10 @@
 <section class="my-4 text-center">
         <div class="container-fluid">
             <div class="row">
-                <div class="col text-center banner-image">
+                <div class="col-lg-12 text-center banner-image img-fluid">
                     <img src="/public/assets/img/banniere_alchimiste.png" alt="Logo l'Alchimiste créations" class="banniere">
                     <div class="banner-text">
-                        <h1>Formations<br>Dessin</h1>
+                        <h1 class="">Formations<br>Dessin</h1>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                     <p>Si tu es ici, c'est que t'es motivé(e) à entrer dans cet univers incroyable qu'est son apprentissage.</p>
                     <p>N'hésites plus</p>
                     <p>et</p>
-                    <h1 class="mt-5">Deviens Explorateur de l'art</h1>
+                    <h2 class="mt-5">Deviens Explorateur de l'art</h2>
                     <button class="mt-5"><a href="/controllers/inscriptionCtrl.php" class="btnInscription">S'inscrire</a></button>
                 </div>
             </div>
@@ -40,7 +40,7 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-12 my-5">
+                <div class="col-12 mb-5">
                     <h2>
                         La formation
                     </h2>
@@ -130,7 +130,7 @@
                         <div class="card-body text-center d-flex flex-column justify-content-around">
                             <h3 class="card-title text-center">Les 8 règles de la composition</h3>
                             <p class="card-text">Une composition puissante exerce une attraction intuitive sur l'observateur. Il existe de nombreuses règles.</p>
-                            <button class="card-btn">Lire l'article</button>
+                            <a href="" class="card-btn">Lire l'article</a>
                         </div>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                         <div class="card-body text-center d-flex flex-column justify-content-around">
                             <h3 class="card-title text-center">Pas à pas - Dessiner des fleurs</h3>
                             <p class="card-text">Quelque soit leur forme, les fleurs peuvent être un sujet complexe. Cependant, il est idéal pour les personnes débutantes en dessin.</p>
-                            <button class="card-btn">Lire l'article</button>
+                            <a href="" class="card-btn">Lire l'article</a>
                         </div>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                         <div class="card-body text-center d-flex flex-column justify-content-around">
                             <h3 class="card-title text-center">La naissance de l'art</h3>
                             <p class="card-text">Autour de - 40 000 ans, à l'aube du Poléolithique supérieur, l'Eurasie occidentale connaît un bouleversement culturel majeur. C'est la naissance de l'art.</p>
-                            <button class="card-btn">Lire l'article</button>
+                            <a href="" class="card-btn">Lire l'article</a>
                         </div>
                     </div>
                 </div>
