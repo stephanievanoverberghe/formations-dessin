@@ -1,7 +1,7 @@
 <?php
 
 require_once(__DIR__ . '/../../../config/constants.php');
-require_once(__DIR__ . '/../../../models/Categorie.php');
+require_once(__DIR__ . '/../../../models/Category.php');
 
 try{
     $category = true;
@@ -18,6 +18,11 @@ try{
         if(empty($slug)) {
             $errors['slug'] = 'Le champs est obligatoire';
         }
+        /* ************* CONTENT NETTOYAGE ET VERIFICATION **************************/
+        $content = trim((string)filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
+        if(empty($content)) {
+            $errors['content'] = 'Le champs est obligatoire';
+        }
         
         // IF NOT ERRORS, SAVE CATEGORIE IN DATABASE
         if(empty($errors)) {
@@ -25,6 +30,7 @@ try{
             $category = new Category;
             $category->setTitle($title);
             $category->setSlug($slug);
+            $category->setContent($content);
 
             $response = $category->insert();
             

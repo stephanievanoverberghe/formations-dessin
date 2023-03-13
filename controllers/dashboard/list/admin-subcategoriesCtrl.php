@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/../../../models/Subcategorie.php');
+require_once(__DIR__ . '/../../../models/Subcategory.php');
 
 try {
     $subcategories = Subcategory::getAll();

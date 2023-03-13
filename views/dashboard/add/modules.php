@@ -47,7 +47,7 @@
                             >
                             </textarea>
                             <div class="error"><?=$errors['content'] ?? ''?></div>
-                            <!-- MODULE -->
+                            <!-- FORMATION -->
                             <label for="id_trainings" class="form-label orange mt-5 mb-2">Formation *</label>
                             <select 
                                 name="id_trainings" 
@@ -57,7 +57,7 @@
                             >
                             <?php
                             foreach ($allTrainings as $training) {
-                                $state = (isset($id_Trainings)) && ($training->id_trainings == $id_Trainings) ? "selected" : "";
+                                $state = (isset($id_trainings)) && ($training->id_trainings == $id_trainings) ? "selected" : "";
                                 echo '<option value="' . $training->id_trainings . '" ' .  $state  . '>' . $training->title . '</option>';
                             } 
                             ?>

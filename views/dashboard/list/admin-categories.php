@@ -17,7 +17,6 @@
                     <thead>
                         <tr>
                             <th scope="col">Titre</th>
-                            <th scope="col">Slug</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -27,8 +26,7 @@
                         ?>
                         <tr>
                             <td><?= htmlentities($category->title) ?></td>
-                            <td><?= htmlentities($category->slug) ?></td>
-                            <td><a href="/controllers/magazine/categorieCtrl.php?=<?= htmlentities($category->id) ?>"><i class="bi bi-eye-fill"></i></a></td>
+                            <td><a href="/controllers/magazine/categorieCtrl.php?=<?= htmlentities($category->id_categories) ?>"><i class="bi bi-eye-fill"></i></a></td>
                         </tr>
                         <?php } ?>
                     </tbody>

@@ -390,21 +390,34 @@ td{
     border: none;
     padding: 5px 50px;
 }
-#addArticle textarea, #addTraining textarea, #addSubmodule textarea, #addModule textarea{
+#addArticle textarea, #addTraining textarea, #addSubmodule textarea, #addModule textarea, #addCategory textarea, #addSubcategory textarea{
     background-color: #202124;
     color: #e8eddf;
-    font-size: large;
 }
-#addModule select, #addSubmodule select{
+#addModule select, #addSubmodule select, #addSubcategory select{
     background-color: #202124;
     color: #e8eddf;
     border: none;
     font-weight: bold;
 }
-#addModule select:hover, #addSubmodule select:hover{
+#addModule select:hover, #addSubmodule select:hover, #addSubcategory select:hover{
     background-color: #ff9b42 !important;
     color: #111112;
     font-weight: bold;
+}
+#searchSubmodules input{
+    background-color: #202124;
+    color: #e8eddf;
+}
+#searchSubmodules .btn{
+    background-color: #202124;
+    color: #1fbfff;
+}
+#editUser h1, #editTraining h1{
+    font-size: 2.5rem;
+}
+#editUser h2, #editTraining h2{
+    font-size: 1.5rem;
 }
 
 /* CUSTUM FOOTER */

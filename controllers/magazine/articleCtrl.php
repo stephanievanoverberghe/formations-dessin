@@ -8,13 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $addComments = trim(filter_input(INPUT_POST, 'addComments', FILTER_SANITIZE_SPECIAL_CHARS));
 }
 
-// Rendu des vues concernées
+/* ************* VIEWS DISPLAYS **************************/
 include_once(__DIR__ . '/../../views/templates/header.php');
-
-if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)) {
-    include(__DIR__ . '/../../views/magazine/article.php');
-} else {
-    include(__DIR__ . '/../../views/validate.php');
-}
-
+include(__DIR__ . '/../../views/magazine/article.php');
 include_once(__DIR__ . '/../../views/templates/footer.php');

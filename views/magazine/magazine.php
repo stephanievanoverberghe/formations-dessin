@@ -53,22 +53,22 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <h3 class="mb-4">Catégories</h3>
-                        <a href="">Techniques de dessin</a><br>
-                        <a href="">Matériel de dessin</a><br>
-                        <a href="">Histoire de l'art</a><br>
-                        <a href="">Pas à pas</a>
+                        <?php
+                            foreach ($categories as $category) {
+                        ?>
+                        <a href=""><?= htmlentities($category->title) ?></a><br>
+                        <?php } ?>
                     </div>
                     <div class="offset-lg-1 col-lg-7">
                         <h3 class="mb-4">Sous catégories</h3>
+                        <?php
+                            foreach ($subcategories as $subcategory) {
+                        ?>
                         <div class="row">
                             <div class="col-4">
-                                <a href="">Natures mortes</a><br>
-                                <a href="">Paysages</a><br>
-                                <a href="">Animaux</a><br>
-                                <a href="">Portraits</a><br>
-                                <a href="">Corps humain</a>
+                                <a href=""><?= htmlentities($subcategory->title) ?></a><br>
                             </div>
-                            <div class="col-4">
+                            <!-- <div class="col-4">
                                 <a href="">Artistes célèbres</a><br>
                                 <a href="">Mouvements dans l'art</a><br>
                                 <a href="">Les crayons</a><br>
@@ -80,8 +80,9 @@
                                 <a href="">La composition</a><br>
                                 <a href="">L'ombre et la lumière</a><br>
                                 <a href="">Les textures</a><br>
-                            </div>
+                            </div> -->
                         </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

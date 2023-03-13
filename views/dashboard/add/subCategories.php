@@ -3,8 +3,7 @@
     <div class="alert alert-warning" role="alert">
         <?= nl2br($errors['global'])?>
     </div>
-<?php } 
-if ($subcategory){ ?>
+<?php } ?>
 
 <main>
     <div class="container">
@@ -45,6 +44,34 @@ if ($subcategory){ ?>
                                 required
                             >
                             <div class="error"><?=$errors['slug'] ?? ''?></div>
+                            <!-- CONTENT -->
+                            <label for="content" class="form_label orange mt-5 mb-2">Contenu
+                                <span class="orange"> *</span>
+                            </label>
+                            <textarea 
+                                class="form-control"
+                                name="content" 
+                                id="content"
+                                rows="10"
+                                required
+                            >
+                            </textarea>
+                            <div class="error"><?=$errors['content'] ?? ''?></div>
+                            <!-- CATEGORY -->
+                            <label for="id_categories" class="form-label orange mt-5 mb-2">Catégorie *</label>
+                            <select 
+                                name="id_categories" 
+                                id="id_categories"
+                                class="form-select"
+                                required
+                            >
+                            <?php
+                            foreach ($allCategories as $category) {
+                                $state = (isset($id_categories)) && ($category->id_categories == $id_categories) ? "selected" : "";
+                                echo '<option value="' . $category->id_categories . '" ' .  $state  . '>' . $category->title . '</option>';
+                            } 
+                            ?>
+                            </select>
                             <!-- VALIDATE FORM -->
                             <div class="col-12 text-center">
                                 <input class="btn my-5" type="submit"value="Valider"></input>
@@ -56,4 +83,3 @@ if ($subcategory){ ?>
         </div>
     </div>
 </main>
-<?php } ?>

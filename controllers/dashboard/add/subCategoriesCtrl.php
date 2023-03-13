@@ -1,10 +1,12 @@
 <?php
 
 require_once(__DIR__ . '/../../../config/constants.php');
-require_once(__DIR__ . '/../../../models/Subcategorie.php');
+require_once(__DIR__ . '/../../../models/Subcategory.php');
+require_once(__DIR__ . '/../../../models/Category.php');
 
 try{
-    $subcategory = true;
+    // Appel de la méthode static pour récupérer toutes les catégories
+    $allCategories = Category::getAll();
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -18,13 +20,24 @@ try{
         if(empty($slug)) {
             $errors['slug'] = 'Le champs est obligatoire';
         }
+        /* ************* CONTENT NETTOYAGE ET VERIFICATION **************************/
+        $content = trim((string)filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
+        if(empty($content)) {
+            $errors['content'] = 'Le champs est obligatoire';
+        }
+        /* ************* ID_TRAININGS NETTOYAGE ET VERIFICATION **************************/
+        $id_categories = intval(trim(filter_input(INPUT_POST, 'id_categories', FILTER_SANITIZE_NUMBER_INT)));
         
-        // IF NOT ERRORS, SAVE CATEGORIE IN DATABASE
+        // IF NOT ERRORS, SAVE SUBCATEGORIES IN DATABASE
         if(empty($errors)) {
             //**** HYDRATATION ****/
             $subcategory = new Subcategory;
             $subcategory->setTitle($title);
             $subcategory->setSlug($slug);
+            $subcategory->setContent($content);
+            $subcategory->setId_categories($id_categories);
+
+
 
             $response = $subcategory->insert();
             

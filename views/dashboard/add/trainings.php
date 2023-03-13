@@ -3,7 +3,8 @@
     <div class="alert alert-warning" role="alert">
         <?= nl2br($errors['global'])?>
     </div>
-<?php } 
+<?php }
+// If training exist (update or add new training)
 if ($training){ ?>
 
 <main>
@@ -11,7 +12,7 @@ if ($training){ ?>
         <div id="addTraining">
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <h1 class="mb-5 text-center">Ajouter une formation</h1>
+                    <h1 class="mb-5 text-center"><?= (isset($id_trainings)) ? 'Modifier la' : 'Ajouter une'?> formation</h1>
                     <!-- START FORM -->
                     <form 
                         class="mb-5 formTraining"
@@ -33,7 +34,7 @@ if ($training){ ?>
                             >
                             <div class="error"><?=$errors['title'] ?? ''?></div>
                             <!-- CONTENT -->
-                            <label for="catch" class="form_label orange mt-5 mb-2">Contenu
+                            <label for="content" class="form_label orange mt-5 mb-2">Contenu
                                 <span class="orange"> *</span>
                             </label>
                             <textarea 
@@ -42,7 +43,8 @@ if ($training){ ?>
                                 id="content"
                                 rows="10"
                                 required
-                            >
+                                >
+                                <?= $training->content ?? $content ?? '' ?>
                             </textarea>
                             <div class="error"><?=$errors['content'] ?? ''?></div>
                             <!-- VALIDATE FORM -->

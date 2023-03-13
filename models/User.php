@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../helpers/database.php');
 
 class User
 {
-    private int $id;
+    private int $id_users;
     private string $lastname;
     private string $firstname;
     private string $email;
@@ -28,13 +28,13 @@ class User
     }
 
     // ID GETTER AND SETTER ************************************************************************
-    public function setId(int $id): void
+    public function setId_users(int $id_users): void
     {
-        $this->id = $id;
+        $this->id_users = $id_users;
     }
-    public function getId(): int
+    public function getId_users(): int
     {
-        return $this->id;
+        return $this->id_users;
     }
     // LASTNAME GETTER AND SETTER ************************************************************************
     public function setLastname(string $lastname): void
@@ -201,19 +201,46 @@ class User
             return [];
         }
     }
-
-    public static function getUser(int $id_users): bool
+    /**
+     * 
+     * Méthode statique permettant de lister tous les utilisateurs existants
+     * 
+     * @return array
+     */
+    public static function getUser(): array
     {
-        $pdo = Database::getInstance();
         // CREATE REQUEST
-        $sql = 'SELECT * FROM `users` WHERE `id_users` = :id_users';
+        $sql = 'SELECT * FROM `users`';
         // PREPARE REQUEST
+        $sth = Database::getInstance()->prepare($sql);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return ($sth->fetch());
+        } else {
+            return [];
+        }
+    }
+    /**
+     * 
+     * Méthode permettant de récupérer toutes les données d'un utilisateur
+     * 
+     * @param int $id_users
+     * 
+     * @return object
+     */
+    public static function getData(int $id_users): object|bool
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `users`
+                WHERE `id_users` = :id_users';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
         $sth = $pdo->prepare($sql);
         // AFFECT VALUE
         $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
         // EXECUTE REQUEST
-        if ($sth->execute()) {
-            return $sth-> fetch();
+        if($sth->execute()) {
+            return $sth->fetch();
         }
     }
 

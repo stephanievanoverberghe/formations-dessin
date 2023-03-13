@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../helpers/database.php');
 
 class Training
 {
-    private int $id;
+    private int $id_trainings;
     private string $title;
     private string $content;
     private string $created_at;
@@ -23,13 +23,13 @@ class Training
     }
 
     // ID GETTER AND SETTER ************************************************************************
-    public function setId(int $id): void
+    public function setId_trainings(int $id_trainings): void
     {
-        $this->id = $id;
+        $this->id_trainings = $id_trainings;
     }
-    public function getId(): int
+    public function getId_trainings(): int
     {
-        return $this->id;
+        return $this->id_trainings;
     }
     // TITLE GETTER AND SETTER ************************************************************************
     public function setTitle(string $title): void
@@ -117,14 +117,54 @@ class Training
     {
         // CREATE REQUEST
         $sql = 'SELECT * FROM `trainings`;';
-
         // PREPARE REQUEST
         $sth = Database::getInstance()->prepare($sql);
-
+        // EXECUTE REQUEST
         if ($sth->execute()) {
             return ($sth->fetchAll());
         } else {
             return [];
+        }
+    }
+    /**
+     * 
+     * Méthode permettant de récupérer toutes les données d'une formation
+     * 
+     * @param int $id_trainings
+     * 
+     * @return object
+     */
+    public static function getData(int $id_trainings): object|bool
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `trainings` 
+                WHERE `id_trainings` = :id_trainings';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_trainings', $id_trainings, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return $sth->fetch();
+        }
+    }
+    public function update(int $id_trainings): bool
+    {
+        // CREATE REQUEST
+        $sql = 'UPDATE `trainings` SET
+                        `title` = :title,
+                        `content` = :content
+                WHERE `id_trainings` = :id_trainings;';
+        // PREPARE REQUEST
+        $sth = $this->pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':title', $this->getTitle());
+        $sth->bindValue(':content', $this->getContent());
+        $sth->bindValue(':id_trainings', $id_trainings, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
         }
     }
 

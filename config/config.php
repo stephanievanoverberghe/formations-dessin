@@ -1,7 +1,7 @@
 <?php 
 
 // INITIALIZATION DATA BASE
-define('DSN', 'mysql:host=localhost;dbname=formationsdessins;charset=utf8;port=3306');
+define('DSN', 'mysql:host=localhost;dbname=formationsdessins;charset=utf8mb4;port=3306');
 define('LOGIN', 'steffievano');
 define('PASSWORD', '2D@chB3Bek]CR/h[');
 
@@ -22,4 +22,5 @@ define('ERRORS', [
 define('MESSAGES', [
     1=>'Le compte a été mis à jour',
     2=>'Le module a bien été ajouté',
+    3=>'La formation a bien été mis à jour',
 ]);

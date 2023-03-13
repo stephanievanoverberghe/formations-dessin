@@ -45,6 +45,19 @@ if ($category){ ?>
                                 required
                             >
                             <div class="error"><?=$errors['slug'] ?? ''?></div>
+                            <!-- CONTENT -->
+                            <label for="content" class="form_label orange mt-5 mb-2">Contenu
+                                <span class="orange"> *</span>
+                            </label>
+                            <textarea 
+                                class="form-control"
+                                name="content" 
+                                id="content"
+                                rows="10"
+                                required
+                            >
+                            </textarea>
+                            <div class="error"><?=$errors['content'] ?? ''?></div>
                             <!-- VALIDATE FORM -->
                             <div class="col-12 text-center">
                                 <input class="btn my-5" type="submit"value="Valider"></input>

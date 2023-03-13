@@ -9,7 +9,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class=" col-lg-11 mt-5">
-                <h1 class="mb-5 text-center">Utilisateurs</h1>
+                <h1 class="mb-5 text-center">Liste des utilisateurs</h1>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -25,7 +25,9 @@
                         <tr>
                             <td><?= htmlentities($user->lastname) ?></td>
                             <td><?= htmlentities($user->firstname) ?></td>
-                            <td><a href="/controllers/dashboard/edit/usersCtrl.php"><i class="bi bi-eye-fill"></i></a></td>
+                            <td>
+                                <a href="/controllers/dashboard/edit/usersCtrl.php?id_users=<?= htmlentities($user->id_users) ?>"><i class="bi bi-eye-fill"></i></a>
+                            </td>
                         </tr>
                         <?php }
                         ?>

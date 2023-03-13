@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/../../../models/Categorie.php');
+require_once(__DIR__ . '/../../../models/Category.php');
 
 try {
     $categories = Category::getAll();

@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../helpers/database.php');
 
 class Submodule
 {
-    private int $id;
+    private int $id_submodules;
     private string $title;
     private string $content;
     private string $created_at;
@@ -22,14 +22,14 @@ class Submodule
         $this->pdo = Database::getInstance();
     }
 
-    // ID GETTER AND SETTER ************************************************************************
-    public function setId(int $id): void
+    // ID_SUBMODULES GETTER AND SETTER ************************************************************************
+    public function setId_submodules(int $id_submodules): void
     {
-        $this->id = $id;
+        $this->id_submodules = $id_submodules;
     }
-    public function getId(): int
+    public function getId_submodules(): int
     {
-        return $this->id;
+        return $this->id_submodules;
     }
     // TITLE GETTER AND SETTER ************************************************************************
     public function setTitle(string $title): void
@@ -113,14 +113,17 @@ class Submodule
      * 
      * @return array
      */
-    public static function getAll(): array
+    public static function getAll($search = ''): array
     {
         // CREATE REQUEST
-        $sql = 'SELECT * FROM `submodules`;';
-
+        $sql = 'SELECT * 
+                    FROM `submodules`
+                    WHERE `title` LIKE :search;';
         // PREPARE REQUEST
         $sth = Database::getInstance()->prepare($sql);
-
+        // AFFECT VALUES
+        $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+        // EXECUTE REQUEST
         if ($sth->execute()) {
             return ($sth->fetchAll());
         } else {

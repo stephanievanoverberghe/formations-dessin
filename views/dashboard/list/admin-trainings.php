@@ -26,7 +26,11 @@
                             ?>
                         <tr>
                             <td><?= htmlentities($training->title) ?></td>
-                            <td><a href="#"><i class="bi bi-eye-fill"></i></a></td>
+                            <td>
+                                <a href="/controllers/dashboard/edit/trainingsCtrl.php?id_trainings=<?= htmlentities($training->id_trainings) ?>"><i class="bi bi-eye-fill"></i></a>
+                                <a href="/controllers/dashboard/update/trainingsCtrl.php?id_trainings=<?= htmlentities($training->id_trainings) ?>" class="mx-3"><i class="bi bi-pencil-fill"></i></a>
+                            </td>
+                            
                         </tr>
                     <?php }
                     ?>

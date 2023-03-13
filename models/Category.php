@@ -4,9 +4,10 @@ require_once(__DIR__ . '/../helpers/database.php');
 
 class Category
 {
-    private int $id;
+    private int $id_categories;
     private string $title;
     private string $slug;
+    private string $content;
 
     private object $pdo;
 
@@ -18,61 +19,43 @@ class Category
         $this->pdo = Database::getInstance();
     }
 
-    // ID GETTER AND SETTER ************************************************************************
-    /**
-     * @param int $id
-     * 
-     * @return void
-     */
-    public function setId(int $id): void
+    // ID_CATEGORIES GETTER AND SETTER ************************************************************************
+    public function setId_categories(int $id_categories): void
     {
-        $this->id = $id;
+        $this->id_categories = $id_categories;
     }
-
-    /**
-     * @return int
-     */
-    public function getId(): int
+    public function getId_categories(): int
     {
-        return $this->id;
+        return $this->id_categories;
     }
     // TITLE GETTER AND SETTER ************************************************************************
-    /**
-     * @param string $title
-     * 
-     * @return void
-     */
     public function setTitle(string $title): void
     {
         $this->title = $title;
     }
-
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title;
     }
     // SLUG GETTER AND SETTER ************************************************************************
-    /**
-     * @param string $slug
-     * 
-     * @return void
-     */
     public function setSlug(string $slug): void
     {
         $this->slug = $slug;
     }
-
-    /**
-     * @return string
-     */
     public function getSlug(): string
     {
         return $this->slug;
     }
-    
+    // CONTENT GETTER AND SETTER ************************************************************************
+    public function setContent(string $content): void
+    {
+        $this->content = $content;
+    }
+    public function getcontent(): string
+    {
+        return $this->content;
+    }
+
     /**
      * 
      * Méthode qui permet de créer une nouvelle catégorie
@@ -82,13 +65,14 @@ class Category
     public function insert(): bool
     {
         // CREATE REQUEST
-        $sql = 'INSERT INTO `categories` (`title`, `slug`)
-                    VALUE (:title, :slug);';
+        $sql = 'INSERT INTO `categories` (`title`, `slug`, `content`)
+                    VALUE (:title, :slug, :content);';
         // PREPARE REQUEST
         $sth = $this->pdo->prepare($sql);
         // AFFECT VALUE
         $sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
         $sth->bindValue(':slug', $this->getSlug(), PDO::PARAM_STR);
+        $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
         // RETURN TRUE IF REQUEST EXECUTE OR FALSE IF NOT EXECUTE
         return $sth->execute();
     }
