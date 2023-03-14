@@ -1,10 +1,11 @@
 <?php
 
 require_once(__DIR__ . '/../../../models/Training.php');
+require_once(__DIR__ . '/../../../models/Module.php');
 
 try{
     $training = true;
-
+    
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         /* ************* TITLE NETTOYAGE ET VERIFICATION **************************/
@@ -24,7 +25,7 @@ try{
             $training = new Training;
             $training->setTitle($title);
             $training->setContent($content);
-
+            
             $response = $training->insert();
             
             if($response) {
@@ -36,8 +37,10 @@ try{
     }
     
 } catch (\Throwable $th) {
-    header('Location: /controllers/errorCtrl.php');
+    var_dump($th);
     die;
+    // header('Location: /controllers/errorCtrl.php');
+    // die;
 }
 
 /* ************* VIEWS DISPLAYS **************************/

@@ -4,10 +4,13 @@ require_once(__DIR__ . '/../../../config/constants.php');
 require_once(__DIR__ . '/../../../models/User.php');
 
 try {
-    $users = User::getAll();
+    $search = trim((string)filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS));
+    $users = User::getAll($search);
 } catch (\Throwable $th) {
-    header('location: /controllers/errorCtrl.php');
+    var_dump($th);
     die;
+    // header('location: /controllers/errorCtrl.php');
+    // die;
 }
 
 

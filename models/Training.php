@@ -10,7 +10,6 @@ class Training
     private string $created_at;
     private string $updated_at;
     private string $disabled_at;
-    private int $id_modules;
 
     private object $pdo;
 
@@ -76,15 +75,6 @@ class Training
     {
         return $this->disabled_at;
     }
-    // ID_MODULES GETTER AND SETTER ************************************************************************
-    public function setId_modules(int $id_modules): void
-    {
-        $this->id_modules = $id_modules;
-    }
-    public function getId_modules(): int
-    {
-        return $this->id_modules;
-    }
     /**
      * 
      * Méthode qui permet d'ajouter une formation à la base de données
@@ -94,14 +84,13 @@ class Training
     public function insert(): bool
     {
         // CREATE REQUEST
-        $sql = 'INSERT INTO `trainings` (`title`, `content`, `id_modules`)
-                VALUE (:title, :content, :id_modules)';
+        $sql = 'INSERT INTO `trainings` (`title`, `content`)
+                VALUE (:title, :content)';
         // PREPARE REQUEST
         $sth = $this->pdo->prepare($sql);
         // AFFECT VALUE
         $sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
         $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
-        $sth->bindValue(':id_modules', $this->getId_modules(), PDO::PARAM_STR);
 
         if($sth->execute()) {
             return ($sth->rowCount() > 0) ? true : false;
@@ -149,6 +138,14 @@ class Training
             return $sth->fetch();
         }
     }
+    /**
+     * 
+     * Méthode permettant de modifier la formation
+     * 
+     * @param int $id_trainings
+     * 
+     * @return bool
+     */
     public function update(int $id_trainings): bool
     {
         // CREATE REQUEST
@@ -166,6 +163,29 @@ class Training
         if ($sth->execute()) {
             return ($sth->rowCount() > 0) ? true : false;
         }
+    }
+    /**
+     * 
+     * Méthode permettant de supprimer une formation
+     * 
+     * @param int $id_trainings
+     * 
+     * @return bool
+     */
+    public static function delete(int $id_trainings): bool
+    {
+        // CREATE REQUEST
+        $sql = 'DELETE FROM `trainings`
+                    WHERE `trainings`.`id_trainings` = :id_trainings;';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_trainings', $id_trainings, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        $sth->execute();
+        $result = $sth->rowCount();
+        return ($result > 0) ? true : false;
     }
 
 }

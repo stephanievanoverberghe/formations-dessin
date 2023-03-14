@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../helpers/database.php');
 
 class Module
 {
-    private int $id;
+    private int $id_modules;
     private string $title;
     private string $content;
     private string $created_at;
@@ -22,14 +22,14 @@ class Module
         $this->pdo = Database::getInstance();
     }
 
-    // ID GETTER AND SETTER ************************************************************************
-    public function setId(int $id): void
+    // ID_MODULES GETTER AND SETTER ************************************************************************
+    public function setId_modules(int $id_modules): void
     {
-        $this->id = $id;
+        $this->id_modules = $id_modules;
     }
-    public function getId(): int
+    public function getId_modules(): int
     {
-        return $this->id;
+        return $this->id_modules;
     }
     // TITLE GETTER AND SETTER ************************************************************************
     public function setTitle(string $title): void
@@ -126,5 +126,81 @@ class Module
         } else {
             return [];
         }
+    }
+    /**
+     * 
+     * Méthode permettant de récupérer toutes les données d'un module
+     * 
+     * @param int $id_modules
+     * 
+     * @return object
+     */
+    public static function getData(int $id_modules): object|bool
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `modules`
+                WHERE `id_modules` = :id_modules';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_modules', $id_modules, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return $sth->fetch();
+        }
+    }
+    /**
+     * 
+     * Méthode permettant de modifier le module
+     * 
+     * @param int $id_modules
+     * 
+     * @return bool
+     */
+    public function update(int $id_modules): bool
+    {
+        // CREATE REQUEST
+        $sql = 'UPDATE `modules` SET
+                        `title` = :title,
+                        `content` = :content,
+                        `id_trainings` = :id_trainings
+                WHERE `id_modules` = :id_modules;';
+        // PREPARE REQUEST
+        $sth = $this->pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
+        $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
+        $sth->bindValue(':id_trainings', $this->getId_trainings(), PDO::PARAM_INT);
+        $sth->bindValue(':id_modules', $id_modules, PDO::PARAM_INT);
+
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
+        }
+    }
+    /**
+     * 
+     * Méthode permettant de supprimer un module
+     * 
+     * @param int $id_modules
+     * 
+     * @return bool
+     */
+    public static function delete(int $id_modules): bool
+    {
+        // CREATE REQUEST
+        $sql = 'DELETE FROM `modules`
+                    WHERE `modules`.`id_modules` = :id_modules;';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_modules', $id_modules, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        $sth->execute();
+        $result = $sth->rowCount();
+        return ($result > 0) ? true : false;
+
     }
 }

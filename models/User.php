@@ -188,12 +188,18 @@ class User
      * 
      * @return array
      */
-    public static function getAll(): array
+    public static function getAll($search = ''): array
     {
         // CREATE REQUEST
-        $sql = 'SELECT * FROM `users` ORDER BY `lastname` ASC;';
+        $sql = 'SELECT * 
+                    FROM `users`
+                    WHERE `lastname` LIKE :search;
+                    OR `firstname` LIKE :search
+                    ORDER BY `lastname`';
         // PREPARE REQUEST
         $sth = Database::getInstance()->prepare($sql);
+        // AFFECT VALLUE
+        $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
         // EXECUTE REQUEST
         if ($sth->execute()) {
             return ($sth->fetchAll());

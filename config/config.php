@@ -1,5 +1,8 @@
 <?php 
 
+require_once(__DIR__ . '/../helpers/SessionFlash.php');
+SessionFlash::start();
+
 // INITIALIZATION DATA BASE
 define('DSN', 'mysql:host=localhost;dbname=formationsdessins;charset=utf8mb4;port=3306');
 define('LOGIN', 'steffievano');
@@ -13,14 +16,25 @@ define('ERRORS', [
     3=>'Compte non trouvé',
     4=>'Aucune mise à jour n\'a été effectuée',
     5=>'Compte utilisateur non mis à jour, ce compte existe déjà',
-    6=>'Erreur lors de la récupération de la formation',
-    7=>'Module non créé',
-    8=>'Erreur lors de la récupération du module',
+    6=>'Erreur lors de la récupération des données',
+    7=>'Formation non créé',
+    8=>'Module non créé',
+    9=>'Sous-module non créé',
+    10=>'Echec lors de la suppression.'
 ]);
 
 // INITIALIZATION MESSAGES
 define('MESSAGES', [
-    1=>'Le compte a été mis à jour',
-    2=>'Le module a bien été ajouté',
-    3=>'La formation a bien été mis à jour',
+    1=>'Le compte a été créé.',
+    2=>'Le compte a bien été mis à jour.',
+    3=>'La formation a bien été ajouté.',
+    4=>'Le module a bien été ajouté.',
+    5=>'Le sous-module a bien été ajouté.',
+    6=>'La formation a bien été mis à jour.',
+    7=>'Le module a bien été mis à jour.',
+    8=>'Le sous-module a bien été mis à jour',
+    9=>'La formation a bien été supprimée.',
+    10=>'Le module a bien été supprimé.',
+    11=>'Le sous-module a bien été supprimé.',
+    
 ]);

@@ -19,9 +19,16 @@
 
         <!-- Start navBar -->
 
-        <button class="buttonDash my-4 mx-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark" aria-controls="offcanvasDark"><i class="bi bi-list"></i> Menu</button>
+        <button 
+            class="buttonDash my-4 mx-4" 
+            type="button" 
+            data-bs-toggle="offcanvas" 
+            data-bs-target="#offcanvasDark" 
+            aria-controls="offcanvasDark">
+            <i class="bi bi-list"></i> Menu
+        </button>
 
-        <div class="offcanvas offcanvas-start show text-bg-dark" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel">
+        <div class="offcanvas offcanvas-start text-bg-dark" data-bs-scroll="true" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasDarkLabel"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>

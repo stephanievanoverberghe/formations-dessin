@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../helpers/database.php');
 
 class Submodule
 {
-    private int $id_submodules;
+    private int $id_sub_modules;
     private string $title;
     private string $content;
     private string $created_at;
@@ -23,13 +23,13 @@ class Submodule
     }
 
     // ID_SUBMODULES GETTER AND SETTER ************************************************************************
-    public function setId_submodules(int $id_submodules): void
+    public function setId_sub_modules(int $id_sub_modules): void
     {
-        $this->id_submodules = $id_submodules;
+        $this->id_sub_modules = $id_sub_modules;
     }
-    public function getId_submodules(): int
+    public function getId_sub_modules(): int
     {
-        return $this->id_submodules;
+        return $this->id_sub_modules;
     }
     // TITLE GETTER AND SETTER ************************************************************************
     public function setTitle(string $title): void
@@ -105,7 +105,9 @@ class Submodule
         $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
         $sth->bindValue(':id_modules', $this->getId_modules(), PDO::PARAM_STR);
 
-        return $sth->execute();
+        if($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
+        }
     }
     /**
      * 
@@ -129,5 +131,79 @@ class Submodule
         } else {
             return [];
         }
+    }
+    /**
+     * 
+     * Méthode permettant de récupérer toutes les données d'un sous module
+     * 
+     * @param int $id_submodules
+     * 
+     * @return object
+     */
+    public static function getData(int $id_sub_modules): object|bool
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `submodules`
+                WHERE `id_sub_modules` = :id_sub_modules';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_sub_modules', $id_sub_modules, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return $sth->fetch();
+        }
+    }
+    /**
+     * 
+     * Méthode permettant de modifier le module
+     * 
+     * @param int $id_modules
+     * 
+     * @return bool
+     */
+    public function update(int $id_sub_modules): bool
+    {
+        // CREATE REQUEST
+        $sql = 'UPDATE `submodules` SET
+                        `title` = :title,
+                        `content` = :content,
+                        `id_modules` = :id_modules
+                WHERE `id_sub_modules` = :id_sub_modules;';
+        // PREPARE REQUEST
+        $sth = $this->pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
+        $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
+        $sth->bindValue(':id_modules', $this->getId_modules(), PDO::PARAM_INT);
+        $sth->bindValue(':id_sub_modules', $id_sub_modules, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
+        }
+    }
+    /**
+     * 
+     * Méthode permettant de supprimer un sous-module
+     * 
+     * @param int $id_sub_modules
+     * 
+     * @return bool
+     */
+    public static function delete(int $id_sub_modules): bool
+    {
+        // CREATE REQUEST
+        $sql = 'DELETE FROM `submodules`
+                    WHERE `submodules`.`id_sub_modules` = :id_sub_modules;';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_sub_modules', $id_sub_modules, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        $sth->execute();
+        $result = $sth->rowCount();
+        return ($result > 0) ? true : false;
     }
 }
