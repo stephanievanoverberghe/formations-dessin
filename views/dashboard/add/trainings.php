@@ -3,6 +3,7 @@
     <div class="alert alert-warning" role="alert">
         <?= nl2br($errors['global']) ?>
     </div>
+    
 <?php } ?>
 
     <main>

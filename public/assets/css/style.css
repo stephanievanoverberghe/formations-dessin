@@ -324,7 +324,7 @@ select{
     border-radius: 5px;
 }
 .article, .author, .network, .addTraining, .commentsArticle, .addComments, .finalExercice,
-.profilSection, .profilParameter, .formParameter, .editTraining, .editUser, .editModule, .editSubmodule  {
+.profilSection, .profilParameter, .formParameter, .editTraining, .editUser, .editModule, .editSubmodule, .editVideo  {
     background-color: #202124;
     border-radius: 10px;
 }
@@ -413,10 +413,10 @@ td{
     background-color: #202124;
     color: #1fbfff;
 }
-#editUser h1, #editTraining h1, #editModule h1, #editSubmodule h1{
+#editUser h1, #editTraining h1, #editModule h1, #editSubmodule h1, #editVideo h1{
     font-size: 2.5rem;
 }
-#editUser h2, #editTraining h2, #editModule h2, #editSubmodule h2{
+#editUser h2, #editTraining h2, #editModule h2, #editSubmodule h2, #editVideo h2{
     font-size: 1.5rem;
 }
 

@@ -14,13 +14,12 @@ try {
         }
         /* ************* VIDEOFILE NETTOYAGE ET VERIFICATION **********************/
         $file = trim((string)filter_input(INPUT_POST, 'file', FILTER_SANITIZE_SPECIAL_CHARS));
-        // var_dump($file);
-        // die;
+        
         if (isset($_FILES['file'])) {
             $file = $_FILES['file']['name'];
             $fileType = $_FILES['file']['type'];
             $fileError = $_FILES['file']['error'];
-
+            
             if (!empty($file)) {
                 if ($file['error'] > 0) {
                     $errors['file'] = 'Erreur lors du transfert du fichier';
@@ -42,7 +41,6 @@ try {
             $response = $video->insert();
 
             if ($response) {
-                $errors['global'] = 'La video a bien été ajouté';
                 header('Location: /controllers/dashboard/list/admin-videosCtrl.php');
                 die;
             }
@@ -50,8 +48,8 @@ try {
     }
 
 } catch (\Throwable $th) {
-    // var_dump($th);
-    // die;
+    var_dump($th);
+    die;
     // header('Location: /controllers/errorCtrl.php');
     // die;
 }
