@@ -5,8 +5,6 @@ require_once(__DIR__ . '/../../../models/Training.php');
 try {
     $trainings = Training::getAll();
 } catch (\Throwable $th) {
-    // var_dump($th);
-    // die;
     header('location: /controllers/errorCtrl.php');
     die;
 }

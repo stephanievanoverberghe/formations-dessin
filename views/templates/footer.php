@@ -60,7 +60,7 @@
                 <div class="col text-center mt-5">
                     <div class="row">
                         <div class="col-12">
-                            <h6>Copyright @2023 L'alchimiste Créations - Tout droit réservés</h6>
+                            <h6>Copyright @2023 L'alchimiste Créations - Tous droits réservés</h6>
                         </div>
                     </div>
                 </div>

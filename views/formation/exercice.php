@@ -1,11 +1,10 @@
 <main>
 
     <!-- START BANNER -->
-    <section class="my-4 text-center">
+    <section class="my-4 text-center" id="banner">
         <div class="container-fluid">
             <div class="row">
-                <div class="col text-center banner-image">
-                    <img src="/public/assets/img/banniere_alchimiste.png" alt="Logo l'Alchimiste créations" class="banniere">
+                <div class="col text-center">
                     <div class="banner-text">
                         <h1>Conclusion</h1>
                     </div>
@@ -16,7 +15,7 @@
     <!-- END BANNER -->
 
     <!-- START BREADCRUMB -->
-    <section>
+    <section id="breadcrumb">
         <div class="container">
             <div class="row">
                 <div class="col">

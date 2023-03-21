@@ -139,7 +139,7 @@ class Module
     {
         // CREATE REQUEST
         $sql = 'SELECT * FROM `modules`
-                WHERE `id_modules` = :id_modules';
+                    WHERE `id_modules` = :id_modules';
         // PREPARE REQUEST
         $pdo = Database::getInstance();
         $sth = $pdo->prepare($sql);

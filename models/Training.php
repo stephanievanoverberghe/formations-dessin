@@ -117,17 +117,48 @@ class Training
     }
     /**
      * 
-     * Méthode permettant de récupérer toutes les données d'une formation
+     * Méthode permettant de récupérer toutes les identifiants
      * 
      * @param int $id_trainings
      * 
-     * @return object
+     * @return mixed
      */
-    public static function getData(int $id_trainings): object|bool
+    public static function getData(int $id_trainings, int $id_modules): mixed
     {
         // CREATE REQUEST
-        $sql = 'SELECT * FROM `trainings` 
-                WHERE `id_trainings` = :id_trainings';
+        $sql = 'SELECT  `trainings`.`title` AS `training_title`, 
+                        `modules`.`title` AS `modules_title`, 
+                        `modules`.`content` AS `modules_content`,
+                        `submodules`.`title` AS `submodules_title`,
+                        `submodules`.`content` AS `submodules_content`
+                FROM `trainings`
+                JOIN `modules` ON `modules`.`id_trainings` = `trainings`.`id_trainings`
+                JOIN `submodules` ON `submodules`.`id_modules` = `modules`.`id_modules`
+                WHERE `trainings`.`id_trainings` = :id_trainings AND `modules`.`id_modules` = :id_modules;';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_trainings', $id_trainings, PDO::PARAM_INT);
+        $sth->bindValue(':id_modules', $id_modules, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return $sth->fetchAll();
+        }
+    }
+    /**
+     * 
+     * Méthode permettant de récupérer toutes les données d'une formation
+     * 
+     * @param int $id_modules
+     * 
+     * @return object
+     */
+    public static function getDataTraining(int $id_trainings): object|bool
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `trainings`
+                    WHERE `id_trainings` = :id_trainings';
         // PREPARE REQUEST
         $pdo = Database::getInstance();
         $sth = $pdo->prepare($sql);

@@ -11,14 +11,14 @@ if ($training) { ?>
             <div class="container">  
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-                        <h1 class="text-center mb-5"><?= htmlentities($training->title) ?? $title ?? '' ?></h1>
+                        <h1 class="text-center mb-5"><?= $training->title?></h1>
                     </div>
                 </div>
                 <div class="row justify-content-center editTraining px-4 py-5">
                     <div>
                         <div class="col-12">
                             <h2>Contenu</h2>
-                            <p><?= htmlentities($training->content) ?? $content ?? '' ?></p>
+                            <p><?= $training->content?></p>
                         </div>
                         <div class="col-12">
                             <h2 class="mt-5">Créé le</h2>

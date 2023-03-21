@@ -6,14 +6,14 @@ require_once(__DIR__ . '/../../../models/Training.php');
 try{
     $id_trainings = intval(filter_input(INPUT_GET, 'id_trainings', FILTER_SANITIZE_NUMBER_INT));
 
-    $training = Training::getData($id_trainings);
-
+    $training = Training::getDataTraining($id_trainings);
+    
     if ($training === false) {
         $errors['global'] = ERRORS[6];
     } else {
-
+        
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+            
             /* ************* TITLE NETTOYAGE ET VERIFICATION **************************/
             $title = trim((string)filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
             if(empty($title)) {
@@ -25,14 +25,14 @@ try{
             if(empty($content)) {
                 $errors['content'] = 'Le champs est obligatoire';
             }
-
+            
             // IF NOT ERRORS, SAVE TRAINING IN DATABASE
             if(empty($errors)) {
                 //**** HYDRATATION ****/
                 $training = new Training;
                 $training->setTitle($title);
                 $training->setContent($content);
-
+                
                 $training = $training->update($id_trainings);
                 
                 if($training) {
@@ -45,7 +45,7 @@ try{
             }
         }
     }
-    $training = Training::getData($id_trainings);
+    $training = Training::getDataTraining($id_trainings);
     
 } catch (\Throwable $th) {
     header('Location: /controllers/errorCtrl.php');

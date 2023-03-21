@@ -1,9 +1,8 @@
 <main>
-<section class="my-4 text-center">
+    <section id="banner">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12 text-center banner-image img-fluid">
-                    <img src="/public/assets/img/banniere_alchimiste.png" alt="Logo l'Alchimiste créations" class="banniere">
+                <div class="col-12 ">
                     <div class="banner-text">
                         <h1 class="">Formations<br>Dessin</h1>
                     </div>
@@ -14,7 +13,7 @@
 
     <!-- START PRESENTATION OF SITE -->
 
-    <section class="my-4 text-center">
+    <section class="my-4 text-center" id="presentation">
         <div class="container">
             <div class="row">
                 <div class="col-12 my-5">
@@ -23,7 +22,9 @@
                     <p>N'hésites plus</p>
                     <p>et</p>
                     <h2 class="mt-5">Deviens Explorateur de l'art</h2>
-                    <button class="mt-5"><a href="/controllers/inscriptionCtrl.php" class="btnInscription">S'inscrire</a></button>
+                    <button class="mt-5">
+                        <a href="/controllers/inscriptionCtrl.php" class="btnInscription">S'inscrire</a>
+                    </button>
                 </div>
             </div>
             <div class="row">
@@ -93,10 +94,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-12 mt-5">
-                    <img src="/public/assets/img/autoportrait.jpg" alt="autoportrait noir et blanc" class="profilPicture">
+                <div class="col-lg-3 col-md-12 mt-5 d-flex flex-column align-items-center">
+                    <img src="/public/assets/img/autoportrait.jpg" alt="Autoportrait noir et blanc" class="profilPicture rounded-circle" >
                 </div>
-                <div class="offset-lg-1 col-lg-8 col-12 text-lg-end my-5">
+                <div class="offset-lg-1 col-lg-8 col-12 text-lg-end my-5 d-flex flex-column align-items-center">
                     <p>L'Alchimiste est mon nom d'artiste. Je l'ai choisi car j'aime beaucoup le développement personnel. L'Alchimiste provient du premier livre que j'ai lu, "l'Alchimiste" de Paolo Coelho. C'était en 2011.</p>
                     <p>Depuis mon plus jeune âge, j'ai toujours été passionnée de dessin. Au collège, je voulais entrer en école d'art mais mon destin en a décidé autrement. Je suis partie faire des études de comptabilité. Et oui, mes parents ont choisi pour moi, un "vrai" métier.</p>
                     <p>A l'époque du lycée, je dessinais partout, sur les tables, sur les trottoirs, sur les murs...</p>
@@ -123,7 +124,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-12 col-md-6 mb-5 d-flex flex-column align-items-center">
+                <div class="col-lg-4 col-xl-4 col-md-6 mb-5 d-flex flex-column align-items-center">
                     <div class="card mt-5">
                         <img src="/public/assets/img/peinture_la-flagellation-du-christ.png" class="card-img-top" alt="La Flagellation du Christ de Piero della Franscesca">
                         <small class="text-center">Publié le</small>
@@ -134,7 +135,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-12 col-md-6 mb-5 d-flex flex-column align-items-center">
+                <div class="col-lg-4 col-xl-4 col-md-6 mb-5 d-flex flex-column align-items-center">
                     <div class="card mt-5">
                         <img src="/public/assets/img/pas-a-pas_fleurs.jpg" class="card-img-top" alt="Amandier en fleurs de Vincent Van Gogh">
                         <small class="text-center">Publié le</small>
@@ -145,7 +146,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-12 col-md-6 d-flex flex-column align-items-center">
+                <div class="col-lg-4 col-xl-4 col-md-6 d-flex flex-column align-items-center">
                     <div class="card mt-5">
                         <img src="/public/assets/img/grotte-chauvet.jpg" class="card-img-top" alt="Peinture pariétal de la grotte Chauvet">
                         <small class="text-center">Publié le</small>
@@ -162,7 +163,53 @@
             </div>
         </div>
     </section>
+    <!-- <section id="cookies">
+        <div class="cookies">
+            <div class="cookies-texte">
+                <p>
+                    En poursuivant, vous acceptez l'utilisation des cookies par le site afin de vous proposer des contenus adaptés et réaliser des statistiques.
+                </p>
+            </div>
+            <div class="cookies-btn">
+                <button type="button" class="btn btn-success mx-3">
+                    Accepter
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Paramètres
+                </button>
+            </div>
+        </div>
+    </section> -->
 
     <!-- END MAGAZINE -->
+
+    <!-- MODAL -->
+    <!-- <section id="modalCookies">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Personnaliser mes choix</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>L'utilisation des données est décrite dans notre <a href="">politique de protection des données personnelles</a></p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Cookies de statistiques
+                        </label>
+                        <p>Les cookies de statistiques aident à comprendre comment les visiteurs interagissent avec le site web afin de pouvoir améliorer la performance.</p>
+                    </div>
+                    <p>En cliquant sur le bouton Accepter, vous acceptez les <a href="">CGU</a> ainsi que la <a href="">politique de protection des données personnelles</a> Formations Dessin</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Refuser</button>
+                    <button type="button" class="accept btn btn-primary">Accepter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section> -->
 
 </main>

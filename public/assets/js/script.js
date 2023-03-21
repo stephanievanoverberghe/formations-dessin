@@ -1,5 +1,4 @@
 // MODAL TRAINING
-
 const deleteBtns = document.querySelectorAll('.delete');
 const deleteLink = document.getElementById('deleteLink');
 
@@ -13,7 +12,6 @@ deleteBtns.forEach(element => {
 });
 
 // MODAL MODULES
-
 const deleteBtnsModule = document.querySelectorAll('.delete');
 const deleteLinkModule = document.getElementById('deleteLinkModule');
 
@@ -27,7 +25,6 @@ deleteBtnsModule.forEach(element => {
 });
 
 // MODAL SOUS-MODULES
-
 const deleteBtnsSubmodule = document.querySelectorAll('.delete');
 const deleteLinkSubmodule = document.getElementById('deleteLinkSubmodule');
 
@@ -41,9 +38,7 @@ deleteBtnsSubmodule.forEach(element => {
 });
 
 // MODAL VIDEOS
-
 const deleteBtnsVideo = document.querySelectorAll('.deleteVideo');
-console.log(deleteBtnsVideo);
 const deleteLinkVideo = document.getElementById('deleteLinkVideo');
 
 const createLinkVideo = (event) => {
@@ -54,3 +49,21 @@ const createLinkVideo = (event) => {
 deleteBtnsVideo.forEach(element => {
     element.addEventListener('click', createLinkVideo)
 });
+
+// COOKIES
+const btnSuccess = document.querySelector('.btn-success');
+const cookies = document.querySelector('.cookies');
+const btnSecondary = document.querySelector('.btn-secondary')
+const acceptCookies = document.querySelector('.accept');
+
+btnSuccess.addEventListener('click', function() {
+    cookies.style.opacity = "0";
+});
+
+btnSecondary.addEventListener('click', function() {
+    cookies.style.opacity = "0";
+});
+
+acceptCookies.addEventListener('click', function() {
+    location.reload();
+})

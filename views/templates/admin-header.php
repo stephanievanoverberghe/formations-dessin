@@ -18,64 +18,60 @@
     <header id="header">
 
         <!-- Start navBar -->
+        <section id="navbar-admin">
+            <button class="buttonDash my-4 mx-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark" aria-controls="offcanvasDark">
+                <i class="bi bi-list"></i> Menu
+            </button>
 
-        <button 
-            class="buttonDash my-4 mx-4" 
-            type="button" 
-            data-bs-toggle="offcanvas" 
-            data-bs-target="#offcanvasDark" 
-            aria-controls="offcanvasDark">
-            <i class="bi bi-list"></i> Menu
-        </button>
-
-        <div class="offcanvas offcanvas-start text-bg-dark" data-bs-scroll="true" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasDarkLabel"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <div class="d-flex justify-content-center my-5">
-                    <a href="/controllers/homeCtrl.php">
-                        <img src="/public/assets/img/logo.png" alt="Logo du site" class="logo">
-                    </a>
+            <div class="offcanvas offcanvas-start text-bg-dark" data-bs-scroll="true" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <ul class="nav navbar-nav">
-                    <li class="nav-item mt-5">
-                        <a class="nav-link" aria-current="page" href="/controllers/dashboard/list/admin-usersCtrl.php">
-                            <i class="bi bi-people-fill"></i>
-                            <span>Utilisateurs</span>
+                <div class="offcanvas-body">
+                    <div class="d-flex justify-content-center my-5">
+                        <a href="/controllers/homeCtrl.php">
+                            <img src="/public/assets/img/logo.png" alt="Logo du site" class="logo">
                         </a>
-                    </li>
-                    <li class="nav-item mt-5">
-                        <a class="nav-link dropdown-toggle" role="button" aria-current="page" href="" data-bs-toggle="dropdown">
-                            <i class="bi bi-camera-reels-fill"></i>
-                            <span class="dropdown">Formations</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/controllers/dashboard/list/admin-trainingsCtrl.php" class="dropdown-item">Formations</a></li>
-                            <li><a href="/controllers/dashboard/list/admin-modulesCtrl.php" class="dropdown-item">Modules</a></li>
-                            <li><a href="/controllers/dashboard/list/admin-submodulesCtrl.php" class="dropdown-item">Sous-modules</a></li>
-                            <li><a href="/controllers/dashboard/list/admin-videosCtrl.php" class="dropdown-item">Vidéos</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item mt-5">
-                        <a class="nav-link dropdown-toggle" role="button" aria-current="page" href="" data-bs-toggle="dropdown">
-                            <i class="bi bi-file-font-fill"></i>
-                            <span>Articles</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/controllers/dashboard/list/admin-articlesCtrl.php" class="dropdown-item">Articles</a></li>
-                            <li><a href="/controllers/dashboard/list/admin-categoriesCtrl.php" class="dropdown-item">Catégories</a></li>
-                            <li><a href="/controllers/dashboard/list/admin-subcategoriesCtrl.php" class="dropdown-item">Sous-catégories</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item mt-5">
-                        <a class="nav-link" aria-current="page" href="/controllers/dashboard/list/admin-commentsCtrl.php">
-                            <i class="bi bi-chat-right-dots-fill"></i>
-                            <span>Commentaires</span>
-                        </a>
-                    </li>
-                </ul>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item mt-5">
+                            <a class="nav-link" aria-current="page" href="/controllers/dashboard/list/admin-usersCtrl.php">
+                                <i class="bi bi-people-fill"></i>
+                                <span class="ms-2">Utilisateurs</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mt-5">
+                            <a class="nav-link dropdown-toggle" role="button" aria-current="page" href="" data-bs-toggle="dropdown">
+                                <i class="bi bi-camera-reels-fill"></i>
+                                <span class="dropdown ms-2">Formations</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/controllers/dashboard/list/admin-trainingsCtrl.php" class="dropdown-item">Formations</a></li>
+                                <li><a href="/controllers/dashboard/list/admin-modulesCtrl.php" class="dropdown-item">Modules</a></li>
+                                <li><a href="/controllers/dashboard/list/admin-submodulesCtrl.php" class="dropdown-item">Sous-modules</a></li>
+                                <li><a href="/controllers/dashboard/list/admin-videosCtrl.php" class="dropdown-item">Vidéos</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item mt-5">
+                            <a class="nav-link dropdown-toggle" role="button" aria-current="page" href="" data-bs-toggle="dropdown">
+                                <i class="bi bi-file-font-fill"></i>
+                                <span class="ms-2">Articles</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/controllers/dashboard/list/admin-articlesCtrl.php" class="dropdown-item">Articles</a></li>
+                                <li><a href="/controllers/dashboard/list/admin-categoriesCtrl.php" class="dropdown-item">Catégories</a></li>
+                                <li><a href="/controllers/dashboard/list/admin-subcategoriesCtrl.php" class="dropdown-item">Sous-catégories</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item mt-5">
+                            <a class="nav-link" aria-current="page" href="/controllers/dashboard/list/admin-commentsCtrl.php">
+                                <i class="bi bi-chat-right-dots-fill"></i>
+                                <span class="ms-2">Commentaires</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </section>
     </header>
