@@ -116,10 +116,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-6 text-md-start mt-5">
-                    <a href="/controllers/formation/introductionCtrl.php">Introduction</a>
+                    <a href="/controllers/formation/introductionCtrl.php?id_trainings=<?= $id_trainings ?>&id_modules=<?= $id_modules -1 ?>"><i class="bi bi-arrow-left-circle-fill me-4"></i>Introduction</a>
                 </div>
                 <div class="col-6 text-md-end mt-5">
-                    <a href="/controllers/formation/module2Ctrl.php">Module 2 - Observer en 2d</a>
+                    <a href="/controllers/formation/module2Ctrl.php?id_trainings=<?= $id_trainings ?>&id_modules=<?= $id_modules ?>">Module 2 - Observer en 2d<i class="bi bi-arrow-right-circle-fill ms-4"></i></a>
                 </div>
             </div>
             <div class="col-12 border-bottom my-5">

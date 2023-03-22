@@ -1,6 +1,8 @@
 <?php
 
 require_once(__DIR__ . '/../../config/constants.php');
+require_once(__DIR__ . '/../../models/Training.php');
+require_once(__DIR__ . '/../../models/Module.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -28,13 +30,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $finalExercice = trim(filter_input(INPUT_POST, 'finalExercice', FILTER_SANITIZE_SPECIAL_CHARS));
 }
 
-// Rendu des vues concernées
-include_once(__DIR__ . '/../../views/templates/header.php');
+try {
+    $id_trainings = intval(filter_input(INPUT_GET, 'id_trainings', FILTER_SANITIZE_NUMBER_INT));
+    $id_modules = 8;
+    $trainings = Training::getData($id_trainings, $id_modules);
 
-if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)) {
-    include(__DIR__ . '/../../views/formation/exercice.php');
-} else {
-    include(__DIR__ . '/../../views/validate.php');
+    
+} catch (\Throwable $th) {
+    header('location: /controllers/errorCtrl.php');
+    die;
 }
 
+// Rendu des vues concernées
+include_once(__DIR__ . '/../../views/templates/header.php');
+include(__DIR__ . '/../../views/formation/exercice.php');
 include_once(__DIR__ . '/../../views/templates/footer.php');

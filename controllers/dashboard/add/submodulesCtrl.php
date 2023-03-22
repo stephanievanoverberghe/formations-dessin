@@ -7,6 +7,7 @@ require_once(__DIR__ . '/../../../models/Module.php');
 try{
     $allModules = Module::getAll();
 
+
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         /* ************* TITLE NETTOYAGE ET VERIFICATION **************************/
@@ -42,13 +43,12 @@ try{
                 die;
             }
         }
+
     }
     
 } catch (\Throwable $th) {
-    var_dump($th);
+    header('Location: /controllers/errorCtrl.php');
     die;
-    // header('Location: /controllers/errorCtrl.php');
-    // die;
 }
 
 /* ************* VIEWS DISPLAYS **************************/

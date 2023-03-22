@@ -6,36 +6,41 @@
 
 <?php } else { ?>
     <main>
-        <section id="videos-list">
+        <section id="videos-submodules-list">
             <div class="container-fluid">
                 <div class="row justify-content-center">
                     <div class="col-lg-11 mt-5">
-                        <h1 class="mb-5 text-center">Liste des vidéos</h1>
+                        <h1 class="mb-5 text-center">Liste des vidéos associées aux sous-modules</h1>
                         <div class="formCategory text-end">
-                            <a href="/controllers/dashboard/add/videosCtrl.php"><i class="bi bi-plus-square-fill"></i></a>
+                            <a href="/controllers/dashboard/add/videos-submodulesCtrl.php"><i class="bi bi-plus-square-fill"></i></a>
                         </div>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">Titre</th>
+                                    <th scope="col">Sous-modules</th>
+                                    <th scope="col">Vidéos</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
-                            <?php
-                            foreach ($videos as $video) {
-                            ?>
-                                <tr>
-                                    <td><?= $video->title ?></td>
-                                    <td>
-                                        <a href="/controllers/dashboard/edit/videosCtrl.php?id_videos=<?= $video->id_videos ?>"><i class="bi bi-eye-fill"></i></a>
-                                        <a href="/controllers/dashboard/update/videosCtrl.php?id_videos=<?= $video->id_videos ?>" class="mx-3"><i class="bi bi-pencil-fill"></i></a>
-                                        <a class="deleteVideo" data-bs-toggle="modal" data-bs-target="#deleteVideos" data-idVideos="<?= $video->id_videos ?>">
-                                            <i class="bi bi-trash3-fill" data-idVideos="<?= $video->id_videos ?>"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            <?php }
-                            ?>
+                            <tbody>
+
+                                <?php
+                                foreach ($submodules_videos as $submodule_video) {
+                                ?>
+                                    <tr>
+                                        <td><?= $submodule_video->id_sub_modules ?></td>
+                                        <td><?= $submodule_video->id_videos ?></td>
+                                        <td>
+                                            <a href=""><i class="bi bi-eye-fill"></i></a>
+                                            <a href="" class="mx-3"><i class="bi bi-pencil-fill"></i></a>
+                                            <a class="deleteVideo" data-bs-toggle="modal" data-bs-target="#deleteVideos" data-idVideos="">
+                                                <i class="bi bi-trash3-fill" data-idVideos=""></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php }
+                                ?>
+                            </tbody>
                         </table>
                     </div>
                 </div>

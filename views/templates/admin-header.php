@@ -51,6 +51,7 @@
                                 <li><a href="/controllers/dashboard/list/admin-modulesCtrl.php" class="dropdown-item">Modules</a></li>
                                 <li><a href="/controllers/dashboard/list/admin-submodulesCtrl.php" class="dropdown-item">Sous-modules</a></li>
                                 <li><a href="/controllers/dashboard/list/admin-videosCtrl.php" class="dropdown-item">Vidéos</a></li>
+                                <li><a href="/controllers/dashboard/list/admin-videos-submodulesCtrl.php" class="dropdown-item">Videos / Sous-modules</a></li>
                             </ul>
                         </li>
                         <li class="nav-item mt-5">

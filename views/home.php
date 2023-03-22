@@ -37,9 +37,8 @@
 
     <!-- START TRAINING -->
 
-    <section class="my-4 text-center">
+    <section class="my-4 text-center" id="training">
         <div class="container">
-
             <div class="row">
                 <div class="col-12 mb-5">
                     <h2>

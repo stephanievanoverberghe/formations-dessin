@@ -78,7 +78,7 @@ a:hover {
 
 #navbar .nav-link {
     color: #1fbfff;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
@@ -88,19 +88,19 @@ a:hover {
 
 #navbar .btn {
     color: #1fbfff;
-    border-color: #1fbfff;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    border-color: #1fbfff !important;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     font-weight: bolder;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     border-radius: 30px;
 }
 
 #navbar .btn:hover {
     color: #ff9b42;
-    border-color: #ff9b42;
+    border-color: #ff9b42 !important;
 }
 
 /* COOKIES */
@@ -160,13 +160,17 @@ button {
     font-weight: bold;
     border-radius: 2em;
     border: none;
-    padding: 15px 50px;
+    padding: 3px 25px;
     font-size: 1.5rem;
 }
 
 button:hover {
     background-color: #ff9b42;
     color: #111112;
+}
+
+label {
+    font-size: 20px;
 }
 
 input {

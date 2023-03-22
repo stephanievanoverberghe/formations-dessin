@@ -119,7 +119,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-md-end mt-5">
-                    <a href="/controllers/formation/module1Ctrl.php?id_trainings=<?= $id_trainings ?>&id_modules=<?= $id_modules ?>">Module 1 - Matériels</a>
+                    <a href="/controllers/formation/module1Ctrl.php?id_trainings=<?= $id_trainings ?>&id_modules=<?= $id_modules ?>">Module 1 - Matériels<i class="bi bi-arrow-right-circle-fill ms-4"></i></a>
                 </div>
             </div>
             <div class="col-12 border-bottom my-5">

@@ -40,10 +40,10 @@
                             <a class="nav-link" aria-current="page" href="/controllers/magazine/magazineCtrl.php">Magazine</a>
                         </li>
                     </ul>
-                    <a class="btn btn-outline btn-lg me-lg-3" href="/controllers/dashboard/list/admin-usersCtrl.php" role="button">Admin</a>
-                    <a class="btn btn-outline btn-lg me-lg-3" href="/controllers/profilCtrl.php" role="button">Profil</a>
-                    <a class="btn btn-outline btn-lg me-lg-3" href="/controllers/connexionCtrl.php" role="button">Se connecter</a>
-                    <a class="btn btn-outline btn-lg me-lg-5" href="/controllers/inscriptionCtrl.php" role="button">S'inscrire</a>
+                    <a class="btn btn-outline border border-3 btn-lg me-lg-3" href="/controllers/dashboard/list/admin-usersCtrl.php" role="button">Admin</a>
+                    <a class="btn btn-outline border border-3 btn-lg me-lg-3" href="/controllers/profilCtrl.php" role="button">Profil</a>
+                    <a class="btn btn-outline border border-3 btn-lg me-lg-3" href="/controllers/connexionCtrl.php" role="button">Se connecter</a>
+                    <a class="btn btn-outline border border-3 btn-lg me-lg-5" href="/controllers/inscriptionCtrl.php" role="button">S'inscrire</a>
                 </div>
             </div>
         </nav>

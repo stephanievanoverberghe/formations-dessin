@@ -18,7 +18,7 @@
 
     <!-- START BREADCRUMB -->
 
-    <section>
+    <section id="breadcrumb">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -55,7 +55,7 @@
                         <?php
                             foreach ($categories as $category) {
                         ?>
-                        <a href=""><?= htmlentities($category->title) ?></a><br>
+                        <a href=""><?= $category->title ?></a><br>
                         <?php } ?>
                     </div>
                     <div class="offset-lg-1 col-lg-7">
@@ -65,7 +65,7 @@
                         ?>
                         <div class="row">
                             <div class="col-4">
-                                <a href=""><?= htmlentities($subcategory->title) ?></a><br>
+                                <a href=""><?= $subcategory->title ?></a><br>
                             </div>
                             <!-- <div class="col-4">
                                 <a href="">Artistes célèbres</a><br>
@@ -106,10 +106,10 @@
                 <div class="col-lg-4 col-12 col-md-6 mb-5 d-flex flex-column align-items-center">
                     <div class="card mt-5">
                         <img src="/public/assets/img/peinture_la-flagellation-du-christ.png" class="card-img-top" alt="La Flagellation du Christ de Piero della Franscesca">
-                        <small class="text-center"><?= htmlentities($article->created_at->format('d F Y')) ?></small>
+                        <small class="text-center"><?= $article->created_at->format('d F Y') ?></small>
                         <div class="card-body text-center d-flex flex-column justify-content-around">
-                            <h3 class="card-title text-center"><?= htmlentities($article->title) ?></h3>
-                            <p class="card-text"><?= nl2br(htmlentities(Text::excerpt($article->content))) ?></p>
+                            <h3 class="card-title text-center"><?= $article->title ?></h3>
+                            <p class="card-text"><?= nl2br(Text::excerpt($article->content)) ?></p>
                             <p>
                                 <a href="#" class="card-btn">Lire l'article</a>
                             </p>

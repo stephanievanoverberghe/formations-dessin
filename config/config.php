@@ -8,6 +8,9 @@ define('DSN', 'mysql:host=localhost;dbname=formationsdessins;charset=utf8mb4;por
 define('LOGIN', 'steffievano');
 define('PASSWORD', '2D@chB3Bek]CR/h[');
 
+// INITIALIZATION PAGINATION
+define('NB_ELEMENTS_BY_PAGE', 10);
+
 // INITIALIZATION ERRORS
 define('ERRORS', [
     0=>'Une erreur inconnue s\'est produite',
