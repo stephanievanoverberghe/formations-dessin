@@ -11,7 +11,7 @@ try {
         $lastname = trim((string) filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
 
         if (empty($lastname)) {
-            $errors['lastname'] = 'Le champs est obligatoire';
+            $errors['lastname'] = 'Le champ est obligatoire';
         } else {
             $isOk = filter_var($lastname, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEXP_NO_NUMBER . '/')));
             if (!$isOk) {
@@ -29,10 +29,10 @@ try {
         }
     }
     /* ************* EMAIL NETTOYAGE ET VERIFICATION **************************/
-    $email = trim((string) filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+    $email = trim((string)filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
 
     if (empty($email)) {
-        $errors['email'] = 'Le champs est obligatoire';
+        $errors['email'] = 'Le champ est obligatoire';
     } else {
         $isOk = filter_var($email, FILTER_VALIDATE_EMAIL);
         if (!$isOk) {
@@ -51,14 +51,19 @@ try {
     $pseudo = trim((string) filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_SPECIAL_CHARS));
     
     /* ************* BIRTHDATE NETTOYAGE ET VERIFICATION **************************/
-    $birthdate = trim((string) filter_input(INPUT_POST, 'birthdate', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
+    $birthdate = filter_input(INPUT_POST, 'birthdate', FILTER_SANITIZE_NUMBER_INT);
 
-    if (empty($birthdate)) {
-        $errors['birthdate'] = 'Le champs est obligatoire';
-    } else {
-        $isOk = filter_var($birthdate, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEXP_DATE . '/')));
+    if (!empty($birthdate)) {
+        $isOk = filter_var($birthdate, FILTER_VALIDATE_REGEXP, ['options' => ['regexp' => '/' . REGEXP_DATE . '/']]);
         if (!$isOk) {
-            $errors['birthdate'] = 'La date n\'est pas valide, le format attendu est JJ/MM/AAAA';
+            $errors['birthdate'] = 'La date entrée n\'est pas valide !';
+        } else {
+            $birthdateObj = new DateTime($birthdate);
+            $age = date('Y') - $birthdateObj->format('Y');
+
+            if ($age > 100 || $age < 18) {
+                $errors['birthdate'] = 'Votre age n\'est pas conforme !';
+            }
         }
     }
     /* ************* COUNTRY NETTOYAGE ET VERIFICATION **************************/

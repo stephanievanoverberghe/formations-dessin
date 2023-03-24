@@ -2,28 +2,30 @@
 
 require_once(__DIR__ . '/../config/constants.php');
 
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") { //if my request in POST
 
 //******************************************** EMAIL CLEAN AND VALIDATE ************************************************* *//   
     $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
 
     if (empty($email)) { // if my email variable is empty
-        $error["email"] = "L'adresse mail est obligatoire!!";
+        $errors["email"] = "Le champ est obligatoire !";
     } else { // if obligatory, return error
         $testEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
         if (!$testEmail) {
-            $error["email"] = "L'adresse email n'est pas au bon format!!";
+            $errors["email"] = 'Le mail n\'est pas valide';
         }
     }
 
 //******************************************** PASSWORD CLEAN AND VALIDATE************************************************ *// 
     $password = filter_input(INPUT_POST, 'password');
     if (empty($password)) {
-        $error["password"] = "Le mot de passe est obligatoire!!";
+        $errors["password"] = "Le mot de passe est obligatoire!!";
     } else {
         $testPassword = password_hash($password, PASSWORD_DEFAULT);
         if (!$testPassword) {
-            $error["password"] = "Le mot de passe n'est pas au bon format!";
+            $errors["password"] = "Le mot de passe n'est pas au bon format!";
         }
     }
 

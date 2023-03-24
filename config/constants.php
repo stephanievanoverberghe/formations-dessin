@@ -6,6 +6,7 @@ define('REGEXP_TEXTAREA','^[a-zA-Z\n\r]*$');
 define('REGEXP_DATE','^([0-9]{4})[\/\-]?([0-9]{2})[\/\-]?([0-9]{2})$');
 define('REGEXP_FACEBOOK','^(https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-\.]*)');
 define('REGEXP_INSTAGRAM', '^(?:(?:http|https):\/\/)?(?:www.)?(?:instagram.com|instagr.am|instagr.com)\/(\w+)');
+define('REGEXP_EMAIL', '^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
 // CONSTANTES ARRAY
 define('LEGAL_NOTICE', ["Conditions Générales d'utilisation.", "Politique de Protection des Données Personnelles."]);

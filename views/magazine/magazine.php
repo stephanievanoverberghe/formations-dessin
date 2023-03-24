@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col text-center">
                     <div class="banner-text">
-                        <h1>La magazine</h1>
+                        <h1>Le magazine</h1>
                     </div>
                 </div>
             </div>
@@ -102,55 +102,12 @@
                 </div>
             </div>
             <div class="row">
-                <?php foreach($articles as $article): ?>
-                <div class="col-lg-4 col-12 col-md-6 mb-5 d-flex flex-column align-items-center">
-                    <div class="card mt-5">
-                        <img src="/public/assets/img/peinture_la-flagellation-du-christ.png" class="card-img-top" alt="La Flagellation du Christ de Piero della Franscesca">
-                        <small class="text-center"><?= $article->created_at->format('d F Y') ?></small>
-                        <div class="card-body text-center d-flex flex-column justify-content-around">
-                            <h3 class="card-title text-center"><?= $article->title ?></h3>
-                            <p class="card-text"><?= nl2br(Text::excerpt($article->content)) ?></p>
-                            <p>
-                                <a href="#" class="card-btn">Lire l'article</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <?php endforeach ?>
-                <div class="col-lg-4 col-12 col-md-6 mb-5 d-flex flex-column align-items-center">
-                    <div class="card mt-5">
-                        <img src="/public/assets/img/pas-a-pas_fleurs.jpg" class="card-img-top" alt="Amandier en fleurs de Vincent Van Gogh">
-                        <small class="text-center">Publié le</small>
-                        <div class="card-body text-center d-flex flex-column justify-content-around">
-                            <h3 class="card-title text-center">Pas à pas - Dessiner des fleurs</h3>
-                            <p class="card-text">Quelque soit leur forme, les fleurs peuvent être un sujet complexe. Cependant, il est idéal pour les personnes débutantes en dessin.</p>
-                            <p>
-                                <a href="#" class="card-btn">Lire l'article</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-12 col-md-6 d-flex flex-column align-items-center">
-                    <div class="card mt-5">
-                        <img src="/public/assets/img/grotte-chauvet.jpg" class="card-img-top" alt="Peinture pariétal de la grotte Chauvet">
-                        <small class="text-center">Publié le</small>
-                        <div class="card-body text-center d-flex flex-column justify-content-around">
-                            <h3 class="card-title text-center">La naissance de l'art</h3>
-                            <p class="card-text">Autour de - 40 000 ans, à l'aube du Poléolithique supérieur, l'Eurasie occidentale connaît un bouleversement culturel majeur. C'est la naissance de l'art.</p>
-                            <p>
-                                <a href="#" class="card-btn">Lire l'article</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-12 col-md-6 mb-5 d-flex flex-column align-items-center">
-                    <div class="card mt-5">
-                        <img src="/public/assets/img/peinture_la-flagellation-du-christ.png" class="card-img-top" alt="La Flagellation du Christ de Piero della Franscesca">
-                        <small class="text-center">Publié le</small>
-                        <div class="card-body text-center d-flex flex-column justify-content-around">
-                            <h3 class="card-title text-center">Les 8 règles de la composition</h3>
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">
+                    <div class="card mt-5" style="width: 22rem;">
+                        <img src="/public/assets/img/peinture_la-flagellation-du-chri.png" class="card-img-top" alt="La Flagellation du Christ de Piero della Franscesca">
+                        <small>Publié le</small>
+                        <div class="card-body">
+                            <h3 class="card-title">Les 8 règles de la composition</h3>
                             <p class="card-text">Une composition puissante exerce une attraction intuitive sur l'observateur. Il existe de nombreuses règles.</p>
                             <p>
                                 <a href="#" class="card-btn">Lire l'article</a>
@@ -158,12 +115,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-12 col-md-6 mb-5 d-flex flex-column align-items-center">
-                    <div class="card mt-5">
+
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">
+                    <div class="card mt-5" style="width: 22rem;">
                         <img src="/public/assets/img/pas-a-pas_fleurs.jpg" class="card-img-top" alt="Amandier en fleurs de Vincent Van Gogh">
-                        <small class="text-center">Publié le</small>
-                        <div class="card-body text-center d-flex flex-column justify-content-around">
-                            <h3 class="card-title text-center">Pas à pas - Dessiner des fleurs</h3>
+                        <small>Publié le</small>
+                        <div class="card-body">
+                            <h3 class="card-title">Pas à pas - Dessiner des fleurs</h3>
                             <p class="card-text">Quelque soit leur forme, les fleurs peuvent être un sujet complexe. Cependant, il est idéal pour les personnes débutantes en dessin.</p>
                             <p>
                                 <a href="#" class="card-btn">Lire l'article</a>
@@ -171,12 +129,52 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-12 col-md-6 d-flex flex-column align-items-center">
-                    <div class="card mt-5">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">
+                    <div class="card mt-5" style="width: 22rem;">
                         <img src="/public/assets/img/grotte-chauvet.jpg" class="card-img-top" alt="Peinture pariétal de la grotte Chauvet">
-                        <small class="text-center">Publié le</small>
-                        <div class="card-body text-center d-flex flex-column justify-content-around">
-                            <h3 class="card-title text-center">La naissance de l'art</h3>
+                        <small>Publié le</small>
+                        <div class="card-body">
+                            <h3 class="card-title">La naissance de l'art</h3>
+                            <p class="card-text">Autour de - 40 000 ans, à l'aube du Poléolithique supérieur, l'Eurasie occidentale connaît un bouleversement culturel majeur. C'est la naissance de l'art.</p>
+                            <p>
+                                <a href="#" class="card-btn">Lire l'article</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">
+                    <div class="card mt-5" style="width: 22rem;">
+                        <img src="/public/assets/img/peinture_la-flagellation-du-chri.png" class="card-img-top" alt="La Flagellation du Christ de Piero della Franscesca">
+                        <small>Publié le</small>
+                        <div class="card-body">
+                            <h3 class="card-title">Les 8 règles de la composition</h3>
+                            <p class="card-text">Une composition puissante exerce une attraction intuitive sur l'observateur. Il existe de nombreuses règles.</p>
+                            <p>
+                                <a href="#" class="card-btn">Lire l'article</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">
+                    <div class="card mt-5" style="width: 22rem;">
+                        <img src="/public/assets/img/pas-a-pas_fleurs.jpg" class="card-img-top" alt="Amandier en fleurs de Vincent Van Gogh">
+                        <small>Publié le</small>
+                        <div class="card-body">
+                            <h3 class="card-title">Pas à pas - Dessiner des fleurs</h3>
+                            <p class="card-text">Quelque soit leur forme, les fleurs peuvent être un sujet complexe. Cependant, il est idéal pour les personnes débutantes en dessin.</p>
+                            <p>
+                                <a href="#" class="card-btn">Lire l'article</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">
+                    <div class="card mt-5" style="width: 22rem;">
+                        <img src="/public/assets/img/grotte-chauvet.jpg" class="card-img-top" alt="Peinture pariétal de la grotte Chauvet">
+                        <small>Publié le</small>
+                        <div class="card-body">
+                            <h3 class="card-title">La naissance de l'art</h3>
                             <p class="card-text">Autour de - 40 000 ans, à l'aube du Poléolithique supérieur, l'Eurasie occidentale connaît un bouleversement culturel majeur. C'est la naissance de l'art.</p>
                             <p>
                                 <a href="#" class="card-btn">Lire l'article</a>

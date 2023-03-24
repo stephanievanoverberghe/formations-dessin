@@ -77,4 +77,15 @@ class Submodule_video
             return [];
         }
     }
+    public function update(int $id_sub_modules): bool
+    {
+        // CREATE REQUEST
+        $sql = 'UPDATE `submodules_videos` SET
+                    id_sub_modules = :id_sub_modules,
+                    id_videos = :id_videos
+                WHERE `id_sub_modules` = ';
+        // PREPARE REQUEST
+        // AFFECT VALUE
+        // EXECUTE REQUEST
+    }
 }

@@ -7,10 +7,8 @@ try {
     $search = trim((string)filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS));
     $users = User::getAll($search);
 } catch (\Throwable $th) {
-    var_dump($th);
+    header('location: /controllers/errorCtrl.php');
     die;
-    // header('location: /controllers/errorCtrl.php');
-    // die;
 }
 
 

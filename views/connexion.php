@@ -1,75 +1,67 @@
 <main>
-
-    <div class="offset-1 col-10 border-bottom my-3 mb-5">
-    </div>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h1>
-                    Connecte-toi à ton compte
-                </h1>
-                <h2 class="mb-4">ou <a href="/controllers/inscriptionCtrl.php">crée un compte</a></h2>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- Début formulaire -->
-
-    <form action="" method="post" role="form" id="formConnexion" class="formUser">
+    <section id="connexion">
+        <div class="offset-1 col-10 border-bottom my-3 mb-5"></div>
         <div class="container">
-            <fieldset>
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-md-12 col-12 text-center my-5">
+                    <h1>
+                        Connecte-toi à ton compte
+                    </h1>
+                    <h2 class="mb-4">ou <a href="/controllers/inscriptionCtrl.php">crée un compte</a></h2>
+                </div>
+                <div class="col-lg-10 col-md-12 col-12">
+                    <form action="" method="POST" role="form">
 
-                <!-- Emplacement adresse mail -->
-                <div class="row">
-                    <div class="offset-md-3 col-md-6 offset-md-3 col-12 mb-3 mt-3">
-                        <label for="email" class="form-label">Email<span class="orange"> *</span>
-                        </label>
-                        <input 
-                            type="email" 
-                            name="email" 
-                            class="form-control <?= isset($error['email']) ? 'errorField' : '' ?>" 
-                            id="email" 
-                            autocomplete="on" 
-                            placeholder="Entre ton adresse mail" 
-                            value="<?= htmlentities($email ?? '') ?>" 
-                            required
+                        <!-- EMAIL -->
+
+                        <div class="mb-5">
+                            <label for="email" class="form-label">Email<span class="orange"> *</span></label>
+                            <input 
+                                type="email" 
+                                name="email" 
+                                class="form-control form-control-lg <?= isset($errors['email']) ?>" 
+                                id="email" 
+                                autocomplete="email" 
+                                placeholder="Ex: duhamel.vincent@gmail.com"
+                                pattern="<?= REGEXP_EMAIL ?>"
+                                value="<?= $email ?? '' ?>"
+                                aria-describedby="emailHelp"
+                                aria-label=".form-control-lg"
+                                required
                             >
-                        <small id="emailError" class="form-text comments"><?= $error['email'] ?? '' ?></small>
+                            <div id="emailHelp" class="error"><?= $errors['email'] ?? '' ?></div>
+                        </div>
+
+                        <!-- PASSWORD -->
+
+                        <div class="mb-5">
+                            <label for="password" class="form-label">Mot de passe<span class="orange"> *</span></label>
+                            <input 
+                                type="password" 
+                                name="password" 
+                                class="form-control form-control-lg <?= isset($errors['password']) ?>" 
+                                id="password" 
+                                placeholder="Saisissez votre mot de passe" 
+                                value="<?= $password ?? '' ?>" 
+                                required
+                                aria-label=".form-control-lg"
+                                aria-describedby="passwordHelp"
+                            >
+                            <div id="passwordHelp" class="error"><?= $errors['password'] ?? '' ?></div>
+                        </div>
+
+                        <!-- CREATE ACCOUNT -->
+
+                        <div class="col-12 mt-5 mb-5 text-center">
+                            <button type="submit" class="btn">
+                                Se connecter
+                        </div>
+                    </form>
+
+                    <div class="col-12 border-bottom my-5">
+
                     </div>
-
-                    <!-- Emplacement du mot de passe -->
-
-                    <div class="offset-md-3 col-md-6 offset-md-3 col-12 mb-3 mt-3">
-                        <label for="password" class="form-label">Mot de passe<span class="orange"> *</span>
-                        </label>
-                        <input 
-                            type="password" 
-                            name="password" 
-                            class="form-control <?= isset($error['password']) ? 'errorField' : '' ?>" 
-                            id="password" 
-                            placeholder="Entre ton mot de passe" 
-                            value="<?= htmlentities($password ?? '') ?>" 
-                            required
-                        >
-                        <small id="passwordHelp" class="form-text comments"><?= $error['password'] ?? '' ?></small>
-                    </div>
-
-                    <!-- Bouton Créer un compte -->
-
-                    <div class="connexion col-12 text-center btn mt-3 ">
-                        <input type="submit" value="Se connecter" class="" id="validForm">
-                    </div>
-            </fieldset>
-    </form>
-
-    <!-- Fin formulaire -->
-
-    <div class="col-12 border-bottom my-5">
-
-    </div>
-    </div>
-
+                </div>
+            </div>
+    </section>
 </main>

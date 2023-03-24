@@ -11,20 +11,22 @@ html {
 
 /* CUSTUM TITLE AND PARAGRAPH */
 h1 {
-    font-size: 37px;
-    font-weight: bolder;
+    font-size: 40px;
+    font-weight: 900;
     color: #ff9b42;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h2 {
     font-size: 32px;
     font-weight: bold;
     color: #ff9b42;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h3 {
     font-size: 28px;
-    font-weight: bold;
+    font-weight: 900;
     color: #ff9b42;
 }
 
@@ -134,7 +136,7 @@ a:hover {
 /* SITE BANNER */
 #banner {
     background-image: url(/public/assets/img/banniere_alchimiste.png);
-    height: 500px;
+    height: 400px;
     width: auto;
     position: relative;
     background-attachment: fixed;
@@ -235,8 +237,7 @@ li {
 /* MAGAZINE PART */
 .card {
     color: #111112;
-    width: 90%;
-    height: 35rem;
+    width: 100%;
     border: none;
     background-color: #202124;
 }
@@ -246,12 +247,13 @@ li {
 }
 
 .card img {
-    height: 25vh;
-    object-fit: cover;
+    max-width: 100%;
+    height: auto;
 }
 
 #magazine .card-btn {
     color: #1fbfff;
+    border: none;
 }
 
 #magazine .card-btn:hover {
@@ -337,35 +339,39 @@ li {
 }
 
 /* REGISTRATION AND CONNEXION PAGE */
-.orange {
+#register .orange,
+#connexion .orange {
+    color: #ff9b42;
+    font-size: 20px;
+}
+
+#register .error,
+#connexion .error {
     color: #ff9b42;
 }
 
-.error {
-    color: #ff9b42;
-}
-
-select {
-    background-color: #202124 !important;
-}
-
-.in-invalid {
-    border: 1px solid #ff9b42 !important;
-}
-
-.formUser input {
+#register select,
+#register input,
+#connexion input {
     background-color: #202124;
+    color: #e8eddf;
+    font-weight: bold;
+    font-size: large;
 }
 
-.formUser input:hover {
+#register select:hover,
+#register input:hover,
+#connexion input:hover {
     background-color: #ff9b42;
+    color: #111112;
 }
 
-.form-check-input {
-    padding: 10px 10px !important;
+#register .form-check-input {
+    padding: 10px 10px;
 }
 
-.connexion input {
+#connexion button,
+#register button {
     background-color: #1fbfff;
     color: #111112;
     font-weight: bold;
@@ -374,9 +380,14 @@ select {
     padding: 5px 50px;
 }
 
-.connexion input:hover {
+#connexion button:hover,
+#register button:hover {
     background-color: #ff9b42;
     color: #111112;
+}
+
+#connexion a {
+    font-size: 32px;
 }
 
 /* TRAINING PAGE */
