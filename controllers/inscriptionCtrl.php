@@ -95,6 +95,7 @@ try {
         }
     }
 
+
 } catch (\Throwable $th) {
     header('location: /controllers/errorCtrl.php');
     die;

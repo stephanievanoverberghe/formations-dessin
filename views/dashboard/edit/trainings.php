@@ -22,9 +22,9 @@ if ($training) { ?>
                         </div>
                         <div class="col-12">
                             <h2 class="mt-5">Créé le</h2>
-                            <p><?= htmlentities(date('d.m.Y', strtotime($training->created_at))) ?? $created_at ?? '' ?></p>
+                            <p><?= date('d.m.Y', strtotime($training->created_at)) ?? $created_at ?? '' ?></p>
                             <h2 class="mt-5">Modifié le</h2>
-                            <p><?= htmlentities(date('d.m.Y', strtotime($training->updated_at))) ?? $updated_at ?? '' ?></p>
+                            <p><?= date('d.m.Y', strtotime($training->updated_at)) ?? $updated_at ?? '' ?></p>
                             <h2 class="mt-5">Désactivé le</h2>
                             <p><?= $training->disabled_at ?? $disabled_at ?? '' ?></p>
                         </div>

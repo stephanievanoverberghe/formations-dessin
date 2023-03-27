@@ -50,10 +50,23 @@
                             <div id="passwordHelp" class="error"><?= $errors['password'] ?? '' ?></div>
                         </div>
 
+                        <div class="mb-5">
+                            <div class="form-check">
+                                <input 
+                                    type="checkbox"
+                                    name="rememberMe"
+                                    class="form-check-input rememberMe"
+                                    id="rememberMe"
+                                    value=""
+                                >
+                                <label class="form-check-label ms-3" for="rememberMe">Se souvenir de moi</label>
+                            </div>
+                        </div>
+
                         <!-- CREATE ACCOUNT -->
 
                         <div class="col-12 mt-5 mb-5 text-center">
-                            <button type="submit" class="btn">
+                            <button type="submit" class="btn btnConnexion">
                                 Se connecter
                         </div>
                     </form>

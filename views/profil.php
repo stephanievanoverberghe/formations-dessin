@@ -91,30 +91,14 @@
 
                             <!-- START FORM PROFIL -->
                             <div class="profilParameter my-5 px-4 py-5">
-                                <form  
-                                    method="post" 
-                                    role="form" 
-                                    id="formUser" 
-                                    class="formUser">
+                                <form method="post" role="form" id="formUser" class="formUser">
                                     <div class="container">
                                         <div class="row">
                                             <!-- PSEUDO -->
                                             <div class="col-lg-6">
                                                 <h2 class="mb-3">Pseudo</h2>
-                                                <input 
-                                                    type="text" 
-                                                    name="pseudo" 
-                                                    class="form-control <?= isset($errors['pseudo']) ? 'is-invalid' : '' ?>" 
-                                                    id="pseudo" 
-                                                    placeholder="Ex: Norel-art" 
-                                                    autocomplete="username"
-                                                    value="<?= $user->pseudo ?? $pseudo ?? '' ?>" 
-                                                    minlenght="2" 
-                                                    maxlength="70" 
-                                                >
-                                                <small 
-                                                    id=pseudoHelp 
-                                                    class="form-text error"><?= $errors['pseudo'] ?? '' ?>
+                                                <input type="text" name="pseudo" class="form-control <?= isset($errors['pseudo']) ? 'is-invalid' : '' ?>" id="pseudo" placeholder="Ex: Norel-art" autocomplete="username" value="<?= $user->pseudo ?? $pseudo ?? '' ?>" minlenght="2" maxlength="70">
+                                                <small id=pseudoHelp class="form-text error"><?= $errors['pseudo'] ?? '' ?>
                                                 </small>
                                             </div>
                                         </div>
@@ -126,84 +110,36 @@
                                             <div class="col-lg-6 mt-3">
                                                 <label for="firstname" class="form-label">Prénom
                                                 </label>
-                                                <input 
-                                                    type="text" 
-                                                    name="firstname" 
-                                                    class="form-control <?= isset($errors['firstname']) ? 'is-invalid' : '' ?>" 
-                                                    id="firstname" 
-                                                    placeholder="Ex: Jean" 
-                                                    autocomplete="given-name" 
-                                                    value="<?= $user->firstname ?? $firstname ?? '' ?>" 
-                                                    minlength="2" 
-                                                    maxlength="70" 
-                                                    pattern="<?= REGEXP_NO_NUMBER ?>" 
-                                                >
-                                                <small 
-                                                    id="firstnameHelp" 
-                                                    class="form-text error"><?= $errors['firstname'] ?? '' ?>
+                                                <input type="text" name="firstname" class="form-control <?= isset($errors['firstname']) ? 'is-invalid' : '' ?>" id="firstname" placeholder="Ex: Jean" autocomplete="given-name" value="<?= $user->firstname ?? $firstname ?? '' ?>" minlength="2" maxlength="70" pattern="<?= REGEXP_NO_NUMBER ?>">
+                                                <small id="firstnameHelp" class="form-text error"><?= $errors['firstname'] ?? '' ?>
                                                 </small>
                                             </div>
                                             <!-- LASTNAME -->
                                             <div class="col-lg-6 mt-3">
-                                                <label 
-                                                    for="lastname" 
-                                                    class="form-label">Nom
+                                                <label for="lastname" class="form-label">Nom
                                                 </label>
-                                                <input 
-                                                    type="text" 
-                                                    name="lastname" 
-                                                    class="form-control <?= isset($errors['lastname']) ? 'is-invalid' : '' ?>" 
-                                                    id="lastname" 
-                                                    placeholder="Ex: Dupond" 
-                                                    autocomplete="family-name" 
-                                                    value="<?= $user->lastname ?? $lastname ?? '' ?>" 
-                                                    minlength="2" 
-                                                    maxlength="70" 
-                                                    pattern="<?= REGEXP_NO_NUMBER ?>"
-                                                >
-                                                <small 
-                                                    id="lastnameHelp" 
-                                                    class="form-text error"><?= $errors['lastname'] ?? '' ?>
+                                                <input type="text" name="lastname" class="form-control <?= isset($errors['lastname']) ? 'is-invalid' : '' ?>" id="lastname" placeholder="Ex: Dupond" autocomplete="family-name" value="<?= $user->lastname ?? $lastname ?? '' ?>" minlength="2" maxlength="70" pattern="<?= REGEXP_NO_NUMBER ?>">
+                                                <small id="lastnameHelp" class="form-text error"><?= $errors['lastname'] ?? '' ?>
                                                 </small>
                                             </div>
                                             <!-- COUNTRY -->
                                             <div class="col-lg-6 mt-3">
                                                 <label for="country" class="form-label">Pays</label>
-                                                <select 
-                                                    name="country" 
-                                                    id="country"
-                                                    autocomplete="country"
-                                                    class="form-control <?= isset($errors['country']) ? 'is-invalid' : '' ?>"" 
-                                                    aria-describedby="countryHelp">
+                                                <select name="country" id="country" autocomplete="country" class="form-control <?= isset($errors['country']) ? 'is-invalid' : '' ?>"" 
+                                                    aria-describedby=" countryHelp">
                                                     <?php foreach (ARRAY_COUNTRIES as $countryInSelect) {
                                                         $isSelected = ($countryInSelect == $country) ? 'selected' : '';
                                                         echo "<option $isSelected>$countryInSelect</option>";
                                                     } ?>
                                                 </select>
-                                                <small 
-                                                    id="countryHelp" 
-                                                    class="form-text error"><?= $errors['country'] ?? '' ?>
+                                                <small id="countryHelp" class="form-text error"><?= $errors['country'] ?? '' ?>
                                                 </small>
                                             </div>
                                             <!-- BIRTHDATE -->
                                             <div class="col-lg-6 mt-3">
                                                 <label for="birthdate" class="form-label">Date de naissance</label>
-                                                <input 
-                                                    type="date" 
-                                                    name="birthdate" 
-                                                    id="birthdate" 
-                                                    value="<?= $user->birthdate ?? $birthdate ?? '' ?>" 
-                                                    title="La date de naissance n'est pas au format attendu" 
-                                                    placeholder="Ex: 13-01-1998" 
-                                                    class="form-control <?= isset($errors['birthdate']) ? 'is-invalid' : '' ?>" 
-                                                    autocomplete="bday" 
-                                                    aria-describedby="birthdateHelp" 
-                                                    min="<?=(date('Y')-120).date('-m-d')?>" 
-                                                    max="<?=date('Y-m-d')?>"
-                                                >
-                                                <small 
-                                                    id="birthdateHelp" 
-                                                    class="form-text error"><?= $errors['birthdate'] ?? '' ?>
+                                                <input type="date" name="birthdate" id="birthdate" value="<?= $user->birthdate ?? $birthdate ?? '' ?>" title="La date de naissance n'est pas au format attendu" placeholder="Ex: 13-01-1998" class="form-control <?= isset($errors['birthdate']) ? 'is-invalid' : '' ?>" autocomplete="bday" aria-describedby="birthdateHelp" min="<?= (date('Y') - 120) . date('-m-d') ?>" max="<?= date('Y-m-d') ?>">
+                                                <small id="birthdateHelp" class="form-text error"><?= $errors['birthdate'] ?? '' ?>
                                                 </small>
                                             </div>
                                         </div>
@@ -219,12 +155,7 @@
 
                             <!-- START FORM PARAMETER -->
                             <div class="formParameter my-5 px-4 py-5">
-                                <form 
-                                    action="" 
-                                    method="post" 
-                                    role="form" 
-                                    id="formUser" 
-                                    class="formUser">
+                                <form action="" method="post" role="form" id="formUser" class="formUser">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12">
@@ -235,19 +166,8 @@
                                                 <label for="email" class="form-label">Adresse actuelle
                                                     <span class="orange"> *</span>
                                                 </label>
-                                                <input 
-                                                    type="email" 
-                                                    name="email" 
-                                                    id="email"
-                                                    autocomplete="email"
-                                                    placeholder="sarahdupond@gmail.com" 
-                                                    value="<?= $user->email ?? $email ?? '' ?>" 
-                                                    class="form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>" 
-                                                    required
-                                                >
-                                                <small 
-                                                    id="emailError" 
-                                                    class="form-text error"><?= $errors['email'] ?? '' ?>
+                                                <input type="email" name="email" id="email" autocomplete="email" placeholder="sarahdupond@gmail.com" value="<?= $user->email ?? $email ?? '' ?>" class="form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>" required>
+                                                <small id="emailError" class="form-text error"><?= $errors['email'] ?? '' ?>
                                                 </small>
                                             </div>
                                             <!-- CONFIRM EMAIL -->
@@ -255,17 +175,8 @@
                                                 <label for="email" class="form-label">Nouvel email
                                                     <span class="orange"> *</span>
                                                 </label>
-                                                <input 
-                                                    type="email" 
-                                                    name="confirmEmail" 
-                                                    id="confirmEmail"
-                                                    placeholder="Ex: john.doe@exemple.com" 
-                                                    class="form-control <?= isset($errors['confirmEmail']) ? 'is-invalid' : '' ?>" 
-                                                    required
-                                                >
-                                                <small 
-                                                    id="emailError" 
-                                                    class="form-text error"><?= $errors['confirmEmail'] ?? '' ?>
+                                                <input type="email" name="confirmEmail" id="confirmEmail" placeholder="Ex: john.doe@exemple.com" class="form-control <?= isset($errors['confirmEmail']) ? 'is-invalid' : '' ?>" required>
+                                                <small id="emailError" class="form-text error"><?= $errors['confirmEmail'] ?? '' ?>
                                                 </small>
                                             </div>
                                             <div class="row">
@@ -276,12 +187,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                <form 
-                                    action="" 
-                                    method="post" 
-                                    role="form" 
-                                    id="formUser" 
-                                    class="formUser">
+                                <form action="" method="post" role="form" id="formUser" class="formUser">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12">
@@ -292,18 +198,8 @@
                                                 <label for="password" class="form-label">Mot de passe actuel
                                                     <span class="orange"> *</span>
                                                 </label>
-                                                <input 
-                                                    required 
-                                                    type="password" 
-                                                    name="password" 
-                                                    id="password" 
-                                                    value="" 
-                                                    class="form-control <?= isset($errors['password']) ? 'is-invalid' : '' ?>" 
-                                                    placeholder="Votre mot de passe*"
-                                                >
-                                                <small 
-                                                    id="passwordHelp" 
-                                                    class="form-text error"><?= $errors['password'] ?? '' ?>
+                                                <input required type="password" name="password" id="password" value="" class="form-control <?= isset($errors['password']) ? 'is-invalid' : '' ?>" placeholder="Votre mot de passe*">
+                                                <small id="passwordHelp" class="form-text error"><?= $errors['password'] ?? '' ?>
                                                 </small>
                                             </div>
                                             <div class="offset-lg-6 mb-3"></div>
@@ -312,18 +208,8 @@
                                                 <label for="password" class="form-label">Nouveau mot de passe
                                                     <span class="orange"> *</span>
                                                 </label>
-                                                <input 
-                                                    type="password" 
-                                                    name="newPassword" 
-                                                    value="<?= htmlentities($newPassword ?? '') ?>" 
-                                                    class="form-control <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" 
-                                                    id="newPassword" 
-                                                    placeholder="Nouveau mot de passe" 
-                                                    required
-                                                >
-                                                <small 
-                                                    id="newPasswordHelp" 
-                                                    class="form-text error"><?= $errors['newPassword'] ?? '' ?>
+                                                <input type="password" name="newPassword" value="<?= htmlentities($newPassword ?? '') ?>" class="form-control <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" id="newPassword" placeholder="Nouveau mot de passe" required>
+                                                <small id="newPasswordHelp" class="form-text error"><?= $errors['newPassword'] ?? '' ?>
                                                 </small>
                                             </div>
                                             <!-- CONFIRM PASSWORD -->
@@ -331,18 +217,8 @@
                                                 <label for="passwordCheck" class="form-label">Confirmation du nouveau mot de passe
                                                     <span class="orange"> *</span>
                                                 </label>
-                                                <input 
-                                                    type="password" 
-                                                    name="passwordCheck" 
-                                                    id="passwordCheck" 
-                                                    value="<?= htmlentities($newPassword ?? '') ?>" 
-                                                    class="form-control <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" 
-                                                    placeholder="Vérification du mot de passe" 
-                                                    required
-                                                >
-                                                <small 
-                                                    id="passwordCheckHelp" 
-                                                    class="form-text error"><?= $errors['newPassword'] ?? '' ?>
+                                                <input type="password" name="passwordCheck" id="passwordCheck" value="<?= htmlentities($newPassword ?? '') ?>" class="form-control <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" placeholder="Vérification du mot de passe" required>
+                                                <small id="passwordCheckHelp" class="form-text error"><?= $errors['newPassword'] ?? '' ?>
                                                 </small>
                                             </div>
                                             <div class="btnParameter col-12 text-center my-5 d-flex flex-column align-items-center">
@@ -367,25 +243,25 @@
                                             </button>
                                         </div>
                                         <!-- Button trigger modal -->
-                                        
+
 
                                         <!-- Modal -->
                                         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="deleteModalLabel">Supprimer mon compte</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="deleteModalLabel">Supprimer mon compte</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Êtes-vous sûr de bien vouloir supprimer votre compte ?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                        <button type="button" class="btn btn-danger">Supprimer</button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="modal-body">
-                                                <p>Êtes-vous sûr de bien vouloir supprimer votre compte ?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                                <button type="button" class="btn btn-danger">Supprimer</button>
-                                            </div>
-                                            </div>
-                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -394,13 +270,30 @@
                         </div>
 
                         <div class="tab-pane fade" id="gallery-tab-pane" role="tabpanel" aria-labelledby="gallery-tab" tabindex="0">
-                            <div class="gallery my-5 px-4 py-5">
-                                
+                            <div class="gallery my-3 px-4 py-5">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-12 text-end">
+                                            <a class="addPicture" data-bs-toggle="modal" data-bs-target="#addPictures"><i class="bi bi-plus-lg"></i></a>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <ul>
+                                                        <li>
+                                                            <img src="" alt="Dessin de l'utilisateur" class="pictureGallery">
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="messages-tab-pane" role="tabpanel" aria-labelledby="messages-tab" tabindex="0">
                             <div class="messages my-5 px-4 py-5">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -419,5 +312,29 @@
             </div>
         </div>
     </section>
+
+    <!-- MODAL GALLERY -->
+    <div class="modal fade" id="addPictures" tabindex="-1" aria-labelledby="addPictureLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addPictureLabel">Ajouter un dessin</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST">
+                        <div>
+                            <label for="formFileLg" class="form-label">Sélectionner une image</label>
+                            <input class="form-control form-control-lg pictureFile" id="formFileLg" type="file">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ajouter</button>
+                    <a type="button" class="btn btn-primary" id="addFilePicture">Valider</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </main>

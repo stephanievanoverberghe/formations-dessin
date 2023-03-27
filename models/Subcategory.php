@@ -6,7 +6,6 @@ class Subcategory
 {
     private int $id_sub_categories;
     private string $title;
-    private string $slug;
     private string $content;
     private int $id_categories;
 
@@ -39,15 +38,6 @@ class Subcategory
     {
         return $this->title;
     }
-    // SLUG GETTER AND SETTER ************************************************************************
-    public function setSlug(string $slug): void
-    {
-        $this->slug = $slug;
-    }
-    public function getSlug(): string
-    {
-        return $this->slug;
-    }
     // CONTENT GETTER AND SETTER ************************************************************************
     public function setContent(string $content): void
     {
@@ -76,13 +66,12 @@ class Subcategory
     public function insert(): bool
     {
         // CREATE REQUEST
-        $sql = 'INSERT INTO `subcategories` (`title`, `slug`, `content`, `id_categories`)
-                    VALUE (:title, :slug, :content, :id_categories);';
+        $sql = 'INSERT INTO `subcategories` (`title`, `content`, `id_categories`)
+                    VALUE (:title, :content, :id_categories);';
         // PREPARE REQUEST
         $sth = $this->pdo->prepare($sql);
         // AFFECT VALUE
         $sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
-        $sth->bindValue(':slug', $this->getSlug(), PDO::PARAM_STR);
         $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
         $sth->bindValue(':id_categories', $this->getId_categories(), PDO::PARAM_STR);
         // RETURN TRUE IF REQUEST EXECUTE OR FALSE IF NOT EXECUTE
@@ -106,6 +95,82 @@ class Subcategory
         } else {
             return [];
         }
+    }
+    /**
+     * 
+     * Méthode permettant de récupérer toutes les données d'une sous-catégorie
+     * 
+     * @param int $id_sub_categories
+     * 
+     * @return object
+     */
+    public static function getData(int $id_sub_categories): object|bool
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `subcategories`
+                    WHERE `id_sub_categories` = :id_sub_categories';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_sub_categories', $id_sub_categories, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return $sth->fetch();
+        }
+    }
+    /**
+     * 
+     * Méthode permettant de modifier la sous-catégorie
+     * 
+     * @param int $id_sub_categories
+     * 
+     * @return bool
+     */
+    public function update(int $id_sub_categories): bool
+    {
+        // CREATE REQUEST
+        $sql = 'UPDATE `subcategories` SET
+                        `title` = :title,
+                        `content` = :content,
+                        `id_categories` = :id_categories
+                WHERE `id_sub_categories` = :id_sub_categories;';
+        // PREPARE REQUEST
+        $sth = $this->pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
+        $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
+        $sth->bindValue(':id_categories', $this->getId_categories(), PDO::PARAM_INT);
+        $sth->bindValue(':id_sub_categories', $id_sub_categories, PDO::PARAM_INT);
+
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
+        }
+    }
+    /**
+     * 
+     * Méthode permettant de supprimer une sous-catégorie
+     * 
+     * @param int $id_subcatégorie
+     * 
+     * @return bool
+     */
+    public static function delete(int $id_sub_categories): bool
+    {
+        // CREATE REQUEST
+        $sql = 'DELETE FROM `subcategories`
+                    WHERE `subcategories`.`id_sub_categories` = :id_sub_categories;';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_sub_categories', $id_sub_categories, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        $sth->execute();
+        $result = $sth->rowCount();
+        return ($result > 0) ? true : false;
 
     }
+
 }

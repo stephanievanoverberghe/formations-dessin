@@ -6,7 +6,6 @@ class Category
 {
     private int $id_categories;
     private string $title;
-    private string $slug;
     private string $content;
 
     private object $pdo;
@@ -37,15 +36,6 @@ class Category
     {
         return $this->title;
     }
-    // SLUG GETTER AND SETTER ************************************************************************
-    public function setSlug(string $slug): void
-    {
-        $this->slug = $slug;
-    }
-    public function getSlug(): string
-    {
-        return $this->slug;
-    }
     // CONTENT GETTER AND SETTER ************************************************************************
     public function setContent(string $content): void
     {
@@ -65,13 +55,12 @@ class Category
     public function insert(): bool
     {
         // CREATE REQUEST
-        $sql = 'INSERT INTO `categories` (`title`, `slug`, `content`)
-                    VALUE (:title, :slug, :content);';
+        $sql = 'INSERT INTO `categories` (`title`, `content`)
+                    VALUE (:title, :content);';
         // PREPARE REQUEST
         $sth = $this->pdo->prepare($sql);
         // AFFECT VALUE
         $sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
-        $sth->bindValue(':slug', $this->getSlug(), PDO::PARAM_STR);
         $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
         // RETURN TRUE IF REQUEST EXECUTE OR FALSE IF NOT EXECUTE
         return $sth->execute();
@@ -94,6 +83,71 @@ class Category
         } else {
             return [];
         }
+    }
+    /**
+     * 
+     * Méthode permettant de récupérer toutes les données d'une catégorie
+     * 
+     * @param int $id_categories
+     * 
+     * @return object
+     */
+    public static function getData(int $id_categories): object|bool
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `categories`
+                    WHERE `id_categories` = :id_categories';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_categories', $id_categories, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return $sth->fetch();
+        }
+    }
+    /**
+     * 
+     * Méthode permettant de modifier la catégorie
+     * 
+     * @param int $id_categories
+     * 
+     * @return bool
+     */
+    public function update(int $id_categories): bool
+    {
+        // CREATE REQUEST
+        $sql = 'UPDATE `categories` SET
+                        `title` = :title,
+                        `content` = :content,
+                WHERE `id_categories` = :id_categories;';
+        // PREPARE REQUEST
+        $sth = $this->pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
+        $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
+        $sth->bindValue(':id_categories', $id_categories, PDO::PARAM_INT);
+
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
+        }
+    }
+    public static function delete(int $id_categories): bool
+    {
+        // CREATE REQUEST
+        $sql = 'DELETE FROM `categories`
+                    WHERE `categories`.`id_categories` = :id_categories;';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_categories', $id_categories, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        $sth->execute();
+        $result = $sth->rowCount();
+        return ($result > 0) ? true : false;
 
     }
 }

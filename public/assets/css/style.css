@@ -338,6 +338,10 @@ li {
     background-color: #202124 !important;
 }
 
+/* #profil .gallery img {
+    display: none;
+} */
+
 /* REGISTRATION AND CONNEXION PAGE */
 #register .orange,
 #connexion .orange {
@@ -366,6 +370,7 @@ li {
     color: #111112;
 }
 
+#connexion .form-check-input,
 #register .form-check-input {
     padding: 10px 10px;
 }

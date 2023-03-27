@@ -4,6 +4,7 @@ require_once(__DIR__ . '/../../../config/constants.php');
 require_once(__DIR__ . '/../../../models/Category.php');
 
 try{
+
     $category = true;
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -12,11 +13,6 @@ try{
         $title = trim((string)filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
         if(empty($title)) {
             $errors['title'] = 'Le champs est obligatoire';
-        }
-        /* ************* SLUG NETTOYAGE ET VERIFICATION **************************/
-        $slug = trim((string)filter_input(INPUT_POST, 'slug', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
-        if(empty($slug)) {
-            $errors['slug'] = 'Le champs est obligatoire';
         }
         /* ************* CONTENT NETTOYAGE ET VERIFICATION **************************/
         $content = trim((string)filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
@@ -29,7 +25,6 @@ try{
             //**** HYDRATATION ****/
             $category = new Category;
             $category->setTitle($title);
-            $category->setSlug($slug);
             $category->setContent($content);
 
             $response = $category->insert();

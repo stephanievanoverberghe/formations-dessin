@@ -15,11 +15,6 @@ try{
         if(empty($title)) {
             $errors['title'] = 'Le champs est obligatoire';
         }
-        /* ************* SLUG NETTOYAGE ET VERIFICATION **************************/
-        $slug = trim((string)filter_input(INPUT_POST, 'slug', FILTER_SANITIZE_SPECIAL_CHARS));
-        if(empty($slug)) {
-            $errors['slug'] = 'Le champs est obligatoire';
-        }
         /* ************* CONTENT NETTOYAGE ET VERIFICATION **************************/
         $content = trim((string)filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
         if(empty($content)) {
@@ -33,11 +28,8 @@ try{
             //**** HYDRATATION ****/
             $subcategory = new Subcategory;
             $subcategory->setTitle($title);
-            $subcategory->setSlug($slug);
             $subcategory->setContent($content);
             $subcategory->setId_categories($id_categories);
-
-
 
             $response = $subcategory->insert();
             

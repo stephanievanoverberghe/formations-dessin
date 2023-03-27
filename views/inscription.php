@@ -17,7 +17,7 @@ if ($user) {
                     </div>
 
                     <div class="col-12">
-                        <form action="" method="POST" role="form">
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" role="form">
 
                             <!-- LASTNAME -->
                             <div class="row">

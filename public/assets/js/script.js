@@ -50,20 +50,52 @@ deleteBtnsVideo.forEach(element => {
     element.addEventListener('click', createLinkVideo)
 });
 
-// COOKIES
-const btnSuccess = document.querySelector('.btn-success');
-const cookies = document.querySelector('.cookies');
-const btnSecondary = document.querySelector('.btn-secondary')
-const acceptCookies = document.querySelector('.accept');
+// MODAL SUBCATEGORIES
+const deleteBtnsSubcategory = document.querySelectorAll('.delete');
+const deleteLinkSubcategory = document.getElementById('deleteLinkSubcategory');
 
-btnSuccess.addEventListener('click', function() {
-    cookies.style.opacity = "0";
+const createLinkSubcategory = (event) => {
+    let id_sub_categories = event.target.dataset.idsubcategories;
+    deleteLinkSubcategory.setAttribute('href', 'deleteSubcategoriesCtrl.php?id_sub_categories=' + id_sub_categories);
+};
+
+deleteBtnsSubcategory.forEach(element => {
+    element.addEventListener('click', createLinkSubcategory)
 });
 
-btnSecondary.addEventListener('click', function() {
-    cookies.style.opacity = "0";
-});
+// ADD COOKIES CONNEXION
 
-acceptCookies.addEventListener('click', function() {
-    location.reload();
-})
+// Je sélectionne mes éléments
+// let btnRememberMe = document.getElementById('rememberMe').checked;
+// const btnConnexion = document.querySelector('.btnConnexion');
+
+// // Je soumets mes éléments à une action
+// btnConnexion.addEventListener('click', function() {
+//     if (btnRememberMe === true) {
+//         if (!empty($_POST['email']) && !empty($_POST['password'])) {
+//             setcookie('email', $_POST['email'], (time() + 365 * 24 * 3600), '/');
+//             setcookie('password', $_POST['password'], (time() + 365 * 24 * 3600), '/');
+//         }
+//     }
+// })
+
+
+
+
+// BANNER COOKIES
+// const btnSuccess = document.querySelector('.btn-success');
+// const cookies = document.querySelector('.cookies');
+// const btnSecondary = document.querySelector('.btn-secondary')
+// const acceptCookies = document.querySelector('.accept');
+
+// btnSuccess.addEventListener('click', function() {
+//     cookies.style.opacity = "0";
+// });
+
+// btnSecondary.addEventListener('click', function() {
+//     cookies.style.opacity = "0";
+// });
+
+// acceptCookies.addEventListener('click', function() {
+//     location.reload();
+// })

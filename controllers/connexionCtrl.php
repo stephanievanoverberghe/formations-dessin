@@ -2,8 +2,6 @@
 
 require_once(__DIR__ . '/../config/constants.php');
 
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") { //if my request in POST
 
 //******************************************** EMAIL CLEAN AND VALIDATE ************************************************* *//   
@@ -29,25 +27,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //if my request in POST
         }
     }
 
-     //===================== Password : Nettoyage et validation =======================
-    // $password = filter_input(INPUT_POST, 'password');
-    // $passwordCheck = filter_input(INPUT_POST, 'passwordCheck');
-    // if($password != $passwordCheck){
-    //     $error["password"] = "Les mots de passe ne correspondent pas";
-    // }
-    // $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-
 }
 
-// views concerned
+// CREATE COOKIES
+
+if (!empty($_POST['email']) && !empty($_POST['password'])) {
+    setcookie('email', $_POST['email'], (time() + 365 * 24 * 3600), '/');
+    setcookie('password', $_POST['password'], (time() + 365 * 24 * 3600), '/');
+}
+
+// VIEWS DISPLAY
 
 include_once(__DIR__ . '/../views/templates/header.php');
-
-// If not error, display this message, or forward to form
-if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($error)) {
-    include(__DIR__ . '/../views/connexion.php');
-} else {
-    include_once(__DIR__ . '/../views/home.php');
-}
-
+include(__DIR__ . '/../views/connexion.php');
 include_once(__DIR__ . '/../views/templates/footer.php');
