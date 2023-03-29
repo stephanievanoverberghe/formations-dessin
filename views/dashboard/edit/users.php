@@ -17,19 +17,20 @@ if ($user) { ?>
                 <div class="row justify-content-center editUser px-4 py-5">
                     <div class="col-lg-6">
                         <h2>Email</h2>
-                        <a href="emailto:<?= htmlentities($user->email) ?>"><?= htmlentities($user->email) ?? $email ?? '' ?></a>
-                        <h2 class="mt-5">Mot de passe</h2>
-                        <p><?= htmlentities($user->password) ?? $password ?? '' ?></p>
+                        <a href="emailto:<?= $user->email ?>"><?= $user->email?></a>
                         <h2 class="mt-5">Pseudo</h2>
-                        <p><?= htmlentities($user->pseudo) ?? $pseudo ?? '' ?></p>
+                        <p><?= $user->pseudo ?></p>
                         <h2 class="mt-5">Anniversaire</h2>
-                        <p><?= htmlentities(date('d.m.Y', strtotime($user->birthdate))) ?? $birthdate ?? '' ?></p>
+                        <p><?= date('d.m.Y', strtotime($user->birthdate)) ?></p>
+                        <h2 class="mt-5">Pays</h2>
+                        <p><?= $user->country ?></p>
                     </div>
                     <div class="col-lg-5">
-                        <h2>Pays</h2>
-                        <p><?= htmlentities($user->country) ?? $country ?? '' ?></p>
+
                         <h2 class="mt-5">Créé le</h2>
-                        <p><?= htmlentities(date('d.m.Y', strtotime($user->created_at))) ?? $created_at ?? '' ?></p>
+                        <p><?= date('d.m.Y', strtotime($user->created_at)) ?></p>
+                        <h2 class="mt-5">Validé le</h2>
+                        <p><?= $user->validated_at ?? $validated_at ?? '' ?></p>
                         <h2 class="mt-5">Modifié le</h2>
                         <p><?= $user->updated_at ?? $updated_at ?? '' ?></p>
                     </div>

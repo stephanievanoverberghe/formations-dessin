@@ -51,16 +51,56 @@
                     <!-- START NAV TABS -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item mb-3" role="presentation">
-                            <button class="nav-link active" id="profil-tab" data-bs-toggle="tab" data-bs-target="#profil-tab-pane" type="button" role="tab" aria-controls="profil-tab-pane" aria-selected="true">Profil</button>
+                            <button 
+                                class="nav-link active" 
+                                id="profil-tab" 
+                                data-bs-toggle="tab" 
+                                data-bs-target="#profil-tab-pane" 
+                                type="button" 
+                                role="tab" 
+                                aria-controls="profil-tab-pane" 
+                                aria-selected="true"
+                                >Profil
+                            </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="parameter-tab" data-bs-toggle="tab" data-bs-target="#parameter-tab-pane" type="button" role="tab" aria-controls="parameter-tab-pane" aria-selected="false">Paramètres</button>
+                            <button 
+                                class="nav-link" 
+                                id="parameter-tab" 
+                                data-bs-toggle="tab" 
+                                data-bs-target="#parameter-tab-pane" 
+                                type="button" 
+                                role="tab" 
+                                aria-controls="parameter-tab-pane" 
+                                aria-selected="false"
+                                >Paramètres
+                            </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="gallery-tab" data-bs-toggle="tab" data-bs-target="#gallery-tab-pane" type="button" role="tab" aria-controls="gallery-tab-pane" aria-selected="false">Galerie</button>
+                            <button 
+                                class="nav-link" 
+                                id="gallery-tab" 
+                                data-bs-toggle="tab" 
+                                data-bs-target="#gallery-tab-pane" 
+                                type="button" 
+                                role="tab" 
+                                aria-controls="gallery-tab-pane" 
+                                aria-selected="false"
+                                >Galerie
+                            </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages-tab-pane" type="button" role="tab" aria-controls="massages-tab-pane" aria-selected="false">Messages</button>
+                            <button 
+                                class="nav-link" 
+                                id="messages-tab" 
+                                data-bs-toggle="tab" 
+                                data-bs-target="#messages-tab-pane" 
+                                type="button" 
+                                role="tab" 
+                                aria-controls="massages-tab-pane" 
+                                aria-selected="false"
+                                >Messages
+                            </button>
                         </li>
                     </ul>
                     <!-- END NAV TABS -->
@@ -97,7 +137,17 @@
                                             <!-- PSEUDO -->
                                             <div class="col-lg-6">
                                                 <h2 class="mb-3">Pseudo</h2>
-                                                <input type="text" name="pseudo" class="form-control <?= isset($errors['pseudo']) ? 'is-invalid' : '' ?>" id="pseudo" placeholder="Ex: Norel-art" autocomplete="username" value="<?= $user->pseudo ?? $pseudo ?? '' ?>" minlenght="2" maxlength="70">
+                                                <input 
+                                                    type="text" 
+                                                    name="pseudo" 
+                                                    class="form-control <?= isset($errors['pseudo']) ? 'is-invalid' : '' ?>" 
+                                                    id="pseudo" 
+                                                    placeholder="Ex: Norel-art" 
+                                                    autocomplete="username" 
+                                                    value="<?= $user->pseudo ?? $pseudo ?? '' ?>" 
+                                                    minlenght="2" 
+                                                    maxlength="70"
+                                                    >
                                                 <small id=pseudoHelp class="form-text error"><?= $errors['pseudo'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -110,7 +160,18 @@
                                             <div class="col-lg-6 mt-3">
                                                 <label for="firstname" class="form-label">Prénom
                                                 </label>
-                                                <input type="text" name="firstname" class="form-control <?= isset($errors['firstname']) ? 'is-invalid' : '' ?>" id="firstname" placeholder="Ex: Jean" autocomplete="given-name" value="<?= $user->firstname ?? $firstname ?? '' ?>" minlength="2" maxlength="70" pattern="<?= REGEXP_NO_NUMBER ?>">
+                                                <input 
+                                                    type="text" 
+                                                    name="firstname" 
+                                                    class="form-control <?= isset($errors['firstname']) ? 'is-invalid' : '' ?>" 
+                                                    id="firstname" 
+                                                    placeholder="Ex: Jean" 
+                                                    autocomplete="given-name" 
+                                                    value="<?= $user->firstname ?? $firstname ?? '' ?>" 
+                                                    minlength="2" 
+                                                    maxlength="70" 
+                                                    pattern="<?= REGEXP_NO_NUMBER ?>"
+                                                    >
                                                 <small id="firstnameHelp" class="form-text error"><?= $errors['firstname'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -118,7 +179,18 @@
                                             <div class="col-lg-6 mt-3">
                                                 <label for="lastname" class="form-label">Nom
                                                 </label>
-                                                <input type="text" name="lastname" class="form-control <?= isset($errors['lastname']) ? 'is-invalid' : '' ?>" id="lastname" placeholder="Ex: Dupond" autocomplete="family-name" value="<?= $user->lastname ?? $lastname ?? '' ?>" minlength="2" maxlength="70" pattern="<?= REGEXP_NO_NUMBER ?>">
+                                                <input 
+                                                    type="text" 
+                                                    name="lastname" 
+                                                    class="form-control <?= isset($errors['lastname']) ? 'is-invalid' : '' ?>" 
+                                                    id="lastname" 
+                                                    placeholder="Ex: Dupond" 
+                                                    autocomplete="family-name" 
+                                                    value="<?= $user->lastname ?? $lastname ?? '' ?>" 
+                                                    minlength="2" 
+                                                    maxlength="70" 
+                                                    pattern="<?= REGEXP_NO_NUMBER ?>"
+                                                    >
                                                 <small id="lastnameHelp" class="form-text error"><?= $errors['lastname'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -138,7 +210,18 @@
                                             <!-- BIRTHDATE -->
                                             <div class="col-lg-6 mt-3">
                                                 <label for="birthdate" class="form-label">Date de naissance</label>
-                                                <input type="date" name="birthdate" id="birthdate" value="<?= $user->birthdate ?? $birthdate ?? '' ?>" title="La date de naissance n'est pas au format attendu" placeholder="Ex: 13-01-1998" class="form-control <?= isset($errors['birthdate']) ? 'is-invalid' : '' ?>" autocomplete="bday" aria-describedby="birthdateHelp" min="<?= (date('Y') - 120) . date('-m-d') ?>" max="<?= date('Y-m-d') ?>">
+                                                <input 
+                                                    type="date" 
+                                                    name="birthdate" 
+                                                    id="birthdate" 
+                                                    value="<?= $user->birthdate ?? $birthdate ?? '' ?>" 
+                                                    title="La date de naissance n'est pas au format attendu" 
+                                                    placeholder="Ex: 13-01-1998" class="form-control <?= isset($errors['birthdate']) ? 'is-invalid' : '' ?>" 
+                                                    autocomplete="bday" 
+                                                    aria-describedby="birthdateHelp" 
+                                                    min="<?= (date('Y') - 120) . date('-m-d') ?>" 
+                                                    max="<?= date('Y-m-d') ?>"
+                                                    >
                                                 <small id="birthdateHelp" class="form-text error"><?= $errors['birthdate'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -166,7 +249,16 @@
                                                 <label for="email" class="form-label">Adresse actuelle
                                                     <span class="orange"> *</span>
                                                 </label>
-                                                <input type="email" name="email" id="email" autocomplete="email" placeholder="sarahdupond@gmail.com" value="<?= $user->email ?? $email ?? '' ?>" class="form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>" required>
+                                                <input 
+                                                    type="email" 
+                                                    name="email" 
+                                                    id="email" 
+                                                    autocomplete="email" 
+                                                    placeholder="sarahdupond@gmail.com" 
+                                                    value="<?= $user->email ?? $email ?? '' ?>" 
+                                                    class="form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>" 
+                                                    required
+                                                    >
                                                 <small id="emailError" class="form-text error"><?= $errors['email'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -175,7 +267,14 @@
                                                 <label for="email" class="form-label">Nouvel email
                                                     <span class="orange"> *</span>
                                                 </label>
-                                                <input type="email" name="confirmEmail" id="confirmEmail" placeholder="Ex: john.doe@exemple.com" class="form-control <?= isset($errors['confirmEmail']) ? 'is-invalid' : '' ?>" required>
+                                                <input 
+                                                    type="email" 
+                                                    name="confirmEmail" 
+                                                    id="confirmEmail" 
+                                                    placeholder="Ex: john.doe@exemple.com" 
+                                                    class="form-control <?= isset($errors['confirmEmail']) ? 'is-invalid' : '' ?>" 
+                                                    required
+                                                    >
                                                 <small id="emailError" class="form-text error"><?= $errors['confirmEmail'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -198,7 +297,15 @@
                                                 <label for="password" class="form-label">Mot de passe actuel
                                                     <span class="orange"> *</span>
                                                 </label>
-                                                <input required type="password" name="password" id="password" value="" class="form-control <?= isset($errors['password']) ? 'is-invalid' : '' ?>" placeholder="Votre mot de passe*">
+                                                <input 
+                                                    required 
+                                                    type="password" 
+                                                    name="password" 
+                                                    id="password" 
+                                                    value="" 
+                                                    class="form-control <?= isset($errors['password']) ? 'is-invalid' : '' ?>" 
+                                                    placeholder="Votre mot de passe*"
+                                                    >
                                                 <small id="passwordHelp" class="form-text error"><?= $errors['password'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -208,7 +315,15 @@
                                                 <label for="password" class="form-label">Nouveau mot de passe
                                                     <span class="orange"> *</span>
                                                 </label>
-                                                <input type="password" name="newPassword" value="<?= htmlentities($newPassword ?? '') ?>" class="form-control <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" id="newPassword" placeholder="Nouveau mot de passe" required>
+                                                <input 
+                                                    type="password" 
+                                                    name="newPassword" 
+                                                    value="<?= htmlentities($newPassword ?? '') ?>" 
+                                                    class="form-control <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" 
+                                                    id="newPassword" 
+                                                    placeholder="Nouveau mot de passe" 
+                                                    required
+                                                    >
                                                 <small id="newPasswordHelp" class="form-text error"><?= $errors['newPassword'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -217,7 +332,14 @@
                                                 <label for="passwordCheck" class="form-label">Confirmation du nouveau mot de passe
                                                     <span class="orange"> *</span>
                                                 </label>
-                                                <input type="password" name="passwordCheck" id="passwordCheck" value="<?= htmlentities($newPassword ?? '') ?>" class="form-control <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" placeholder="Vérification du mot de passe" required>
+                                                <input 
+                                                    type="password" 
+                                                    name="passwordCheck" 
+                                                    id="passwordCheck" 
+                                                    value="<?= htmlentities($newPassword ?? '') ?>" 
+                                                    class="form-control <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" 
+                                                    placeholder="Vérification du mot de passe" 
+                                                    required>
                                                 <small id="passwordCheckHelp" class="form-text error"><?= $errors['newPassword'] ?? '' ?>
                                                 </small>
                                             </div>

@@ -11,14 +11,14 @@ if ($video) { ?>
             <div class="container">  
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
-                        <h1 class="text-center mb-5"><?= htmlentities($video->title) ?? $title ?? '' ?></h1>
+                        <h1 class="text-center mb-5"><?= $video->title ?></h1>
                     </div>
                 </div>
                 <div class="row justify-content-center editVideo px-4 py-5">
                     <div>
                         <div class="col-12">
                             <h2>Fichier</h2>
-                            <p><?= htmlentities($video->file) ?? $file ?? '' ?></p>
+                            <p></p>
                         </div>
                     </div>
                 </div>

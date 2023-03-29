@@ -30,7 +30,7 @@
                                         <td>
                                             <a href="/controllers/dashboard/edit/trainingsCtrl.php?id_trainings=<?= $training->id_trainings ?>"><i class="bi bi-eye-fill"></i></a>
                                             <a href="/controllers/dashboard/update/trainingsCtrl.php?id_trainings=<?= $training->id_trainings ?>" class="mx-3"><i class="bi bi-pencil-fill"></i></a>
-                                            <a class="delete" data-bs-toggle="modal" data-bs-target="#deleteTraining" data-idTrainings="<?= $training->id_trainings ?>">
+                                            <a class="deleteTraining" data-bs-toggle="modal" data-bs-target="#deleteTraining" data-idTrainings="<?= $training->id_trainings ?>">
                                                 <i class="bi bi-trash3-fill" data-idTrainings="<?= $training->id_trainings ?>"></i>
                                             </a>
                                         </td>

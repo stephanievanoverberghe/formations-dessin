@@ -40,17 +40,25 @@
                             <a class="nav-link" aria-current="page" href="/controllers/magazine/magazineCtrl.php">Magazine</a>
                         </li>
                     </ul>
-                    
-                    <a class="btn btn-outline border border-3 btn-lg me-lg-3" href="/controllers/dashboard/list/admin-usersCtrl.php" role="button">Admin</a>
-                    
+
+
+
                     <?php
-                    if(!isset($_SESSION['user'])) {
+                    if (isset($_SESSION['user'])) {
+                        if ($_SESSION['user']->admin == 1) {
                     ?>
-                        <a class="btn btn-outline border border-3 btn-lg me-lg-3" href="/controllers/sign/signInCtrl.php" role="button">Se connecter</a>
-                        <a class="btn btn-outline border border-3 btn-lg me-lg-5" href="/controllers/sign/signUpCtrl.php" role="button">S'inscrire</a>
-                    <?php } else { ?>
+                            <a class="btn btn-outline border border-3 btn-lg me-lg-3" href="/controllers/dashboard/list/admin-usersCtrl.php" role="button">Admin</a>
+                        <?php
+                        }
+                        ?>
                         <a class="btn btn-outline border border-3 btn-lg me-lg-3" href="/controllers/profilCtrl.php" role="button">Profil</a>
                         <a class="btn btn-outline border border-3 btn-lg me-lg-3" href="/controllers/sign/signOutCtrl.php" role="button">Se déconnecter</a>
+
+
+
+                    <?php } else { ?>
+                        <a class="btn btn-outline border border-3 btn-lg me-lg-3" href="/controllers/sign/signInCtrl.php" role="button">Se connecter</a>
+                        <a class="btn btn-outline border border-3 btn-lg me-lg-5" href="/controllers/sign/signUpCtrl.php" role="button">S'inscrire</a>
                     <?php } ?>
                 </div>
             </div>

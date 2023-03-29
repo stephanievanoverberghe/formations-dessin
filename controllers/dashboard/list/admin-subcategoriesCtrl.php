@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+if ($_SESSION['user']->admin != 1) {
+    header('location: 404.php');
+    die;
+}
+
 require_once(__DIR__ . '/../../../models/Subcategory.php');
 
 try {

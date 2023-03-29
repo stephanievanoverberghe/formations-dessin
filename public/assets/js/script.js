@@ -1,19 +1,7 @@
-// VALIDATE PASSWORD
 
-const checkPasswords = (event) => {
-    event.preventDefault();
-    if (password.value != passwordCheck.value) {
-        let message = 'Les mots de passe ne correspondent pas';
-        document.querySelector('.errorPasswords').innerHTML = message;
-    } else {
-        signUp.submit();
-    }
-}
-
-signUp.addEventListener('submit', checkPasswords)
 
 // MODAL TRAINING
-const deleteBtns = document.querySelectorAll('.delete');
+const deleteBtns = document.querySelectorAll('.deleteTraining');
 const deleteLink = document.getElementById('deleteLink');
 
 const createLink = (event) => {
@@ -92,6 +80,19 @@ deleteBtnsCategory.forEach(element => {
     element.addEventListener('click', createLinkCategory)
 });
 
+// VALIDATE PASSWORD
+
+const checkPasswords = (event) => {
+    event.preventDefault();
+    if (password.value != passwordCheck.value) {
+        let message = 'Les mots de passe ne correspondent pas';
+        document.querySelector('.errorPasswords').innerHTML = message;
+    } else {
+        signUp.submit();
+    }
+}
+
+signUp.addEventListener('submit', checkPasswords);
 
 
 // BANNER COOKIES
