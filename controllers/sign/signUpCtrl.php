@@ -1,7 +1,7 @@
 <?php
 
-require_once(__DIR__ . '/../config/constants.php');
-require_once(__DIR__ . '/../models/User.php');
+require_once(__DIR__ . '/../../config/constants.php');
+require_once(__DIR__ . '/../../models/User.php');
 
 try {
     $user = true;
@@ -11,11 +11,11 @@ try {
         $lastname = trim((string) filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
 
         if (empty($lastname)) {
-            $errors['lastname'] = 'Le champ est obligatoire';
+            $errors['lastname'] = 'Le champ est obligatoire !';
         } else {
             $isOk = filter_var($lastname, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEXP_NO_NUMBER . '/')));
             if (!$isOk) {
-                $errors['lastname'] = 'Le nom n\'est pas valide';
+                $errors['lastname'] = 'Le nom n\'est pas valide !';
             }
         }
     }
@@ -25,28 +25,23 @@ try {
     if (!empty($firstname)) {
         $isOk = filter_var($firstname, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEXP_NO_NUMBER . '/')));
         if (!$isOk) {
-            $errors['firstname'] = 'Le prénom n\'est pas valide';
+            $errors['firstname'] = 'Le prénom n\'est pas valide !';
         }
     }
     /* ************* EMAIL NETTOYAGE ET VERIFICATION **************************/
     $email = trim((string)filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
 
     if (empty($email)) {
-        $errors['email'] = 'Le champ est obligatoire';
+        $errors['email'] = 'Le champ est obligatoire !';
     } else {
         $isOk = filter_var($email, FILTER_VALIDATE_EMAIL);
         if (!$isOk) {
-            $errors['email'] = 'Le mail n\'est pas valide';
+            $errors['email'] = 'Le mail n\'est pas valide !';
+        }
+        if (User::isEmailExists($email)) {
+            $errors['email'] = 'Cet email existe déjà !';
         }
     }
-    /* ************* PASSWORD NETTOYAGE ET VERIFICATION **************************/
-    $password = filter_input(INPUT_POST, 'password');
-    $passwordCheck = filter_input(INPUT_POST, 'passwordCheck');
-    if($password != $passwordCheck){
-        $errors["password"] = "Les mots de passe ne correspondent pas";
-    }
-    $passwordHash = password_hash((string) $password, PASSWORD_DEFAULT);
-
     /* ************* PSEUDO NETTOYAGE ET VERIFICATION **************************/
     $pseudo = trim((string) filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_SPECIAL_CHARS));
     
@@ -71,9 +66,16 @@ try {
 
     if (!empty($country)) {
         if(!in_array($country, ARRAY_COUNTRIES)) {
-            $errors['country'] = 'Le pays entré n\'est pas valide';
+            $errors['country'] = 'Le pays entré n\'est pas valide !';
         }
     }
+    /* ************* PASSWORD NETTOYAGE ET VERIFICATION **************************/
+    $password = filter_input(INPUT_POST, 'password');
+    $passwordCheck = filter_input(INPUT_POST, 'passwordCheck');
+    if($password != $passwordCheck){
+        $errors["password"] = "Les mots de passe ne correspondent pas";
+    }
+    $passwordHash = password_hash((string) $password, PASSWORD_DEFAULT);
 
     // Si il n'y a pas d'erreurs, on enregistre le nouveau patient en BDD.
     if (empty($errors)) {
@@ -83,17 +85,27 @@ try {
         $user->setLastname($lastname);
         $user->setFirstname($firstname);
         $user->setEmail($email);
-        $user->setPassword($password);
+        $user->setPassword($passwordHash);
         $user->setPseudo($pseudo);
         $user->setBirthdate($birthdate);
         $user->setCountry($country);
 
-        $response = $user->insert();
+        if ($user->insert()) {
+            $to = $user->getEmail();
+            $subject = 'Validez votre compte';
+            $link = $_SERVER['REQUEST_SCHEME'] .'://'. $_SERVER['HTTP_HOST'] . '/controllers/sign/validatedEmailCtrl.php?email=' . $user->getEmail();
+            $message = 'Bonjour<br>Merci de valider votre compte en cliquant sur ce <a href="'. $link .'">lien</a> !';
+            mail($to, $subject, $message);
 
-        if ($response) {
-            $errors['global'] = 'Le compte a bien été ajouté';
+            die;
+
+
+            $errors['global'] = 'Votre compte a bien été créé, veuillez validez votre inscription par mail.';
+            header('location: /');
+            } else {
+                $errors['global'] = 'Erreur lors de votre inscription !';
+            }
         }
-    }
 
 
 } catch (\Throwable $th) {
@@ -102,6 +114,6 @@ try {
 }
 
 // VIEWS DISPLAY
-include_once(__DIR__ . '/../views/templates/header.php');
-include(__DIR__ . '/../views/inscription.php');
-include_once(__DIR__ . '/../views/templates/footer.php');
+include_once(__DIR__ . '/../../views/templates/header.php');
+include(__DIR__ . '/../../views/sign/signUp.php');
+include_once(__DIR__ . '/../../views/templates/footer.php');

@@ -6,7 +6,6 @@ class Video
 {
     private int $id;
     private string $title;
-    private string $file;
     private string $deleted_at;
 
     private object $pdo;
@@ -37,15 +36,6 @@ class Video
     {
         return $this->title;
     }
-    // FILE GETTER AND SETTER ************************************************************************
-    public function setFile(string $file): void
-    {
-        $this->file = $file;
-    }
-    public function getFile(): string
-    {
-        return $this->file;
-    }
     // DELETED_AT GETTER AND SETTER ************************************************************************
     public function setDeleted_at(string $deleted_at): void
     {
@@ -65,13 +55,12 @@ class Video
     public function insert(): bool
     {
         // CREATE REQUEST
-        $sql = 'INSERT INTO `videos` (`title`, `file`)
-                VALUE (:title, :file)';
+        $sql = 'INSERT INTO `videos` (`title`)
+                VALUE (:title)';
         // PREPARE REQUEST
         $sth = $this->pdo->prepare($sql);
         // AFFECT VALUE
         $sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
-        $sth->bindValue(':file', $this->getFile(), PDO::PARAM_STR);
         // EXECUTE REQUEST
         return $sth->execute();
     }
@@ -131,13 +120,11 @@ class Video
         // CREATE REQUEST
         $sql = 'UPDATE `videos` SET
                         `title` = :title,
-                        `file` = :file
                 WHERE `id_videos` = :id_videos;';
         // PREPARE REQUEST
         $sth = $this->pdo->prepare($sql);
         // AFFECT VALUE
         $sth->bindValue(':title', $this->getTitle());
-        $sth->bindValue(':file', $this->getFile());
         $sth->bindValue(':id_videos', $id_videos, PDO::PARAM_INT);
         // EXECUTE REQUEST
         if ($sth->execute()) {

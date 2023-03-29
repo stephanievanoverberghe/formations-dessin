@@ -13,7 +13,7 @@
                     <div class="col-md-10">
                         <h1 class="mb-5 text-center"><?= (isset($id_videos)) ? 'Modifier la' : 'Ajouter une' ?> video</h1>
                         <!-- START FORM -->
-                        <form class="mb-5 formVideo" role="form" id="formVideo" method="POST">
+                        <form class="mb-5 formVideo" role="form" id="formVideo" method="POST" enctype="multipart/form-data">
                             <div class="form mb-4">
                                 <!-- TITLE -->
                                 <label 

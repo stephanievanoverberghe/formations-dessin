@@ -17,7 +17,12 @@ if ($user) {
                     </div>
 
                     <div class="col-12">
-                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" role="form">
+                        <form 
+                            action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" 
+                            method="POST" 
+                            role="form"
+                            id="signUp"
+                            >
 
                             <!-- LASTNAME -->
                             <div class="row">
@@ -98,7 +103,7 @@ if ($user) {
                                         aria-describedby="emailHelp"
                                         aria-label=".form-control-lg"
                                     >
-                                    <div id="emailError" class="error"><?= $errors['email'] ?? '' ?></div>
+                                    <div id="emailHelp" class="error"><?= $errors['email'] ?? '' ?></div>
                                 </div>
 
                                 <!-- BIRTHDATE -->
@@ -155,7 +160,7 @@ if ($user) {
                                         aria-describedby="passwordHelp"
                                         required
                                     >
-                                    <div id="passwordHelp" class="error"><?= $errors['password'] ?? '' ?></div>
+                                    <div id="passwordHelp" class="errorPasswords"><?= $errors['password'] ?? '' ?></div>
                                 </div>
 
                                 <!-- CONFIRM PASSWORD -->
@@ -173,7 +178,7 @@ if ($user) {
                                         aria-describedby="passwordCheckHelp"
                                         required
                                     >
-                                    <div id="passwordCheckHelp" class="error"><?= $errors['password'] ?? '' ?></div>
+                                    <div id="passwordCheckHelp" class="errorPasswords"><?= $errors['password'] ?? '' ?></div>
                                 </div>
 
                                 <!-- CHECK FORM LEGAL NOTICE -->

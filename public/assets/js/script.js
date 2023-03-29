@@ -1,3 +1,17 @@
+// VALIDATE PASSWORD
+
+const checkPasswords = (event) => {
+    event.preventDefault();
+    if (password.value != passwordCheck.value) {
+        let message = 'Les mots de passe ne correspondent pas';
+        document.querySelector('.errorPasswords').innerHTML = message;
+    } else {
+        signUp.submit();
+    }
+}
+
+signUp.addEventListener('submit', checkPasswords)
+
 // MODAL TRAINING
 const deleteBtns = document.querySelectorAll('.delete');
 const deleteLink = document.getElementById('deleteLink');
@@ -37,7 +51,8 @@ deleteBtnsSubmodule.forEach(element => {
     element.addEventListener('click', createLinkSubmodule)
 });
 
-// MODAL VIDEOS
+// MODAL VIDEOS ********************************************************
+
 const deleteBtnsVideo = document.querySelectorAll('.deleteVideo');
 const deleteLinkVideo = document.getElementById('deleteLinkVideo');
 
@@ -50,7 +65,8 @@ deleteBtnsVideo.forEach(element => {
     element.addEventListener('click', createLinkVideo)
 });
 
-// MODAL SUBCATEGORIES
+// MODAL SUBCATEGORIES ***************************************************
+
 const deleteBtnsSubcategory = document.querySelectorAll('.delete');
 const deleteLinkSubcategory = document.getElementById('deleteLinkSubcategory');
 
@@ -63,22 +79,18 @@ deleteBtnsSubcategory.forEach(element => {
     element.addEventListener('click', createLinkSubcategory)
 });
 
-// ADD COOKIES CONNEXION
+// MODAL CATEGORIES
+const deleteBtnsCategory = document.querySelectorAll('.deleteCategory');
+const deleteLinkCategory = document.getElementById('deleteLinkCategory');
 
-// Je sélectionne mes éléments
-// let btnRememberMe = document.getElementById('rememberMe').checked;
-// const btnConnexion = document.querySelector('.btnConnexion');
+const createLinkCategory = (event) => {
+    let id_categories = event.target.dataset.idcategories;
+    deleteLinkCategory.setAttribute('href', 'deleteCategoriesCtrl.php?id_categories=' + id_categories);
+};
 
-// // Je soumets mes éléments à une action
-// btnConnexion.addEventListener('click', function() {
-//     if (btnRememberMe === true) {
-//         if (!empty($_POST['email']) && !empty($_POST['password'])) {
-//             setcookie('email', $_POST['email'], (time() + 365 * 24 * 3600), '/');
-//             setcookie('password', $_POST['password'], (time() + 365 * 24 * 3600), '/');
-//         }
-//     }
-// })
-
+deleteBtnsCategory.forEach(element => {
+    element.addEventListener('click', createLinkCategory)
+});
 
 
 

@@ -24,7 +24,14 @@
                                 <label for="title" class="form_label orange mt-5 mb-2">Titre
                                     <span class="orange"> *</span>
                                 </label>
-                                <input type="text" value="<?= $category->title ?? $title ?? '' ?>" class="form-control <?= isset($errors['title']) ? 'is-invalid' : '' ?>" id="title" name="title" required>
+                                <input 
+                                    type="text" 
+                                    value="<?= $category->title ?? $title ?? '' ?>" 
+                                    class="form-control <?= isset($errors['title']) ? 'is-invalid' : '' ?>" 
+                                    id="title" 
+                                    name="title" 
+                                    required
+                                    >
                                 <div class="error"><?= $errors['title'] ?? '' ?></div>
                                 <!-- CONTENT -->
                                 <label for="content" class="form_label orange mt-5 mb-2">Contenu

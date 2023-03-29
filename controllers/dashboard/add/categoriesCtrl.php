@@ -5,8 +5,6 @@ require_once(__DIR__ . '/../../../models/Category.php');
 
 try{
 
-    $category = true;
-
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         /* ************* TITLE NETTOYAGE ET VERIFICATION **************************/

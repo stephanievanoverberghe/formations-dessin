@@ -120,7 +120,7 @@ class Category
         // CREATE REQUEST
         $sql = 'UPDATE `categories` SET
                         `title` = :title,
-                        `content` = :content,
+                        `content` = :content
                 WHERE `id_categories` = :id_categories;';
         // PREPARE REQUEST
         $sth = $this->pdo->prepare($sql);

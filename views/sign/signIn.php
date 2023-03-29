@@ -7,7 +7,7 @@
                     <h1>
                         Connecte-toi à ton compte
                     </h1>
-                    <h2 class="mb-4">ou <a href="/controllers/inscriptionCtrl.php">crée un compte</a></h2>
+                    <h2 class="mb-4">ou <a href="/controllers/sign/signUpCtrl.php">crée un compte</a></h2>
                 </div>
                 <div class="col-lg-10 col-md-12 col-12">
                     <form action="" method="POST" role="form">
@@ -47,7 +47,7 @@
                                 aria-label=".form-control-lg"
                                 aria-describedby="passwordHelp"
                             >
-                            <div id="passwordHelp" class="error"><?= $errors['password'] ?? '' ?></div>
+                            <div id="passwordHelp" class="error"><?= $errors['password'] ?? '' ?><?= $errors['validated_at'] ?? '' ?></div>
                         </div>
 
                         <div class="mb-5">
@@ -61,6 +61,7 @@
                                 >
                                 <label class="form-check-label ms-3" for="rememberMe">Se souvenir de moi</label>
                             </div>
+                            <div class="error"></div>
                         </div>
 
                         <!-- CREATE ACCOUNT -->

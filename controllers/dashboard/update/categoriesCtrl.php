@@ -7,9 +7,9 @@ require_once(__DIR__ . '/../../../models/Category.php');
 try{
     
     $id_categories = intval(filter_input(INPUT_GET, 'id_categories', FILTER_SANITIZE_NUMBER_INT));
-    $category = Category::getData($id_categories);
+    $categories = Category::getData($id_categories);
     
-    if ($category === false) {
+    if ($categories === false) {
         $errors['global'] = ERRORS[6];
     } else {
         
@@ -48,8 +48,8 @@ try{
     $category = Category::getData($id_categories);
     
 } catch (\Throwable $th) {
-    // var_dump($th);
-    // die;
+var_dump($th);
+die;
     // header('Location: /controllers/errorCtrl.php');
     // die;
 }

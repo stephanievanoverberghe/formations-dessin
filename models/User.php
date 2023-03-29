@@ -14,6 +14,7 @@ class User
     private string $country;
     private string $created_at;
     private string $updated_at;
+    private string $validated_at;
     private string $deleted_at;
     private string $admin;
 
@@ -116,6 +117,15 @@ class User
     public function getUpdated_at(): string
     {
         return $this->updated_at;
+    }
+    // VALIDATED_AT GETTER AND SETTER ************************************************************************
+    public function setValidated_at(string $validated_at): void
+    {
+        $this->validated_at = $validated_at;
+    }
+    public function getValidated_at(): string
+    {
+        return $this->validated_at;
     }
     // DELETE_AT GETTER AND SETTER ************************************************************************
     public function setDeleted_at(string $deleted_at): void
@@ -250,4 +260,35 @@ class User
         }
     }
 
+    public static function getByEmail(string $email) {
+
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `users`
+            WHERE `email` = :email';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':email', $email);
+        // EXECUTE REQUEST
+        if($sth->execute()) {
+            return $sth->fetch();
+        }
+    }
+
+    public static function validateEmail(string $email) {
+        // CREATE REQUEST
+        $sql = 'UPDATE `users` SET
+                        `validated_at` = NOW()
+                WHERE `email` = :email';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':email', $email);
+        // EXECUTE REQUEST
+        if($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
+        }
+    }
 }

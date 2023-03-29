@@ -30,8 +30,8 @@
                                         <td>
                                             <a href="/controllers/dashboard/edit/categoriesCtrl.php?id_categories=<?= $category->id_categories ?>"><i class="bi bi-eye-fill"></i></a>
                                             <a href="/controllers/dashboard/update/categoriesCtrl.php?id_categories=<?= $category->id_categories ?>" class="mx-3"><i class="bi bi-pencil-fill"></i></a>
-                                            <a class="deleteCategory" data-bs-toggle="modal" data-bs-target="#deleteCategory" data-idCategories="">
-                                                <i class="bi bi-trash3-fill" data-idCategories=""></i>
+                                            <a class="deleteCategory" data-bs-toggle="modal" data-bs-target="#deleteCategory" data-idCategories="<?= $category->id_categories ?>">
+                                                <i class="bi bi-trash3-fill" data-idCategories="<?= $category->id_categories ?>"></i>
                                             </a>
                                         </td>
                                     </tr>

@@ -15,7 +15,13 @@
                             <!-- RESEARCH -->
 
                             <form action="admin-submodulesCtrl.php" class="d-flex mt-3 mb-5" method="GET" role="search">
-                                <input class="research form-control me-2" type="search" name="search" value="<?= $search ?? '' ?>" placeholder="Rechercher" aria-label="Search">
+                                <input 
+                                    class="research form-control me-2" 
+                                    type="search" 
+                                    name="search" 
+                                    value="<?= $search ?? '' ?>" 
+                                    placeholder="Rechercher" 
+                                    aria-label="Search">
                                 <button class="btn" type="submit"><i class="bi bi-search"></i></button>
                             </form>
                         </div>
