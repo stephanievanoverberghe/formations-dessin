@@ -84,14 +84,18 @@ deleteBtnsCategory.forEach(element => {
 
 const checkPasswords = (event) => {
     event.preventDefault();
+    const password = document.getElementById('password');
+    const passwordCheck = document.getElementById('passwordCheck');
+    const errorPasswords = document.querySelector('.errorPasswords');
+
     if (password.value != passwordCheck.value) {
-        let message = 'Les mots de passe ne correspondent pas';
-        document.querySelector('.errorPasswords').innerHTML = message;
+        const message = 'Les mots de passe ne correspondent pas';
+        errorPasswords.innerHTML = message;
     } else {
         signUp.submit();
     }
-}
-
+};
+const signUp = document.getElementById('signUp');
 signUp.addEventListener('submit', checkPasswords);
 
 

@@ -81,7 +81,8 @@
                                 </li>
                                 <!-- EFFECTUER UNE BOUCLE -->
                                 <?php
-                                for ($i = 1; $i <= $pageNb; $i++) { ?>
+
+                                for ($i = max($page - 1, 1); $i <= min($page + 1, $pageNb); $i++) { ?>
 
                                 <li class="page-item <?= ($page == $i) ? "active" : "" ?>" aria-current="page">
                                     <a class="page-link" href="/controllers/dashboard/list/admin-submodulesCtrl.php?page=<?= $i ?>"><?= $i ?></a>

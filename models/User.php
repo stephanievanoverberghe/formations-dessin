@@ -198,18 +198,27 @@ class User
      * 
      * @return array
      */
-    public static function getAll($search = ''): array
+    public static function getAll($search = '', int $limit = null, int $offset = 0): array
     {
         // CREATE REQUEST
         $sql = 'SELECT * 
                     FROM `users`
-                    WHERE `lastname` LIKE :search;
+                    WHERE `lastname` LIKE :search
                     OR `firstname` LIKE :search
                     ORDER BY `lastname`';
+
+        if (!is_null($limit)) {
+            $sql .= ' LIMIT :limit OFFSET :offset';
+        }
+        $sql .= ';';
         // PREPARE REQUEST
         $sth = Database::getInstance()->prepare($sql);
         // AFFECT VALLUE
         $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+        if (!is_null($limit)) {
+            $sth->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
+        }
         // EXECUTE REQUEST
         if ($sth->execute()) {
             return ($sth->fetchAll());
@@ -217,6 +226,30 @@ class User
             return [];
         }
     }
+    /**
+         * 
+         * Méthode qui permet d'afficher le nombre d'utilisateur dans la recherche
+         * 
+         * @param string $search
+         * 
+         * @return [type]
+         */
+        public static function getAllCount($search = ""): array
+        {
+            // CREATE REQUEST
+            $sql = 'SELECT * FROM `users`
+                        WHERE `lastname` LIKE :search;';
+            // PREPARE REQUEST
+            $sth = Database::getInstance()->prepare($sql);
+            // AFFECT VALUE
+            $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+            // EXECUTE REQUEST
+            if ($sth->execute()) {
+                return ($sth->fetchAll());
+            } else {
+                return [];
+            }
+        } 
     /**
      * 
      * Méthode statique permettant de lister tous les utilisateurs existants
@@ -259,6 +292,21 @@ class User
             return $sth->fetch();
         }
     }
+    public static function getDataUsers(int $id_users): bool
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `users`
+                    WHERE `id_users` = :id_users';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return $sth->fetch();
+        }
+    }
 
     public static function getByEmail(string $email) {
 
@@ -275,7 +323,14 @@ class User
             return $sth->fetch();
         }
     }
-
+    /**
+     * 
+     * Méthode permettant de valider un compte
+     * 
+     * @param string $email
+     * 
+     * @return [type]
+     */
     public static function validateEmail(string $email) {
         // CREATE REQUEST
         $sql = 'UPDATE `users` SET
@@ -290,5 +345,64 @@ class User
         if($sth->execute()) {
             return ($sth->rowCount() > 0) ? true : false;
         }
+    }
+    /**
+     * 
+     * Méthode permettant de modifier un profil
+     * 
+     * @param int $id_users
+     * 
+     * @return bool
+     */
+    public function update(int $id_users): bool
+    {
+        // CREATE REQUEST
+        $sql = 'UPDATE `users` SET
+                        `lastname` = :lastname,
+                        `firstname` = :firstname,
+                        `email` = :email,
+                        `password` = :password,
+                        `pseudo` = :pseudo,
+                        `birthdate` = :birthdate,
+                        `country` = :country
+                WHERE `id_users` = :id_users;';
+        // PREPARE REQUEST
+        $sth = $this->pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':lastname', $this->getLastname());
+        $sth->bindValue(':firstname', $this->getFirstname());
+        $sth->bindValue(':email', $this->getEmail());
+        $sth->bindValue(':password', $this->getPassword());
+        $sth->bindValue(':pseudo', $this->getPseudo());
+        $sth->bindValue(':birthdate', $this->getBirthdate());
+        $sth->bindValue(':country', $this->getCountry());
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
+        }
+    }
+    /**
+     * 
+     * Méthode permettant de supprimer son compte utilisateur
+     * 
+     * @param int $id_users
+     * 
+     * @return bool
+     */
+    public static function delete(int $id_users): bool
+    {
+        // CREATE REQUEST
+        $sql = 'DELETE FROM `users`
+                    WHERE `users`.`id_users` = :id_users;';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        $sth->execute();
+        $result = $sth->rowCount();
+        return ($result > 0) ? true : false;
     }
 }

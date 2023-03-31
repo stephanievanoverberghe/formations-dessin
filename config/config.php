@@ -9,7 +9,7 @@ define('LOGIN', 'steffievano');
 define('PASSWORD', '2D@chB3Bek]CR/h[');
 
 // INITIALIZATION PAGINATION
-define('NB_ELEMENTS_BY_PAGE', 10);
+define('NB_ELEMENTS_BY_PAGE', 5);
 
 // INITIALIZATION ERRORS
 define('ERRORS', [

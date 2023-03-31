@@ -120,12 +120,12 @@ class Submodule
         // CREATE REQUEST
         $sql = 'SELECT * 
                     FROM `submodules`
-                    WHERE `title` LIKE :search;';
+                    WHERE `title` LIKE :search
+                    ORDER BY `title` ASC';
 
-        if (!is_null($limit)) {
+                if (!is_null($limit)) {
             $sql .= ' LIMIT :limit OFFSET :offset';
         }
-
         $sql .= ';';
 
         // PREPARE REQUEST

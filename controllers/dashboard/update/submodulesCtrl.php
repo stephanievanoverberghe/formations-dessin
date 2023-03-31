@@ -2,7 +2,7 @@
 
 session_start();
 if ($_SESSION['user']->admin != 1) {
-    header('location: 404.php');
+    header('location: 404Ctrl.php');
     die;
 }
 
@@ -65,8 +65,10 @@ try{
     $submodule = Submodule::getData($id_sub_modules);
     
 } catch (\Throwable $th) {
-    header('Location: /controllers/errorCtrl.php');
+    var_dump($th);
     die;
+    // header('Location: /controllers/errorCtrl.php');
+    // die;
 }
 
 /* ************* VIEWS DISPLAYS **************************/

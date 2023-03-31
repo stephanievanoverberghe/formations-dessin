@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez notre formation en ligne au dessin pour apprendre à dessiner de chez vous. Que vous soyez débutant ou confirmé, notre programme complet vous permettra d'améliorer votre technique, de développer votre créativité et de progresser à votre rythme. Inscrivez-vous dès maintenant pour accéder à nos cours en ligne, à notre communauté de dessinateurs passionnés et à nos outils pédagogiques interactifs.">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">

@@ -49,5 +49,43 @@
                 </div>
             </div>
         </section>
+        <!-- START PAGINATION -->
+
+        <section id="pagination">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 d-flex flex-column align-items-center my-5">
+                        <nav aria-label="...">
+                            <ul class="pagination pagination-lg">
+
+                                <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>">
+                                    <a class="page-link" href="/controllers/dashboard/list/admin-usersCtrl.php?page=<?= $page - 1 ?>" aria-label="Preview">
+                                        Précédent
+                                    </a>
+                                </li>
+                                <!-- EFFECTUER UNE BOUCLE -->
+                                <?php
+
+                                for ($i = max($page - 1, 1); $i <= min($page + 1, $pageNb); $i++) { ?>
+
+                                <li class="page-item <?= ($page == $i) ? "active" : "" ?>" aria-current="page">
+                                    <a class="page-link" href="/controllers/dashboard/list/admin-usersCtrl.php?page=<?= $i ?>"><?= $i ?></a>
+                                </li>
+                                <?php } ?>
+
+                                <!-- AFFICHE ICONE PAGE SUIVANTE SAUF DERNIERE PAGE -->
+                                <?php if ($page < $pageNb) { ?>
+                                <li class="page-item <?= ($page == $pageNb) ? "disabled" : "" ?>">
+                                    <a class="page-link" href="/controllers/dashboard/list/admin-usersCtrl.php?page=<?= $page + 1 ?>" aria-label="Next">
+                                        Suivant
+                                    </a>
+                                <?php } ?>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 <?php } ?>

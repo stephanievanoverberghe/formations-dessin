@@ -114,19 +114,58 @@ class Module
      * 
      * @return array
      */
-    public static function getAll(): array
+    public static function getAll($search = '', int $limit = null, int $offset = 0): array
     {
         // CREATE REQUEST
-        $sql = 'SELECT * FROM `modules`;';
+        $sql = 'SELECT * 
+                    FROM `modules`
+                    WHERE `title` LIKE :search
+                    ORDER BY `title` ASC';
+
+
+        if (!is_null($limit)) {
+            $sql .= ' LIMIT :limit OFFSET :offset';
+        }
+        $sql .= ';';
         // PREPARE REQUEST
         $sth = Database::getInstance()->prepare($sql);
-
+        // AFFECT VALUES
+        $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+        if (!is_null($limit)) {
+            $sth->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
+        }
+        // EXECUTE REQUEST
         if ($sth->execute()) {
             return ($sth->fetchAll());
         } else {
             return [];
         }
     }
+    /**
+         * 
+         * Méthode qui permet d'afficher le nombre de modules dans la recherche
+         * 
+         * @param string $search
+         * 
+         * @return [type]
+         */
+        public static function getAllCount($search = ""): array
+        {
+            // CREATE REQUEST
+            $sql = 'SELECT * FROM `modules`
+                        WHERE `title` LIKE :search;';
+            // PREPARE REQUEST
+            $sth = Database::getInstance()->prepare($sql);
+            // AFFECT VALUE
+            $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+            // EXECUTE REQUEST
+            if ($sth->execute()) {
+                return ($sth->fetchAll());
+            } else {
+                return [];
+            }
+        } 
     /**
      * 
      * Méthode permettant de récupérer toutes les données d'un module

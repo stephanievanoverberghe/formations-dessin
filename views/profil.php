@@ -1,11 +1,24 @@
+<?php if (isset($errors['global'])) { ?>
+
+<div class="alert alert-warning" role="alert">
+    <?= nl2br($errors['global']) ?>
+</div>
+<?php } ?>
+
 <main>
 
     <!-- START BANNER -->
     <section class="my-4 text-center" id="coverPicture">
         <div class="container-fluid">
             <div class="row">
-                <div class="col text-center profil-top">
-                    <img src="/public/assets/img/profil_couverture.jpg" alt="Logo l'Alchimiste créations" class="banner">
+            
+                <div class="col profil-top">              
+                    <img src="/public/assets/img/profil_couverture.jpg" alt="Photo de couverture" class="banner">
+                    <a href="" class="iconBanner"><i class="bi bi-camera"></i></a>
+                    <div class="col text-center profilPicture">
+                        <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil">
+                        <a href="" class="icon"><i class="bi bi-camera"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -14,14 +27,14 @@
 
     <!-- START BREADCRUMB -->
     <section>
-        <div class="container">
+        <div class="container" id="breadcrumb">
             <div class="row">
                 <div class="col mb-3">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/controllers/homeCtrl.php">Accueil</a></li>
                             <li class="breadcrumb-item"><a href="/controllers/profilCtrl.php">Profil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">L'alchimiste</li>
+                            <li class="breadcrumb-item active" aria-current="page"><?= $_SESSION['user']->pseudo; ?></li>
                         </ol>
                     </nav>
                 </div>
@@ -31,11 +44,11 @@
     <!-- END BREADCRUMB -->
 
     <!-- START PROFIL TITLE -->
-    <section class="text-center mb-3">
+    <section class="text-center mb-3 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="mb-3">Utilisateur</h1>
+                    <h1 class="mb-3"><?= $_SESSION['user']->pseudo; ?></h1>
                 </div>
             </div>
         </div>
@@ -113,14 +126,13 @@
                                 <div class="row">
                                     <div class="col-12 mb-5">
                                         <h2 class="mb-4">A propos de moi</h2>
-                                        <p class="">Vanoverberghe Stéphanie</p>
-                                        <p class="">20/08/1983</p>
-                                        <p class="">France</p>
+                                        <p class=""><?= $_SESSION['user']->firstname; ?> <?= $_SESSION['user']->lastname; ?></p>
+                                        <p class=""><?= date('j F Y', strtotime($_SESSION['user']->birthdate)); ?></p>
+                                        <p class=""><?= $_SESSION['user']->country; ?></p>
                                     </div>
                                     <div class="col-12">
                                         <h2 class="mb-4">Information sur le compte</h2>
-                                        <p>Date d'inscription : 16 octobre 2022</p>
-                                        <p>Dernière connexion : Il y a environ 1 heure</p>
+                                        <p>Date d'inscription : <?= date('j F Y', strtotime($_SESSION['user']->validated_at)); ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -131,7 +143,7 @@
 
                             <!-- START FORM PROFIL -->
                             <div class="profilParameter my-5 px-4 py-5">
-                                <form method="post" role="form" id="formUser" class="formUser">
+                                <form method="post" role="form" id="formUser" class="formUser" name="FormUpdateInfos">
                                     <div class="container">
                                         <div class="row">
                                             <!-- PSEUDO -->
@@ -140,11 +152,10 @@
                                                 <input 
                                                     type="text" 
                                                     name="pseudo" 
-                                                    class="form-control <?= isset($errors['pseudo']) ? 'is-invalid' : '' ?>" 
+                                                    class="form-control form-control-lg <?= isset($errors['pseudo']) ? 'is-invalid' : '' ?>" 
                                                     id="pseudo" 
                                                     placeholder="Ex: Norel-art" 
-                                                    autocomplete="username" 
-                                                    value="<?= $user->pseudo ?? $pseudo ?? '' ?>" 
+                                                    value="<?= $_SESSION['user']->pseudo; ?>" 
                                                     minlenght="2" 
                                                     maxlength="70"
                                                     >
@@ -163,11 +174,10 @@
                                                 <input 
                                                     type="text" 
                                                     name="firstname" 
-                                                    class="form-control <?= isset($errors['firstname']) ? 'is-invalid' : '' ?>" 
+                                                    class="form-control form-control-lg <?= isset($errors['firstname']) ? 'is-invalid' : '' ?>" 
                                                     id="firstname" 
                                                     placeholder="Ex: Jean" 
-                                                    autocomplete="given-name" 
-                                                    value="<?= $user->firstname ?? $firstname ?? '' ?>" 
+                                                    value="<?= $_SESSION['user']->firstname; ?>" 
                                                     minlength="2" 
                                                     maxlength="70" 
                                                     pattern="<?= REGEXP_NO_NUMBER ?>"
@@ -182,11 +192,10 @@
                                                 <input 
                                                     type="text" 
                                                     name="lastname" 
-                                                    class="form-control <?= isset($errors['lastname']) ? 'is-invalid' : '' ?>" 
+                                                    class="form-control form-control-lg <?= isset($errors['lastname']) ? 'is-invalid' : '' ?>" 
                                                     id="lastname" 
                                                     placeholder="Ex: Dupond" 
-                                                    autocomplete="family-name" 
-                                                    value="<?= $user->lastname ?? $lastname ?? '' ?>" 
+                                                    value="<?= $_SESSION['user']->lastname; ?>" 
                                                     minlength="2" 
                                                     maxlength="70" 
                                                     pattern="<?= REGEXP_NO_NUMBER ?>"
@@ -197,10 +206,14 @@
                                             <!-- COUNTRY -->
                                             <div class="col-lg-6 mt-3">
                                                 <label for="country" class="form-label">Pays</label>
-                                                <select name="country" id="country" autocomplete="country" class="form-control <?= isset($errors['country']) ? 'is-invalid' : '' ?>"" 
-                                                    aria-describedby=" countryHelp">
+                                                <select 
+                                                    name="country" 
+                                                    id="country" 
+                                                    class="form-control form-control-lg <?= isset($errors['country']) ? 'is-invalid' : '' ?>"" 
+                                                    aria-describedby=" countryHelp"
+                                                    >
                                                     <?php foreach (ARRAY_COUNTRIES as $countryInSelect) {
-                                                        $isSelected = ($countryInSelect == $country) ? 'selected' : '';
+                                                        $isSelected = ($_SESSION['user']->country == $countryInSelect) ? 'selected' : '';
                                                         echo "<option $isSelected>$countryInSelect</option>";
                                                     } ?>
                                                 </select>
@@ -214,10 +227,9 @@
                                                     type="date" 
                                                     name="birthdate" 
                                                     id="birthdate" 
-                                                    value="<?= $user->birthdate ?? $birthdate ?? '' ?>" 
+                                                    value="<?= $_SESSION['user']->birthdate; ?>" 
                                                     title="La date de naissance n'est pas au format attendu" 
-                                                    placeholder="Ex: 13-01-1998" class="form-control <?= isset($errors['birthdate']) ? 'is-invalid' : '' ?>" 
-                                                    autocomplete="bday" 
+                                                    placeholder="Ex: 13-01-1998" class="form-control form-control-lg <?= isset($errors['birthdate']) ? 'is-invalid' : '' ?>" 
                                                     aria-describedby="birthdateHelp" 
                                                     min="<?= (date('Y') - 120) . date('-m-d') ?>" 
                                                     max="<?= date('Y-m-d') ?>"
@@ -228,7 +240,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="btnParameter col-12 text-center mt-5 d-flex flex-column align-items-center">
-                                                <input type="submit" value="Modifier" class="" id="validForm">
+                                                <input type="submit" value="Modifier" name="updateInfos" id="validForm">
                                             </div>
                                         </div>
                                     </div>
@@ -238,7 +250,7 @@
 
                             <!-- START FORM PARAMETER -->
                             <div class="formParameter my-5 px-4 py-5">
-                                <form action="" method="post" role="form" id="formUser" class="formUser">
+                                <form action="" method="post" role="form" id="formUser" class="formUser" name="FormUpdateEmail">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12">
@@ -256,7 +268,7 @@
                                                     autocomplete="email" 
                                                     placeholder="sarahdupond@gmail.com" 
                                                     value="<?= $user->email ?? $email ?? '' ?>" 
-                                                    class="form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>" 
+                                                    class="form-control form-control-lg <?= isset($errors['email']) ? 'is-invalid' : '' ?>" 
                                                     required
                                                     >
                                                 <small id="emailError" class="form-text error"><?= $errors['email'] ?? '' ?>
@@ -272,7 +284,7 @@
                                                     name="confirmEmail" 
                                                     id="confirmEmail" 
                                                     placeholder="Ex: john.doe@exemple.com" 
-                                                    class="form-control <?= isset($errors['confirmEmail']) ? 'is-invalid' : '' ?>" 
+                                                    class="form-control form-control-lg <?= isset($errors['confirmEmail']) ? 'is-invalid' : '' ?>" 
                                                     required
                                                     >
                                                 <small id="emailError" class="form-text error"><?= $errors['confirmEmail'] ?? '' ?>
@@ -280,13 +292,13 @@
                                             </div>
                                             <div class="row">
                                                 <div class="btnParameter col-12 text-center mt-5 mb-5 d-flex flex-column align-items-center">
-                                                    <input type="submit" value="Modifier" class="" id="validForm">
+                                                    <input type="submit" value="Modifier" name="FormUpdateEmail" id="validForm">
                                                 </div>
-                                            </div>
+                                            </div>u
                                         </div>
                                     </div>
                                 </form>
-                                <form action="" method="post" role="form" id="formUser" class="formUser">
+                                <form action="" method="post" role="form" id="formUser" class="formUser" name="FormUpdatePassword">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12">
@@ -303,7 +315,7 @@
                                                     name="password" 
                                                     id="password" 
                                                     value="" 
-                                                    class="form-control <?= isset($errors['password']) ? 'is-invalid' : '' ?>" 
+                                                    class="form-control form-control-lg <?= isset($errors['password']) ? 'is-invalid' : '' ?>" 
                                                     placeholder="Votre mot de passe*"
                                                     >
                                                 <small id="passwordHelp" class="form-text error"><?= $errors['password'] ?? '' ?>
@@ -319,7 +331,7 @@
                                                     type="password" 
                                                     name="newPassword" 
                                                     value="<?= htmlentities($newPassword ?? '') ?>" 
-                                                    class="form-control <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" 
+                                                    class="form-control form-control-lg <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" 
                                                     id="newPassword" 
                                                     placeholder="Nouveau mot de passe" 
                                                     required
@@ -337,14 +349,14 @@
                                                     name="passwordCheck" 
                                                     id="passwordCheck" 
                                                     value="<?= htmlentities($newPassword ?? '') ?>" 
-                                                    class="form-control <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" 
+                                                    class="form-control form-control-lg <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" 
                                                     placeholder="Vérification du mot de passe" 
                                                     required>
                                                 <small id="passwordCheckHelp" class="form-text error"><?= $errors['newPassword'] ?? '' ?>
                                                 </small>
                                             </div>
                                             <div class="btnParameter col-12 text-center my-5 d-flex flex-column align-items-center">
-                                                <input type="submit" value="Modifier" class="" id="validForm">
+                                                <input type="submit" value="Modifier" name="updatePassword" id="validForm">
                                             </div>
                                         </div>
                                     </div>

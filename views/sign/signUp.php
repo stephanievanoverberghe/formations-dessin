@@ -31,7 +31,7 @@ if ($user) {
                                     <input 
                                         type="text" 
                                         name="lastname" 
-                                        class="form-control form-control-lg <?= isset($errors['lastname']) ? 'is-invalid' : '' ?>" 
+                                        class="form-control form-control-lg <?= isset($errors['lastname']) ?>" 
                                         id="lastname" 
                                         placeholder="Ex: Duhamel" 
                                         autocomplete="family-name" 
@@ -53,7 +53,7 @@ if ($user) {
                                     <input 
                                         type="text" 
                                         name="firstname" 
-                                        class="form-control form-control-lg <?= isset($errors['firstname']) ? 'is-invalid' : '' ?>" 
+                                        class="form-control form-control-lg <?= isset($errors['firstname']) ?>" 
                                         id="firstname" 
                                         placeholder="Ex: Vincent" 
                                         autocomplete="given-name" 
@@ -74,7 +74,7 @@ if ($user) {
                                     <input 
                                         type="text" 
                                         name="pseudo" 
-                                        class="form-control form-control-lg <?= isset($errors['pseudo']) ? 'is-invalid' : '' ?>" 
+                                        class="form-control form-control-lg <?= isset($errors['pseudo']) ?>" 
                                         id="pseudo" 
                                         placeholder="Ex: Norel-art" 
                                         value="<?= $user->pseudo ?? $pseudo ?? '' ?>" 
@@ -97,7 +97,7 @@ if ($user) {
                                         id="email" 
                                         placeholder="Ex: vincent.duhamel@gmail.com" 
                                         value="<?= $user->email ?? $email ?? '' ?>" 
-                                        class="form-control form-control-lg <?= isset($errors['email']) ? 'is-invalid' : '' ?>" 
+                                        class="form-control form-control-lg <?= isset($errors['email']) ?>" 
                                         required 
                                         autocomplete="email"
                                         aria-describedby="emailHelp"
@@ -115,7 +115,7 @@ if ($user) {
                                         name="birthdate" 
                                         id="birthdate" 
                                         value="<?= $user->birthdate ?? $birthdate ?? '' ?>"
-                                        class="form-control form-control-lg <?= isset($errors['birthdate']) ? 'is-invalid' : '' ?>" 
+                                        class="form-control form-control-lg <?= isset($errors['birthdate']) ?>" 
                                         autocomplete="bday" 
                                         aria-describedby="birthdateHelp" 
                                         min="<?= (date('Y') - 100) . date('-m-d') ?>" 
@@ -133,7 +133,7 @@ if ($user) {
                                         name="country" 
                                         id="country" 
                                         autocomplete="country" 
-                                        class="form-control form-select-lg <?= isset($errors['country']) ? 'is-invalid' : '' ?>" 
+                                        class="form-control form-select-lg <?= isset($errors['country']) ?>" 
                                         aria-describedby="countryHelp"
                                         aria-label=".form-select-lg"
                                     >
@@ -153,7 +153,7 @@ if ($user) {
                                         type="password" 
                                         name="password" 
                                         value="<?= $password ?? '' ?>" 
-                                        class="form-control form-control-lg <?= isset($errors['password']) ? 'is-invalid' : '' ?>" 
+                                        class="form-control form-control-lg <?= isset($errors['password']) ?>" 
                                         id="password" 
                                         placeholder="Saisissez votre mot de passe" 
                                         aria-label=".form-control-lg"
@@ -172,7 +172,7 @@ if ($user) {
                                         name="passwordCheck" 
                                         id="passwordCheck" 
                                         value="<?= $password ?? '' ?>" 
-                                        class="form-control form-control-lg <?= isset($errors['password']) ? 'is-invalid' : ''  ?>" 
+                                        class="form-control form-control-lg <?= isset($errors['password'])  ?>" 
                                         placeholder="Vérification du mot de passe"  
                                         aria-label=".form-control-lg"
                                         aria-describedby="passwordCheckHelp"
@@ -209,7 +209,7 @@ if ($user) {
                                 <!-- CREATE ACCOUNT -->
 
                                 <div class="col-12 mt-5 mb-5 text-center">
-                                    <button type="submit" class="btn">Créer un compte</button>
+                                    <button type="submit" class="btn" id="signUp">Créer un compte</button>
                                 </div>
                             </div>
                             <div class="col-12 border-bottom my-5"></div>

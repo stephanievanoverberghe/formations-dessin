@@ -26,12 +26,12 @@
                                 foreach ($modules as $module) {
                                 ?>
                                     <tr>
-                                        <td><?= htmlentities($module->title) ?></td>
+                                        <td><?= $module->title ?></td>
                                         <td>
-                                            <a href="/controllers/dashboard/edit/modulesCtrl.php?id_modules=<?= htmlentities($module->id_modules) ?>"><i class="bi bi-eye-fill"></i></a>
-                                            <a href="/controllers/dashboard/update/modulesCtrl.php?id_modules=<?= htmlentities($module->id_modules) ?>" class="mx-3"><i class="bi bi-pencil-fill"></i></a>
-                                            <a class="delete" data-bs-toggle="modal" data-bs-target="#deleteModules" data-idModules="<?= htmlentities($module->id_modules) ?>">
-                                                <i class="bi bi-trash3-fill" data-idModules="<?= htmlentities($module->id_modules) ?>"></i>
+                                            <a href="/controllers/dashboard/edit/modulesCtrl.php?id_modules=<?= $module->id_modules ?>"><i class="bi bi-eye-fill"></i></a>
+                                            <a href="/controllers/dashboard/update/modulesCtrl.php?id_modules=<?= $module->id_modules ?>" class="mx-3"><i class="bi bi-pencil-fill"></i></a>
+                                            <a class="delete" data-bs-toggle="modal" data-bs-target="#deleteModules" data-idModules="<?= $module->id_modules ?>">
+                                                <i class="bi bi-trash3-fill" data-idModules="<?= $module->id_modules ?>"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -42,6 +42,45 @@
                     </div>
                 </div>
             </div>
+        </section>
+        <!-- START PAGINATION -->
+
+        <section id="pagination">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 d-flex flex-column align-items-center my-5">
+                        <nav aria-label="...">
+                            <ul class="pagination pagination-lg">
+
+                                <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>">
+                                    <a class="page-link" href="/controllers/dashboard/list/admin-modulesCtrl.php?page=<?= $page - 1 ?>" aria-label="Preview">
+                                        Précédent
+                                    </a>
+                                </li>
+                                <!-- EFFECTUER UNE BOUCLE -->
+                                <?php
+
+                                for ($i = max($page - 1, 1); $i <= min($page + 1, $pageNb); $i++) { ?>
+
+                                <li class="page-item <?= ($page == $i) ? "active" : "" ?>" aria-current="page">
+                                    <a class="page-link" href="/controllers/dashboard/list/admin-modulesCtrl.php?page=<?= $i ?>"><?= $i ?></a>
+                                </li>
+                                <?php } ?>
+
+                                <!-- AFFICHE ICONE PAGE SUIVANTE SAUF DERNIERE PAGE -->
+                                <?php if ($page < $pageNb) { ?>
+                                <li class="page-item <?= ($page == $pageNb) ? "disabled" : "" ?>">
+                                    <a class="page-link" href="/controllers/dashboard/list/admin-modulesCtrl.php?page=<?= $page + 1 ?>" aria-label="Next">
+                                        Suivant
+                                    </a>
+                                <?php } ?>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
             <!-- Modal -->
             <div class="modal fade" id="deleteModules" tabindex="-1" aria-labelledby="deleteModuleLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -60,6 +99,5 @@
                     </div>
                 </div>
             </div>
-        </section>
     </main>
 <?php } ?>
