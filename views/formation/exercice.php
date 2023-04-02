@@ -1,7 +1,7 @@
 <main>
 
     <!-- START BANNER -->
-    <section class="my-4 text-center" id="banner">
+    <section class="mb-4 text-center" id="banner">
         <div class="container-fluid">
             <div class="row">
                 <div class="col text-center">

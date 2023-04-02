@@ -1,8 +1,8 @@
 <?php if (isset($errors['global'])) { ?>
 
-<div class="alert alert-warning" role="alert">
-    <?= nl2br($errors['global']) ?>
-</div>
+    <div class="alert alert-warning" role="alert">
+        <?= nl2br($errors['global']) ?>
+    </div>
 <?php } ?>
 
 <main>
@@ -11,8 +11,8 @@
     <section class="my-4 text-center" id="coverPicture">
         <div class="container-fluid">
             <div class="row">
-            
-                <div class="col profil-top">              
+
+                <div class="col profil-top">
                     <img src="/public/assets/img/profil_couverture.jpg" alt="Photo de couverture" class="banner">
                     <a href="" class="iconBanner"><i class="bi bi-camera"></i></a>
                     <div class="col text-center profilPicture">
@@ -34,7 +34,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/controllers/homeCtrl.php">Accueil</a></li>
                             <li class="breadcrumb-item"><a href="/controllers/profilCtrl.php">Profil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><?= $_SESSION['user']->pseudo; ?></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?= $user->pseudo  ?></li>
                         </ol>
                     </nav>
                 </div>
@@ -48,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="mb-3"><?= $_SESSION['user']->pseudo; ?></h1>
+                    <h1 class="mb-3"><?= $user->pseudo  ?></h1>
                 </div>
             </div>
         </div>
@@ -64,55 +64,19 @@
                     <!-- START NAV TABS -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item mb-3" role="presentation">
-                            <button 
-                                class="nav-link active" 
-                                id="profil-tab" 
-                                data-bs-toggle="tab" 
-                                data-bs-target="#profil-tab-pane" 
-                                type="button" 
-                                role="tab" 
-                                aria-controls="profil-tab-pane" 
-                                aria-selected="true"
-                                >Profil
+                            <button class="nav-link active" id="profil-tab" data-bs-toggle="tab" data-bs-target="#profil-tab-pane" type="button" role="tab" aria-controls="profil-tab-pane" aria-selected="true">Profil
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button 
-                                class="nav-link" 
-                                id="parameter-tab" 
-                                data-bs-toggle="tab" 
-                                data-bs-target="#parameter-tab-pane" 
-                                type="button" 
-                                role="tab" 
-                                aria-controls="parameter-tab-pane" 
-                                aria-selected="false"
-                                >Paramètres
+                            <button class="nav-link" id="parameter-tab" data-bs-toggle="tab" data-bs-target="#parameter-tab-pane" type="button" role="tab" aria-controls="parameter-tab-pane" aria-selected="false">Paramètres
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button 
-                                class="nav-link" 
-                                id="gallery-tab" 
-                                data-bs-toggle="tab" 
-                                data-bs-target="#gallery-tab-pane" 
-                                type="button" 
-                                role="tab" 
-                                aria-controls="gallery-tab-pane" 
-                                aria-selected="false"
-                                >Galerie
+                            <button class="nav-link" id="gallery-tab" data-bs-toggle="tab" data-bs-target="#gallery-tab-pane" type="button" role="tab" aria-controls="gallery-tab-pane" aria-selected="false">Galerie
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button 
-                                class="nav-link" 
-                                id="messages-tab" 
-                                data-bs-toggle="tab" 
-                                data-bs-target="#messages-tab-pane" 
-                                type="button" 
-                                role="tab" 
-                                aria-controls="massages-tab-pane" 
-                                aria-selected="false"
-                                >Messages
+                            <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages-tab-pane" type="button" role="tab" aria-controls="massages-tab-pane" aria-selected="false">Messages
                             </button>
                         </li>
                     </ul>
@@ -126,13 +90,14 @@
                                 <div class="row">
                                     <div class="col-12 mb-5">
                                         <h2 class="mb-4">A propos de moi</h2>
-                                        <p class=""><?= $_SESSION['user']->firstname; ?> <?= $_SESSION['user']->lastname; ?></p>
-                                        <p class=""><?= date('j F Y', strtotime($_SESSION['user']->birthdate)); ?></p>
-                                        <p class=""><?= $_SESSION['user']->country; ?></p>
+                                        <p class=""><?= $user->firstname ?? $firstname ?? '' ?> <?= $user->lastname ?? $lastname ?? '' ?></p>
+                                        <p class=""><?= date('d.m.Y', strtotime($user->birthdate)) ?></p>
+                                        <p class=""><?= $user->country ?></p>
                                     </div>
                                     <div class="col-12">
                                         <h2 class="mb-4">Information sur le compte</h2>
-                                        <p>Date d'inscription : <?= date('j F Y', strtotime($_SESSION['user']->validated_at)); ?></p>
+                                        <p>Email : <?= $user->email ?? $email ?? '' ?></p>
+                                        <p>Date d'inscription : <?= date('d.m.Y', strtotime($user->validated_at)) ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -143,22 +108,13 @@
 
                             <!-- START FORM PROFIL -->
                             <div class="profilParameter my-5 px-4 py-5">
-                                <form method="post" role="form" id="formUser" class="formUser" name="FormUpdateInfos">
+                                <form method="POST" role="form" id="formUser" class="formUser" name="formUpdateInfo">
                                     <div class="container">
                                         <div class="row">
                                             <!-- PSEUDO -->
                                             <div class="col-lg-6">
                                                 <h2 class="mb-3">Pseudo</h2>
-                                                <input 
-                                                    type="text" 
-                                                    name="pseudo" 
-                                                    class="form-control form-control-lg <?= isset($errors['pseudo']) ? 'is-invalid' : '' ?>" 
-                                                    id="pseudo" 
-                                                    placeholder="Ex: Norel-art" 
-                                                    value="<?= $_SESSION['user']->pseudo; ?>" 
-                                                    minlenght="2" 
-                                                    maxlength="70"
-                                                    >
+                                                <input type="text" name="pseudo" class="form-control form-control-lg <?= isset($errors['pseudo']) ? 'is-invalid' : '' ?>" id="pseudo" placeholder="Ex: Norel-art" value="<?= $user->pseudo ?>" minlenght="2" maxlength="70">
                                                 <small id=pseudoHelp class="form-text error"><?= $errors['pseudo'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -171,17 +127,7 @@
                                             <div class="col-lg-6 mt-3">
                                                 <label for="firstname" class="form-label">Prénom
                                                 </label>
-                                                <input 
-                                                    type="text" 
-                                                    name="firstname" 
-                                                    class="form-control form-control-lg <?= isset($errors['firstname']) ? 'is-invalid' : '' ?>" 
-                                                    id="firstname" 
-                                                    placeholder="Ex: Jean" 
-                                                    value="<?= $_SESSION['user']->firstname; ?>" 
-                                                    minlength="2" 
-                                                    maxlength="70" 
-                                                    pattern="<?= REGEXP_NO_NUMBER ?>"
-                                                    >
+                                                <input type="text" name="firstname" class="form-control form-control-lg <?= isset($errors['firstname']) ? 'is-invalid' : '' ?>" id="firstname" placeholder="Ex: Jean" value="<?= $user->firstname ?? $firstname ?? '' ?>" minlength="2" maxlength="70" pattern="<?= REGEXP_NO_NUMBER ?>">
                                                 <small id="firstnameHelp" class="form-text error"><?= $errors['firstname'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -189,31 +135,17 @@
                                             <div class="col-lg-6 mt-3">
                                                 <label for="lastname" class="form-label">Nom
                                                 </label>
-                                                <input 
-                                                    type="text" 
-                                                    name="lastname" 
-                                                    class="form-control form-control-lg <?= isset($errors['lastname']) ? 'is-invalid' : '' ?>" 
-                                                    id="lastname" 
-                                                    placeholder="Ex: Dupond" 
-                                                    value="<?= $_SESSION['user']->lastname; ?>" 
-                                                    minlength="2" 
-                                                    maxlength="70" 
-                                                    pattern="<?= REGEXP_NO_NUMBER ?>"
-                                                    >
+                                                <input type="text" name="lastname" class="form-control form-control-lg <?= isset($errors['lastname']) ? 'is-invalid' : '' ?>" id="lastname" placeholder="Ex: Dupond" value="<?= $user->lastname ?? $lastname ?? '' ?>" minlength="2" maxlength="70" pattern="<?= REGEXP_NO_NUMBER ?>">
                                                 <small id="lastnameHelp" class="form-text error"><?= $errors['lastname'] ?? '' ?>
                                                 </small>
                                             </div>
                                             <!-- COUNTRY -->
                                             <div class="col-lg-6 mt-3">
                                                 <label for="country" class="form-label">Pays</label>
-                                                <select 
-                                                    name="country" 
-                                                    id="country" 
-                                                    class="form-control form-control-lg <?= isset($errors['country']) ? 'is-invalid' : '' ?>"" 
-                                                    aria-describedby=" countryHelp"
-                                                    >
+                                                <select name="country" id="country" class="form-control form-control-lg <?= isset($errors['country']) ? 'is-invalid' : '' ?>"" 
+                                                    aria-describedby=" countryHelp">
                                                     <?php foreach (ARRAY_COUNTRIES as $countryInSelect) {
-                                                        $isSelected = ($_SESSION['user']->country == $countryInSelect) ? 'selected' : '';
+                                                        $isSelected = ($user->country == $countryInSelect) ? 'selected' : '';
                                                         echo "<option $isSelected>$countryInSelect</option>";
                                                     } ?>
                                                 </select>
@@ -223,17 +155,7 @@
                                             <!-- BIRTHDATE -->
                                             <div class="col-lg-6 mt-3">
                                                 <label for="birthdate" class="form-label">Date de naissance</label>
-                                                <input 
-                                                    type="date" 
-                                                    name="birthdate" 
-                                                    id="birthdate" 
-                                                    value="<?= $_SESSION['user']->birthdate; ?>" 
-                                                    title="La date de naissance n'est pas au format attendu" 
-                                                    placeholder="Ex: 13-01-1998" class="form-control form-control-lg <?= isset($errors['birthdate']) ? 'is-invalid' : '' ?>" 
-                                                    aria-describedby="birthdateHelp" 
-                                                    min="<?= (date('Y') - 120) . date('-m-d') ?>" 
-                                                    max="<?= date('Y-m-d') ?>"
-                                                    >
+                                                <input type="date" name="birthdate" id="birthdate" value="<?= $user->birthdate ?>" title="La date de naissance n'est pas au format attendu" placeholder="Ex: 13-01-1998" class="form-control form-control-lg <?= isset($errors['birthdate']) ? 'is-invalid' : '' ?>" aria-describedby="birthdateHelp" min="<?= (date('Y') - 120) . date('-m-d') ?>" max="<?= date('Y-m-d') ?>">
                                                 <small id="birthdateHelp" class="form-text error"><?= $errors['birthdate'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -250,7 +172,7 @@
 
                             <!-- START FORM PARAMETER -->
                             <div class="formParameter my-5 px-4 py-5">
-                                <form action="" method="post" role="form" id="formUser" class="formUser" name="FormUpdateEmail">
+                                <form action="" method="POST" role="form" id="formUser" class="formUser" name="formUpdateEmail">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12">
@@ -261,44 +183,19 @@
                                                 <label for="email" class="form-label">Adresse actuelle
                                                     <span class="orange"> *</span>
                                                 </label>
-                                                <input 
-                                                    type="email" 
-                                                    name="email" 
-                                                    id="email" 
-                                                    autocomplete="email" 
-                                                    placeholder="sarahdupond@gmail.com" 
-                                                    value="<?= $user->email ?? $email ?? '' ?>" 
-                                                    class="form-control form-control-lg <?= isset($errors['email']) ? 'is-invalid' : '' ?>" 
-                                                    required
-                                                    >
+                                                <input type="mail" name="email" id="email" autocomplete="email" placeholder="sarahdupond@gmail.com" value="<?= $user->email ?>" class="form-control form-control-lg <?= isset($errors['email']) ? 'is-invalid' : '' ?>" required>
                                                 <small id="emailError" class="form-text error"><?= $errors['email'] ?? '' ?>
-                                                </small>
-                                            </div>
-                                            <!-- CONFIRM EMAIL -->
-                                            <div class="col-lg-6">
-                                                <label for="email" class="form-label">Nouvel email
-                                                    <span class="orange"> *</span>
-                                                </label>
-                                                <input 
-                                                    type="email" 
-                                                    name="confirmEmail" 
-                                                    id="confirmEmail" 
-                                                    placeholder="Ex: john.doe@exemple.com" 
-                                                    class="form-control form-control-lg <?= isset($errors['confirmEmail']) ? 'is-invalid' : '' ?>" 
-                                                    required
-                                                    >
-                                                <small id="emailError" class="form-text error"><?= $errors['confirmEmail'] ?? '' ?>
                                                 </small>
                                             </div>
                                             <div class="row">
                                                 <div class="btnParameter col-12 text-center mt-5 mb-5 d-flex flex-column align-items-center">
                                                     <input type="submit" value="Modifier" name="FormUpdateEmail" id="validForm">
                                                 </div>
-                                            </div>u
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
-                                <form action="" method="post" role="form" id="formUser" class="formUser" name="FormUpdatePassword">
+                                <form action="" method="post" role="form" id="formUser" class="formUser" name="formUpdatePassword">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12">
@@ -309,15 +206,7 @@
                                                 <label for="password" class="form-label">Mot de passe actuel
                                                     <span class="orange"> *</span>
                                                 </label>
-                                                <input 
-                                                    required 
-                                                    type="password" 
-                                                    name="password" 
-                                                    id="password" 
-                                                    value="" 
-                                                    class="form-control form-control-lg <?= isset($errors['password']) ? 'is-invalid' : '' ?>" 
-                                                    placeholder="Votre mot de passe*"
-                                                    >
+                                                <input required type="password" name="password" id="password" value="" class="form-control form-control-lg <?= isset($errors['password']) ? 'is-invalid' : '' ?>" placeholder="Votre mot de passe*">
                                                 <small id="passwordHelp" class="form-text error"><?= $errors['password'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -327,15 +216,7 @@
                                                 <label for="password" class="form-label">Nouveau mot de passe
                                                     <span class="orange"> *</span>
                                                 </label>
-                                                <input 
-                                                    type="password" 
-                                                    name="newPassword" 
-                                                    value="<?= htmlentities($newPassword ?? '') ?>" 
-                                                    class="form-control form-control-lg <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" 
-                                                    id="newPassword" 
-                                                    placeholder="Nouveau mot de passe" 
-                                                    required
-                                                    >
+                                                <input type="password" name="newPassword" value="<?= $newPassword ?? '' ?>" class="form-control form-control-lg <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" id="newPassword" placeholder="Nouveau mot de passe" required>
                                                 <small id="newPasswordHelp" class="form-text error"><?= $errors['newPassword'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -344,14 +225,7 @@
                                                 <label for="passwordCheck" class="form-label">Confirmation du nouveau mot de passe
                                                     <span class="orange"> *</span>
                                                 </label>
-                                                <input 
-                                                    type="password" 
-                                                    name="passwordCheck" 
-                                                    id="passwordCheck" 
-                                                    value="<?= htmlentities($newPassword ?? '') ?>" 
-                                                    class="form-control form-control-lg <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" 
-                                                    placeholder="Vérification du mot de passe" 
-                                                    required>
+                                                <input type="password" name="passwordCheck" id="passwordCheck" value="<?= $newPassword ?? '' ?>" class="form-control form-control-lg <?= isset($errors['newPassword']) ? 'is-invalid' : '' ?>" placeholder="Vérification du mot de passe" required>
                                                 <small id="passwordCheckHelp" class="form-text error"><?= $errors['newPassword'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -371,20 +245,20 @@
                                             <p>En supprimant mon compte, je le supprime définitivement.</p>
                                         </div>
                                         <div class="btnParameter col-12 mt-2">
-                                            <button type="button" class="delete" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                            <a class="delete" data-bs-toggle="modal" data-bs-target="#deleteUsers" data-idUsers="<?= $user->id_users ?>">
                                                 Supprimer
-                                                <i class="bi bi-trash3-fill mx-2"></i>
-                                            </button>
+                                                <i class="bi bi-trash3-fill mx-2" data-idUsers="<?= $user->id_users ?>"></i>
+                                            </a>
                                         </div>
                                         <!-- Button trigger modal -->
 
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="deleteUsers" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="deleteModalLabel">Supprimer mon compte</h1>
+                                                        <h1 class="modal-title fs-5" id="deleteUserLabel">Supprimer mon compte</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -392,7 +266,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                                        <button type="button" class="btn btn-danger">Supprimer</button>
+                                                        <a type="button" class="btn btn-danger" id="deleteLinkUser">Supprimer</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -406,29 +280,31 @@
                         <div class="tab-pane fade" id="gallery-tab-pane" role="tabpanel" aria-labelledby="gallery-tab" tabindex="0">
                             <div class="gallery my-3 px-4 py-5">
                                 <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-12 text-end">
-                                            <a class="addPicture" data-bs-toggle="modal" data-bs-target="#addPictures"><i class="bi bi-plus-lg"></i></a>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <ul>
-                                                        <li>
-                                                            <img src="" alt="Dessin de l'utilisateur" class="pictureGallery">
-                                                        </li>
-                                                    </ul>
+                                    <div class="row justify-content-center">
+                                        <div class="col-6">
+                                            <form action="" method="POST" enctype="multipart/form-data" name="formPictureGallery">
+                                                <div class="text-center">
+                                                    <input type="file" class="form-control" id="pictureGalleryUpload" name="pictureGalleryUpload" value="" accept="image/jpeg">
+                                                    <small class="form-text error"><?= $errors['pictureGalleryUpload'] ?? '' ?>
+                                                    </small>
+                                                    <input type="submit" value="Ajouter" class="my-4">
                                                 </div>
-                                            </div>
+                                            </form>
                                         </div>
+                                    </div>
+                                    <div>
+                                        <img src="" alt="" srcset="">
+                                        <img src="" alt="" srcset="">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="messages-tab-pane" role="tabpanel" aria-labelledby="messages-tab" tabindex="0">
-                            <div class="messages my-5 px-4 py-5">
+                    </div>
 
-                            </div>
+
+                    <div class="tab-pane fade" id="messages-tab-pane" role="tabpanel" aria-labelledby="messages-tab" tabindex="0">
+                        <div class="messages my-5 px-4 py-5">
+
                         </div>
                     </div>
                 </div>
@@ -446,29 +322,5 @@
             </div>
         </div>
     </section>
-
-    <!-- MODAL GALLERY -->
-    <div class="modal fade" id="addPictures" tabindex="-1" aria-labelledby="addPictureLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="addPictureLabel">Ajouter un dessin</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST">
-                        <div>
-                            <label for="formFileLg" class="form-label">Sélectionner une image</label>
-                            <input class="form-control form-control-lg pictureFile" id="formFileLg" type="file">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ajouter</button>
-                    <a type="button" class="btn btn-primary" id="addFilePicture">Valider</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </main>

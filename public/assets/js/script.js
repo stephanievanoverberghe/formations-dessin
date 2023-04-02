@@ -80,6 +80,20 @@ deleteBtnsCategory.forEach(element => {
     element.addEventListener('click', createLinkCategory)
 });
 
+// MODAL USERS
+const deleteBtnsUser = document.querySelectorAll('.deleteUsers');
+const deleteLinkUser = document.getElementById('deleteLinkUser');
+// console.log(deleteLinkUser);
+
+const createLinkUser = (event) => {
+    let id_users = event.target.dataset.idusers;
+    deleteLinkUser.setAttribute('href', 'deleteUserCtrl.php?id_users=' + id_users);
+};
+
+deleteBtnsUser.forEach(element => {
+    element.addEventListener('click', createLinkUser)
+});
+
 // VALIDATE PASSWORD
 
 const checkPasswords = (event) => {

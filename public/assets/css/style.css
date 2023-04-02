@@ -84,10 +84,6 @@ a:hover {
     font-weight: bold;
 }
 
-#navbar .nav-link:hover {
-    color: #ff9b42;
-}
-
 #navbar .btn {
     color: #1fbfff;
     border-color: #1fbfff !important;
@@ -103,6 +99,32 @@ a:hover {
 #navbar .btn:hover {
     color: #ff9b42;
     border-color: #ff9b42 !important;
+    transform: translateY(-5px);
+    transition: 0.3s;
+}
+
+#navbar a {
+    margin: 0px 15px;
+    padding: 5px;
+    display: block;
+}
+
+#navbar .navOrange::after {
+    content: '';
+    background-color:  #ff9b42 !important;
+    height: 3px;
+    opacity: 0;
+    display: block;
+    transition: 0.3s;
+}
+
+#navbar .navOrange:hover::after {
+    opacity: 1;
+}
+
+#navbar li {
+    margin: 0 15px;
+    padding: 5px;
 }
 
 /* COOKIES */

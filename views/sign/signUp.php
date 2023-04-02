@@ -7,7 +7,7 @@
 if ($user) {
 ?>
     <!-- START REGISTER -->
-    <main>
+    <main title="Page d'inscription">
         <section id="register">
             <div class="offset-1 col-10 border-bottom my-3 mb-5"></div>
             <div class="container">
@@ -18,10 +18,11 @@ if ($user) {
 
                     <div class="col-12">
                         <form 
-                            action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" 
+                            action="<?= htmlspecialchars($_SERVER["PHP_SELF"]);?>" 
                             method="POST" 
                             role="form"
                             id="signUp"
+                            autocomplete="off"
                             >
 
                             <!-- LASTNAME -->
@@ -34,7 +35,6 @@ if ($user) {
                                         class="form-control form-control-lg <?= isset($errors['lastname']) ?>" 
                                         id="lastname" 
                                         placeholder="Ex: Duhamel" 
-                                        autocomplete="family-name" 
                                         value="<?= $user->lastname ?? $lastname ?? '' ?>" 
                                         minlength="2" 
                                         maxlength="70" 
@@ -56,7 +56,6 @@ if ($user) {
                                         class="form-control form-control-lg <?= isset($errors['firstname']) ?>" 
                                         id="firstname" 
                                         placeholder="Ex: Vincent" 
-                                        autocomplete="given-name" 
                                         value="<?= $user->firstname ?? $firstname ?? '' ?>" 
                                         minlength="2" 
                                         maxlength="70" 
@@ -80,7 +79,6 @@ if ($user) {
                                         value="<?= $user->pseudo ?? $pseudo ?? '' ?>" 
                                         minlenght="2" 
                                         maxlength="70" 
-                                        autocomplete="username"
                                         aria-describedby="pseudolHelp"
                                         aria-label=".form-control-lg"
                                     >
@@ -99,7 +97,6 @@ if ($user) {
                                         value="<?= $user->email ?? $email ?? '' ?>" 
                                         class="form-control form-control-lg <?= isset($errors['email']) ?>" 
                                         required 
-                                        autocomplete="email"
                                         aria-describedby="emailHelp"
                                         aria-label=".form-control-lg"
                                     >
@@ -116,7 +113,6 @@ if ($user) {
                                         id="birthdate" 
                                         value="<?= $user->birthdate ?? $birthdate ?? '' ?>"
                                         class="form-control form-control-lg <?= isset($errors['birthdate']) ?>" 
-                                        autocomplete="bday" 
                                         aria-describedby="birthdateHelp" 
                                         min="<?= (date('Y') - 100) . date('-m-d') ?>" 
                                         max="<?= (date('Y') - 18) . date('-m-d') ?>"
@@ -132,7 +128,6 @@ if ($user) {
                                     <select 
                                         name="country" 
                                         id="country" 
-                                        autocomplete="country" 
                                         class="form-control form-select-lg <?= isset($errors['country']) ?>" 
                                         aria-describedby="countryHelp"
                                         aria-label=".form-select-lg"

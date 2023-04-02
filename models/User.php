@@ -12,6 +12,7 @@ class User
     private string $pseudo;
     private string $birthdate;
     private string $country;
+    private string $picture;
     private string $created_at;
     private string $updated_at;
     private string $validated_at;
@@ -99,6 +100,15 @@ class User
     public function getCountry(): string
     {
         return $this->country;
+    }
+    // PICTURE GETTER AND SETTER ************************************************************************
+    public function setPicture(string $picture): void
+    {
+        $this->picture = $picture;
+    }
+    public function getPicture(): string
+    {
+        return $this->picture;
     }
     // CREATED_AT GETTER AND SETTER ************************************************************************
     public function setCreated_at(string $created_at): void
@@ -292,21 +302,6 @@ class User
             return $sth->fetch();
         }
     }
-    public static function getDataUsers(int $id_users): bool
-    {
-        // CREATE REQUEST
-        $sql = 'SELECT * FROM `users`
-                    WHERE `id_users` = :id_users';
-        // PREPARE REQUEST
-        $pdo = Database::getInstance();
-        $sth = $pdo->prepare($sql);
-        // AFFECT VALUE
-        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
-        // EXECUTE REQUEST
-        if ($sth->execute()) {
-            return $sth->fetch();
-        }
-    }
 
     public static function getByEmail(string $email) {
 
@@ -360,8 +355,6 @@ class User
         $sql = 'UPDATE `users` SET
                         `lastname` = :lastname,
                         `firstname` = :firstname,
-                        `email` = :email,
-                        `password` = :password,
                         `pseudo` = :pseudo,
                         `birthdate` = :birthdate,
                         `country` = :country
@@ -371,11 +364,57 @@ class User
         // AFFECT VALUE
         $sth->bindValue(':lastname', $this->getLastname());
         $sth->bindValue(':firstname', $this->getFirstname());
-        $sth->bindValue(':email', $this->getEmail());
-        $sth->bindValue(':password', $this->getPassword());
         $sth->bindValue(':pseudo', $this->getPseudo());
         $sth->bindValue(':birthdate', $this->getBirthdate());
         $sth->bindValue(':country', $this->getCountry());
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
+        }
+    }
+    /**
+     * 
+     * Méthode permettant de modifier l'email d'un profil
+     * 
+     * @param int $id_users
+     * 
+     * @return bool
+     */
+    public function updateEmail(int $id_users): bool
+    {
+        // CREATE REQUEST
+        $sql = 'UPDATE `users` SET
+                        `email` = :email
+                WHERE `id_users` = :id_users;';
+        // PREPARE REQUEST
+        $sth = $this->pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':email', $this->getEmail());
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
+        }
+    }
+    /**
+     * 
+     * Méthode permettant de modifier le mot de passe d'un profil
+     * 
+     * @param int $id_users
+     * 
+     * @return bool
+     */
+    public function updatePassword(int $id_users): bool
+    {
+        // CREATE REQUEST
+        $sql = 'UPDATE `users` SET
+                        `password` = :password
+                WHERE `id_users` = :id_users;';
+        // PREPARE REQUEST
+        $sth = $this->pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':password', $this->getPassword());
         $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
         // EXECUTE REQUEST
         if ($sth->execute()) {

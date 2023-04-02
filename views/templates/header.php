@@ -30,17 +30,36 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item me-lg-5">
-                            <a class="nav-link" aria-current="page" href="/controllers/formation/formationCtrl.php">Formation</a>
-                        </li>
-                        <li class="nav-item me-lg-5">
-                            <a class="nav-link" aria-current="page" href="/controllers/forum/forumCtrl.php">Forums</a>
-                        </li>
-                        <li class="nav-item me-lg-5">
-                            <a class="nav-link" aria-current="page" href="/controllers/magazine/magazineCtrl.php">Magazine</a>
-                        </li>
-                    </ul>
+                    <?php
+                    if (isset($_SESSION['user'])) { ?>
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                            <li class="nav-item me-lg-5 navOrange">
+
+                                <a class="nav-link" aria-current="page" href="/controllers/formation/formationCtrl.php">Formation</a>
+                            </li>
+                            <li class="nav-item me-lg-5 navOrange">
+                                <a class="nav-link" aria-current="page" href="/controllers/forum/forumCtrl.php">Forums</a>
+                            </li>
+                            <li class="nav-item me-lg-5 navOrange">
+                                <a class="nav-link" aria-current="page" href="/controllers/magazine/magazineCtrl.php">Magazine</a>
+                            </li>
+                        </ul>
+                    <?php } else { ?>
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                            <li class="nav-item me-lg-5 navOrange">
+
+                                <a class="nav-link" aria-current="page" href="/controllers/sign/signInCtrl.php">Formation</a>
+                            </li>
+                            <li class="nav-item me-lg-5 navOrange">
+                                <a class="nav-link" aria-current="page" href="/controllers/sign/signInCtrl.php">Forums</a>
+                            </li>
+                            <li class="nav-item me-lg-5 navOrange">
+                                <a class="nav-link" aria-current="page" href="/controllers/magazine/magazineCtrl.php">Magazine</a>
+                            </li>
+                        </ul>
+                    <?php } ?>
 
 
 

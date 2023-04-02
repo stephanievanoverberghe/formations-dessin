@@ -38,7 +38,7 @@
                                         <td><?= $user->lastname ?></td>
                                         <td><?= $user->firstname ?></td>
                                         <td>
-                                            <a href="/controllers/dashboard/edit/usersCtrl.php?id_users=<?= htmlentities($user->id_users) ?>"><i class="bi bi-eye-fill"></i></a>
+                                            <a href="/controllers/dashboard/edit/usersCtrl.php?id_users=<?= $user->id_users ?>"><i class="bi bi-eye-fill"></i></a>
                                         </td>
                                     </tr>
                                 <?php }
