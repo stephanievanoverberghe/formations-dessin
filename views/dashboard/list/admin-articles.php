@@ -18,10 +18,6 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Titre</th>
-                                    <th scope="col">Catégorie</th>
-                                    <th scope="col">Sous-catégorie</th>
-                                    <th scope="col">Créé le</th>
-                                    <th scope="col">Archivé le</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
@@ -30,9 +26,8 @@
                                 foreach ($articles as $article) {
                                 ?>
                                     <tr>
-                                        <td><?= htmlentities($article->title) ?></td>
-                                        <td><?= htmlentities($article->slug) ?></td>
-                                        <td><a href="/controllers/magazine/articleCtrl.php?=<?= htmlentities($article->id) ?>"><i class="bi bi-eye-fill"></i></a></td>
+                                        <td><?= $article->title ?></td>
+                                        <td><a href="/controllers/magazine/articleCtrl.php?=<?= $article->id ?>"><i class="bi bi-eye-fill"></i></a></td>
                                     </tr>
                                 <?php } ?>
                             </tbody>

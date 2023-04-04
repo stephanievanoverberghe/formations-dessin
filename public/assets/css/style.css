@@ -536,6 +536,24 @@ li {
     color: #ff9b42;
 }
 
+.forums {
+    background-color: #202124;
+    border-radius: 10px;
+}
+
+.forums h4 {
+    color: #1fbfff;
+}
+
+.forums img {
+    border-radius: 50%;
+}
+
+#topics .icon,
+#general-topics .icon {
+    font-size: 30px !important;
+}
+
 /* MAGAZINE PAGE */
 .item-magazine {
     color: #ff9b42;
@@ -601,6 +619,10 @@ li {
     background-color: #111112;
     color: #e8eddf;
     border: none;
+}
+
+#author img {
+    border-radius: 50%;
 }
 
 /* ADMIN PAGE */
@@ -704,6 +726,7 @@ td {
     padding: 5px 50px;
 }
 
+#admin-article textarea,
 #addArticle textarea,
 #addTraining textarea,
 #addSubmodule textarea,
@@ -731,10 +754,17 @@ td {
     font-weight: bold;
 }
 
+#admin-article input,
 #searchSubmodules input,
 #searchUsers input {
     background-color: #202124;
     color: #e8eddf;
+}
+
+#admin-article input:hover {
+    background-color: #ff9b42;
+    color: #111112;
+    font-weight: bold;
 }
 
 #searchSubmodules .btn,
@@ -757,6 +787,11 @@ td {
 #editSubmodule h2,
 #editVideo h2 {
     font-size: 1.5rem;
+}
+
+.admin-article {
+    background-color: #202124;
+    border-radius: 10px;
 }
 
 /* CUSTUM FOOTER */

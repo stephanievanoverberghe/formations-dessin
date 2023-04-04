@@ -17,8 +17,8 @@ if ($video) { ?>
                 <div class="row justify-content-center editVideo px-4 py-5">
                     <div>
                         <div class="col-12">
-                            <h2>Fichier</h2>
-                            <p></p>
+                            <h2>Sous-module</h2>
+                            <p><?= $video->id_sub_modules ?></p>
                         </div>
                     </div>
                 </div>

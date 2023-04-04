@@ -6,27 +6,45 @@ if ($_SESSION['user']->admin != 1) {
     die;
 }
 
+require_once(__DIR__ . '/../../../config/config.php');
+require_once(__DIR__ . '/../../../models/Submodule.php');
 require_once(__DIR__ . '/../../../models/Video.php');
 
 try {
-    $video = true;
+
+    $allSubmodules = Submodule::getAll();
     
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         /* ************* TITLE NETTOYAGE ET VERIFICATION **************************/
         $title = trim((string)filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
         if(empty($title)) {
-            $errors['title'] = 'Le champs est obligatoire';
+            $errors['title'] = 'Le champ est obligatoire';
         }
-        /* ************* VIDEOFILE NETTOYAGE ET VERIFICATION **********************/
+
+        /* ************* ID_SUB_MODULES NETTOYAGE ET VERIFICATION **************************/
+        $id_sub_modules = intval(trim(filter_input(INPUT_POST, 'id_sub_modules', FILTER_SANITIZE_NUMBER_INT)));
+        //On test si le champ n'est pas vide
+        if ($id_sub_modules == 0) {
+            $errors['id_sub_modules'] = ERRORS[8];
+        }
         
+
         if (empty($errors)) {
             //**** HYDRATATION ****/
             $video = new Video;
             $video->setTitle($title);
+            $video->setId_sub_modules($id_sub_modules);
 
             $response = $video->insert();
-            
+
+            // NAME VIDEOS ID
+
+            if ($response) {
+                $pdo= Database::getInstance();
+                $id_videos = $pdo->lastInsertId();
+            }
+
             if (isset($_FILES['file'])) {
                 $file = $_FILES['file']['name'];
                 $fileType = $_FILES['file']['type'];
@@ -38,7 +56,7 @@ try {
                     } else {
                         $extension = pathinfo($file, PATHINFO_EXTENSION);
                         $from = $_FILES['file']['tmp_name'];
-                        $filename = uniqid('video_') . '.' . $extension;
+                        $filename = 'video_' . $id_videos . '.' . $extension;
                         $to = __DIR__ . '/../../../public/uploads/videos/' . $filename;
                         move_uploaded_file($from, $to);
                         // var_dump($to);
@@ -47,11 +65,15 @@ try {
                 }
             }
 
-            if ($response) {
-                // header('Location: /controllers/dashboard/list/admin-videosCtrl.php');
-                // die;
-            }
+            // if ($response) {
+            //     $errors['global'] = 'La video a bien été ajoutée';
+            //     header('Location: /controllers/dashboard/list/admin-videosCtrl.php');
+            //     die;
+            // }
         }
+
+
+        
     }
 
 } catch (\Throwable $th) {

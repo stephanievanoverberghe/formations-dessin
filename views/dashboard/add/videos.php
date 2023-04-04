@@ -19,14 +19,33 @@
                             <label for="title" class="form_label orange mt-5 mb-2">Titre
                                 <span class="orange"> *</span>
                             </label>
-                            <input type="text" value="<?= $video->title ?? $title ?? '' ?>" class="form-control <?= isset($errors['title']) ? 'is-invalid' : '' ?>" id="title" name="title" required>
+                            <input 
+                                type="text" 
+                                value="<?= $video->title ?? $title ?? '' ?>" 
+                                class="form-control <?= isset($errors['title']) ? 'is-invalid' : '' ?>" 
+                                id="title" 
+                                name="title" 
+                                required
+                                >
                             <div class="error"><?= $errors['title'] ?? '' ?></div>
                             <!-- FILE -->
                             <label for="video" class="form_label orange mt-5 mb-2">Fichier
                                 <span class="orange"> *</span>
                             </label>
-                            <input class="form-control form-control-lg <?= isset($errors['file']) ? 'is-invalid' : '' ?>" id="video" type="file" name="file" value="<?= $video->file ?? $file ?? '' ?>">
+                            <input 
+                                class="form-control form-control-lg <?= isset($errors['file']) ? 'is-invalid' : '' ?>" id="video" type="file" name="file" value="<?= $video->file ?? $file ?? '' ?>">
                             <div class="error"><?= $errors['file'] ?? '' ?></div>
+                            <!-- SUBMODULE -->
+                            <label for="id_sub_modules" class="form-label orange mt-5 mb-2">Sous-module *</label>
+                            <select name="id_sub_modules" id="id_sub_modules" class="form-select" required>
+                                <?php
+                                foreach ($allSubmodules as $submodule) {
+                                    $state = ($submodule->id_sub_modules == $videos->id_sub_modules) ? "selected" : "";
+                                    echo '<option value="' . $submodule->id_sub_modules . '" ' .  $state  . '>' . $submodule->title . ' ' . '</option>';
+                                }
+                                ?>
+                            </select>
+                            <div class="error"><?= $errors['id_sub_modules'] ?? '' ?></div>
                             <!-- VALIDATE FORM -->
                             <div class="col-12 text-center">
                                 <input class="btn my-5" type="submit" value="Valider"></input>

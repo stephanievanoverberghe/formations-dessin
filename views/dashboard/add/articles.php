@@ -1,81 +1,67 @@
-<?php if (isset($errors['global'])) { ?>
-
-    <div class="alert alert-warning" role="alert">
-        <?= nl2br($errors['global']) ?>
-    </div>
-<?php }
-if ($article) { ?>
-
-    <main>
+<main>
+    <section id="addArticle">
         <div class="container">
-            <div id="addArticle">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <h1 class="mb-5 text-center">Ajouter un article</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="admin-article">
+        <div class="container-fluid">
+            <div>
                 <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        <h1 class="mb-5 text-center">Ajouter un article</h1>
-                        <!-- START FORM -->
-                        <form class="mb-5 formArticle" role="form" id="formArticle" method="POST">
-                            <div class="form mb-4">
-                                <!-- H1 TITLE -->
-                                <label for="title" class="form_label orange mt-5 mb-2">Titre
-                                    <span class="orange"> *</span>
-                                </label>
-                                <input type="text" value="<?= $article->title ?? $title ?? '' ?>" class="form-control <?= isset($errors['title']) ? 'is-invalid' : '' ?>" id="title" name="title" required>
-                                <div class="error"><?= $errors['title'] ?? '' ?></div>
-                                <!-- PARAGRAPH CATCH -->
-                                <label for="catch" class="form_label orange mt-5 mb-2">Accroche
-                                    <span class="orange"> *</span>
-                                </label>
-                                <textarea class="form-control" name="catch" id="catch" rows="3" required></textarea>
-                                <div class="error"><?= $errors['catch'] ?? '' ?></div>
-                                <!-- H2 TITLE -->
-                                <label for="subTitleOne" class="form_label orange mt-5 mb-2">Premier Sous-titre
-                                    <span class="orange"> *</span>
-                                </label>
-                                <input type="text" value="<?= $article->subTitleOne ?? $subTitleOne ?? '' ?>" class="form-control <?= isset($errors['subTitleOne']) ? 'is-invalid' : '' ?>" id="subTitleOne" name="subTitleOne" required>
-                                <!-- PICTURE -->
-                                <label for="imgOne" class="form_label orange mt-5 mb-2">Image
-                                    <span class="orange"> *</span>
-                                </label>
-                                <input class="form-control" type="file" id="imgOne" name="imgOne" value="" required>
-                                <!-- PARAGRAPH ONE -->
-                                <label for="paragraphOne" class="form_label orange mt-5 mb-2">Premier paragraphe
-                                    <span class="orange"> *</span>
-                                </label>
-                                <textarea class="form-control" name="paragraphOne" id="paragraphOne" rows="10" required></textarea>
-                                <div class="error"><?= $errors['catch'] ?? '' ?></div>
-                                <!-- H2 TITLE -->
-                                <label for="subTitleTwo" class="form_label orange mt-5 mb-2">Deuxième Sous-titre
-                                    <span class="orange"> *</span>
-                                </label>
-                                <input type="text" value="<?= $article->subTitleTwo ?? $subTitleTwo ?? '' ?>" class="form-control <?= isset($errors['subTitleOne']) ? 'is-invalid' : '' ?>" id="subTitleTwo" name="subTitleTwo" required>
-                                <!-- PICTURE -->
-                                <label for="imgTwo" class="form_label orange mt-5 mb-2">Image
-                                    <span class="orange"> *</span>
-                                </label>
-                                <input class="form-control" type="file" id="imgTwo" name="imgTwo" value="" required>
-                                <!-- PARAGRAPH TWO -->
-                                <label for="paragraphTwo" class="form_label orange mt-5 mb-2">Deuxième paragraphe
-                                    <span class="orange"> *</span>
-                                </label>
-                                <textarea class="form-control" name="paragraphTwo" id="paragraphTwo" rows="10" required></textarea>
-                                <div class="error"><?= $errors['catch'] ?? '' ?></div>
+                    <div class="col-10">
 
-
-                                <!-- CREATED_AT -->
-                                <label for="created_at" class="form_label orange mt-5 mb-2">Créé le
-                                    <span class="orange"> *</span>
-                                </label>
-                                <input type="date" name="created_at" id="created_at" value="" class="form-control">
-                                <div class="error"></div>
-                                <!-- VALIDATE FORM -->
-                                <div class="col-12 text-center">
-                                    <input class="btn my-5" type="submit" value="Valider"></input>
+                        <!-- FORM ADD ARTICLE -->
+                        <form action="" method="POST">
+                            <div class="row justify-content-center">
+                                <div class="col-8 mb-3" id="titleArticle">
+                                </div>
+                                <div class="col-8 mb-3" id="hookArticle">
+                                </div>
+                                <div class="col-8 mb-3" id="subtitleArticle">
+                                </div>
+                                <div class="col-8 mb-3" id="contentArticle">
+                                </div>
+                                <div class="col-8 mb-3" id="pictureArticle">
                                 </div>
                             </div>
+
                         </form>
+
+
+                    </div>
+
+                    <div class="col-2 admin-article p-5">
+                        <div class=" d-flex justify-content-center align-items-center"></div>
+                        <div class="row text-center">
+                            <div class="col-12 mb-4">
+                                <button id="title">Titre</button>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <button id="hook">Accroche</button>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <button id="subtitle">Sous-titre</button>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <button id="content">Paragraphe</button>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <button id="picture">Image</button>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <button id="conclusion">Conclusion</button>
+                            </div>
+                            <div class="col-12">
+                                <button id="created-at">Crée le</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
-<?php } ?>
+    </section>
+</main>

@@ -87,7 +87,7 @@
                                     <div class="accordion-body">
                                         <!-- ACCORDION INTERIOR -->
                                         <p class="text-start mb-5"><?= $training->submodules_content ?></p>
-                                        <video src="/public/assets/video/00-00-introduction.mp4" width="50%" controls></video>
+                                        <video src="/public/uploads/videos/video_642ade1105079.mp4" width="50%" controls></video>
                                         <div class="row">
                                             <div class="col-12 text-center mt-3 mb-5">
                                                 <div class="form-check form-switch">

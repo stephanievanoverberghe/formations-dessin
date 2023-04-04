@@ -12,7 +12,6 @@ class User
     private string $pseudo;
     private string $birthdate;
     private string $country;
-    private string $picture;
     private string $created_at;
     private string $updated_at;
     private string $validated_at;
@@ -100,15 +99,6 @@ class User
     public function getCountry(): string
     {
         return $this->country;
-    }
-    // PICTURE GETTER AND SETTER ************************************************************************
-    public function setPicture(string $picture): void
-    {
-        $this->picture = $picture;
-    }
-    public function getPicture(): string
-    {
-        return $this->picture;
     }
     // CREATED_AT GETTER AND SETTER ************************************************************************
     public function setCreated_at(string $created_at): void
@@ -349,10 +339,10 @@ class User
      * 
      * @return bool
      */
-    public function update(int $id_users): bool
+    public function update(int $id_users): bool 
     {
-        // CREATE REQUEST
-        $sql = 'UPDATE `users` SET
+    // CREATE REQUEST
+    $sql = 'UPDATE `users` SET
                         `lastname` = :lastname,
                         `firstname` = :firstname,
                         `pseudo` = :pseudo,

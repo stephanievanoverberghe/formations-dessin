@@ -1,6 +1,4 @@
 <?php
-// var_dump($_FILES);
-// die;
 
 session_start();
 
@@ -16,7 +14,7 @@ try {
 
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['formUpdateInfo'])) {
+        if (isset($_POST['updateInfos'])) {
             /* ************* PSEUDO NETTOYAGE ET VERIFICATION **************************/
             $pseudo = trim((string)filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_SPECIAL_CHARS));
 
@@ -34,23 +32,24 @@ try {
 
             if (empty($errors)) {
                 //HYDRATATION
-                $user = new User;
-                $user->setLastname($lastname);
-                $user->setFirstname($firstname);
-                $user->setPseudo($pseudo);
-                $user->setBirthdate($birthdate);
-                $user->setCountry($country);
+                $userProfil = new User;
+                $userProfil->setLastname($lastname);
+                $userProfil->setFirstname($firstname);
+                $userProfil->setPseudo($pseudo);
+                $userProfil->setBirthdate($birthdate);
+                $userProfil->setCountry($country);
 
-                $result = $user->update($id_users);
-
+                $result = $userProfil->update($id_users);
                 if ($result) {
-                    $errors['global'] = 'Le profil a bien été modifié';
+
                     $_SESSION['user'] = User::getData($id_users);
                     header('Location: /controllers/profilCtrl.php');
                     die;
+                } else {
+                    $errors['global'] = 'Impossible de mettre à jour le compte';
                 }
             }
-        } else if (isset($_POST['formUpdateEmail'])) {
+        } else if (isset($_POST['updateEmail'])) {
             /* ************* EMAIL NETTOYAGE ET VERIFICATION **************************/
             $email = trim((string)filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS));
 
@@ -71,15 +70,14 @@ try {
 
             if (empty($errors)) {
                 //HYDRATATION
-                $user = new User;
-                $user->setEmail($email);
+                $userEmail = new User;
+                $userEmail->setEmail($email);
 
-                $result = $user->updateEmail($id_users);
+                $result = $userEmail->updateEmail($id_users);
                 // var_dump($user);
                 // die;
-
                 if ($result) {
-                    $errors['global'] = 'Le profil a bien été modifié';
+
                     $_SESSION['user'] = User::getData($id_users);
                     header('Location: /controllers/profilCtrl.php');
                     die;
@@ -87,7 +85,7 @@ try {
                     $errors['global'] = 'Impossible de mettre à jour l\'adresse e-mail';
                 }
             }
-        } else {
+        } else if (isset($_POST['updatePassword'])) {
             /* ************* PASSWORD NETTOYAGE ET VERIFICATION **************************/
             $password = filter_input(INPUT_POST, 'password');
 
@@ -100,32 +98,26 @@ try {
 
             if (empty($errors)) {
                 // HYDRATATION
-                $user = new User;
-                $user->setPassword($passwordHash);
+                $userPassword = new User;
+                $userPassword->setPassword($passwordHash);
 
-                $result = $user->updatePassword($id_users);
+                $result = $userPassword->updatePassword($id_users);
 
                 if ($result) {
-                    $errors['global'] = 'Le profil a bien été modifié';
                     $_SESSION['user'] = User::getData($id_users);
                     header('Location: /controllers/profilCtrl.php');
                     die;
                 } else {
-                    $errors['global'] = 'Impossible de mettre à jour l\'adresse e-mail';
+                    $errors['global'] = 'Impossible de mettre à jour le mot de passe';
                 }
             }
         }
-
-        //     
-
-
     }
 } catch (\Throwable $th) {
     header('Location: /controllers/errorCtrl.php');
     die;
 }
 
-try {
 
     // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //     if (isset($_POST['formPictureGallery'])) {
@@ -174,11 +166,6 @@ try {
             //     $filename = uniqid('gallery_') . '.' . $extension;
             //     $to = LOCATION_USERS_GALLERY . $filename;
             //     move_uploaded_file($from, $to);
-
-} catch (\Throwable $th) {
-    header('Location: /controllers/errorCtrl.php');
-    die;
-}
 
 /* ************* VIEWS DISPLAY **********************************************/
 include_once(__DIR__ . '/../views/templates/header.php');

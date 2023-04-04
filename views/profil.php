@@ -34,7 +34,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/controllers/homeCtrl.php">Accueil</a></li>
                             <li class="breadcrumb-item"><a href="/controllers/profilCtrl.php">Profil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><?= $user->pseudo  ?></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?= $user->pseudo ?></li>
                         </ol>
                     </nav>
                 </div>
@@ -48,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="mb-3"><?= $user->pseudo  ?></h1>
+                    <h1 class="mb-3"><?= $user->pseudo ?></h1>
                 </div>
             </div>
         </div>
@@ -108,13 +108,22 @@
 
                             <!-- START FORM PROFIL -->
                             <div class="profilParameter my-5 px-4 py-5">
-                                <form method="POST" role="form" id="formUser" class="formUser" name="formUpdateInfo">
+                                <form method="POST" role="form" id="formUser" class="formUser">
                                     <div class="container">
                                         <div class="row">
                                             <!-- PSEUDO -->
                                             <div class="col-lg-6">
                                                 <h2 class="mb-3">Pseudo</h2>
-                                                <input type="text" name="pseudo" class="form-control form-control-lg <?= isset($errors['pseudo']) ? 'is-invalid' : '' ?>" id="pseudo" placeholder="Ex: Norel-art" value="<?= $user->pseudo ?>" minlenght="2" maxlength="70">
+                                                <input 
+                                                    type="text" 
+                                                    name="pseudo" 
+                                                    class="form-control form-control-lg <?= isset($errors['pseudo']) ? 'is-invalid' : '' ?>" 
+                                                    id="pseudo" 
+                                                    placeholder="Ex: Norel-art" 
+                                                    value="<?= $user->pseudo ?>" 
+                                                    minlenght="2" 
+                                                    maxlength="70"
+                                                    >
                                                 <small id=pseudoHelp class="form-text error"><?= $errors['pseudo'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -172,7 +181,7 @@
 
                             <!-- START FORM PARAMETER -->
                             <div class="formParameter my-5 px-4 py-5">
-                                <form action="" method="POST" role="form" id="formUser" class="formUser" name="formUpdateEmail">
+                                <form action="" method="POST" role="form" id="formUser" class="formUser">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12">
@@ -189,12 +198,14 @@
                                             </div>
                                             <div class="row">
                                                 <div class="btnParameter col-12 text-center mt-5 mb-5 d-flex flex-column align-items-center">
-                                                    <input type="submit" value="Modifier" name="FormUpdateEmail" id="validForm">
+                                                    <input type="submit" value="Modifier" name="updateEmail" id="validForm">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                            <div class="formParameter my-5 px-4 py-5">
                                 <form action="" method="post" role="form" id="formUser" class="formUser" name="formUpdatePassword">
                                     <div class="container">
                                         <div class="row">
@@ -235,6 +246,8 @@
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                            <div class="formParameter my-5 px-4 py-5">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-12">
@@ -250,65 +263,45 @@
                                                 <i class="bi bi-trash3-fill mx-2" data-idUsers="<?= $user->id_users ?>"></i>
                                             </a>
                                         </div>
-                                        <!-- Button trigger modal -->
-
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="deleteUsers" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="deleteUserLabel">Supprimer mon compte</h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Êtes-vous sûr de bien vouloir supprimer votre compte ?</p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                                        <a type="button" class="btn btn-danger" id="deleteLinkUser">Supprimer</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- END FORM PARAMETER -->
-                        </div>
-
-                        <div class="tab-pane fade" id="gallery-tab-pane" role="tabpanel" aria-labelledby="gallery-tab" tabindex="0">
-                            <div class="gallery my-3 px-4 py-5">
-                                <div class="container-fluid">
-                                    <div class="row justify-content-center">
-                                        <div class="col-6">
-                                            <form action="" method="POST" enctype="multipart/form-data" name="formPictureGallery">
-                                                <div class="text-center">
-                                                    <input type="file" class="form-control" id="pictureGalleryUpload" name="pictureGalleryUpload" value="" accept="image/jpeg">
-                                                    <small class="form-text error"><?= $errors['pictureGalleryUpload'] ?? '' ?>
-                                                    </small>
-                                                    <input type="submit" value="Ajouter" class="my-4">
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <img src="" alt="" srcset="">
-                                        <img src="" alt="" srcset="">
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- END FORM PARAMETER -->
                     </div>
 
-
-                    <div class="tab-pane fade" id="messages-tab-pane" role="tabpanel" aria-labelledby="messages-tab" tabindex="0">
-                        <div class="messages my-5 px-4 py-5">
-
+                    <div class="tab-pane fade" id="gallery-tab-pane" role="tabpanel" aria-labelledby="gallery-tab" tabindex="0">
+                        <div class="gallery my-3 px-4 py-5">
+                            <div class="container-fluid">
+                                <div class="row justify-content-center">
+                                    <div class="col-6">
+                                        <form action="" method="POST" enctype="multipart/form-data" name="formPictureGallery">
+                                            <div class="text-center">
+                                                <input type="file" class="form-control" id="pictureGalleryUpload" name="pictureGalleryUpload" value="" accept="image/jpeg">
+                                                <small class="form-text error"><?= $errors['pictureGalleryUpload'] ?? '' ?>
+                                                </small>
+                                                <input type="submit" value="Ajouter" class="my-4">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img src="" alt="" srcset="">
+                                    <img src="" alt="" srcset="">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
+                <div class="tab-pane fade" id="messages-tab-pane" role="tabpanel" aria-labelledby="messages-tab" tabindex="0">
+                    <div class="messages my-5 px-4 py-5">
+
+                    </div>
+                </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -322,5 +315,23 @@
             </div>
         </div>
     </section>
+    <!-- Modal -->
+    <div class="modal fade" id="deleteUsers" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteUserLabel">Supprimer mon compte</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes-vous sûr de bien vouloir supprimer votre compte ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <a type="button" class="btn btn-danger" id="deleteLinkUser">Supprimer</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </main>

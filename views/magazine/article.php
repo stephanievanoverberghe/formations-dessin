@@ -15,7 +15,7 @@
     <!-- END BANNER -->
 
     <!-- START BREADCRUMB -->
-    <section>
+    <section id="breadcrumb">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -200,9 +200,9 @@
                         <h3>Formation - Les fondamentaux du dessin</h3>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row justify-content-center align-items-center">
                     <div class="col-4">
-                        <img src="" alt="">
+                        <img src="/public/assets/img/formation1.png" alt="">
                     </div>
                     <div class="col-8 mt-5 px-5">
                         <p>Le dessin, ça s'apprend, ça s'explore !</p>
@@ -227,40 +227,46 @@
                     </div>
                 </div>
                 <div class="row">
-                <div class="col-lg-4 col-12 col-md-6 mb-5 d-flex flex-column align-items-center">
-                    <div class="card mt-5">
-                        <img src="/public/assets/img/peinture_la-flagellation-du-christ.png" class="card-img-top" alt="La Flagellation du Christ de Piero della Franscesca">
-                        <small class="text-center">Publié le</small>
-                        <div class="card-body text-center d-flex flex-column justify-content-around">
-                            <h3 class="card-title text-center">Les 8 règles de la composition</h3>
-                            <p class="card-text">Une composition puissante exerce une attraction intuitive sur l'observateur. Il existe de nombreuses règles.</p>
-                            <button class="card-btn">Lire l'article</button>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">
+                        <div class="card mt-5" style="width: 22rem;">
+                            <img src="/public/assets/img/peinture_la-flagellation-du-chri.png" class="card-img-top" alt="La Flagellation du Christ de Piero della Franscesca">
+                            <small>Publié le</small>
+                            <div class="card-body">
+                                <h3 class="card-title">Les 8 règles de la composition</h3>
+                                <p class="card-text">Une composition puissante exerce une attraction intuitive sur l'observateur. Il existe de nombreuses règles.</p>
+                                <p>
+                                    <a href="#" class="card-btn">Lire l'article</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">
+                        <div class="card mt-5" style="width: 22rem;">
+                            <img src="/public/assets/img/pas-a-pas_fleurs.jpg" class="card-img-top" alt="Amandier en fleurs de Vincent Van Gogh">
+                            <small>Publié le</small>
+                            <div class="card-body">
+                                <h3 class="card-title">Pas à pas - Dessiner des fleurs</h3>
+                                <p class="card-text">Quelque soit leur forme, les fleurs peuvent être un sujet complexe. Cependant, il est idéal pour les personnes débutantes en dessin.</p>
+                                <p>
+                                    <a href="#" class="card-btn">Lire l'article</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">
+                        <div class="card mt-5" style="width: 22rem;">
+                            <img src="/public/assets/img/grotte-chauvet.jpg" class="card-img-top" alt="Peinture pariétal de la grotte Chauvet">
+                            <small>Publié le</small>
+                            <div class="card-body">
+                                <h3 class="card-title">La naissance de l'art</h3>
+                                <p class="card-text">Autour de - 40 000 ans, à l'aube du Poléolithique supérieur, l'Eurasie occidentale connaît un bouleversement culturel majeur. C'est la naissance de l'art.</p>
+                                <p>
+                                    <a href="#" class="card-btn">Lire l'article</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-12 col-md-6 mb-5 d-flex flex-column align-items-center">
-                    <div class="card mt-5">
-                        <img src="/public/assets/img/pas-a-pas_fleurs.jpg" class="card-img-top" alt="Amandier en fleurs de Vincent Van Gogh">
-                        <small class="text-center">Publié le</small>
-                        <div class="card-body text-center d-flex flex-column justify-content-around">
-                            <h3 class="card-title text-center">Pas à pas - Dessiner des fleurs</h3>
-                            <p class="card-text">Quelque soit leur forme, les fleurs peuvent être un sujet complexe. Cependant, il est idéal pour les personnes débutantes en dessin.</p>
-                            <button class="card-btn">Lire l'article</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-12 col-md-6 d-flex flex-column align-items-center">
-                    <div class="card mt-5">
-                        <img src="/public/assets/img/grotte-chauvet.jpg" class="card-img-top" alt="Peinture pariétal de la grotte Chauvet">
-                        <small class="text-center">Publié le</small>
-                        <div class="card-body text-center d-flex flex-column justify-content-around">
-                            <h3 class="card-title text-center">La naissance de l'art</h3>
-                            <p class="card-text">Autour de - 40 000 ans, à l'aube du Poléolithique supérieur, l'Eurasie occidentale connaît un bouleversement culturel majeur. C'est la naissance de l'art.</p>
-                            <button class="card-btn">Lire l'article</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             </div>
         </div>
     </section>
@@ -269,21 +275,45 @@
     <!-- START COMMENTS ARTICLE -->
     <section id="commentsArticle">
         <div class="container">
-            <div class="commentsArticle my-5 px-4 py-5">
-                <div class="row text-center">
-                    <div class="col-12">
-                        <h3 class="mb-5">1 commentaire</h3>
+        <h2 class="text-center mt-5 mb-4">Commentaire</h2>
+            <div class="forums p-5">
+
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-3">
+                        <div class="row text-center">
+                            <div class="col-12">
+                                <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
+                            </div>
+                            <div class="col-12">
+                                <p>L'alchimiste</p>
+                            </div>
+                            <div class="col-12">
+                                <p>Formateur</p>
+                            </div>
+                            <div class="col-12">
+                                <p>Le 16 mars 2023 à 15:15:14</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="row">
+                            <div class="col-12">
+                                <h3 class="mb-5">Bonjour @Thom Vi</h3>
+                            </div>
+                            <div class="col-12">
+                                <p>Le premier conseil que je vais te donner est de ne surtout pas utiliser de règle pour tracer tes droites. Elles sembleraient bien trop rigides et sans vies. La meilleure façon est de t'entraîner un peu chaque jour.</p>
+                            </div>
+                            <div class="col-12">
+                                <p class="mb-5">En ce qui concerne tes exercices, tes droites me semblent plutôt bien. Tu n'as pas de raison de douter de toi, continues à t'exercer et tout ira bien. Tu peux passer au chapitre suivant sur les courbes. A bientôt</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row text-lg-start text-center">
-                    <div class="col-lg-2">
-                        <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
-                    </div>
-                    <div class="col-lg-10">
-                        <p>Thom Vi</p>
-                        <p>Le 3 septembre 2022</p>
-                        <p>Merci pour ce bel article, j'ai appris énormément de choses</p>
-                        <button class="mt-4">Répondre</button>
+                <div class="row mt-5">
+                    <div class="col-12 text-end">
+                        <a href="" class="me-4">Répondre</a>
+                        <a href="" class="me-4">Citer</a>
+                        <a href="">Signaler ce message</a>
                     </div>
                 </div>
             </div>
@@ -292,26 +322,22 @@
     <!-- END COMMENTS ARTICLE -->
 
     <!-- START ADD COMMENTS -->
-    <section class="text-center">
+    <section id="topics-comments">
         <div class="container">
-            <div class="addComments my-5 px-5 py-5">
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="mb-5">Ajouter un commentaire</h3>
-                    </div>
-                    <div class="col-12">
-                        <textarea 
-                            class="form-control mb-5" 
-                            name="addComments"
-                            rows="10" 
-                            placeholder="Écrire un commentaire"><?= $addComments ?? '' ?>
-                        </textarea>
-                        <small class="form-text error"><?= $error['addComments'] ?? '' ?></small>
-                    </div>
-                    <div>
-                        <input type="submit" value="Commenter" class="" id="validForm">
-                    </div>
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="text-start mt-5 mb-4">Ajouter un commentaire</h3>
                 </div>
+            </div>
+            <div class="forums p-5 mb-4">
+                <form method="POST">
+                    <div class="col-12">
+                        <textarea class="form-control" id="formControlTextarea" rows="10" placeholder="Écrire mon commentaire ici"></textarea>
+                    </div>
+                    <div class="col-12 mt-4 text-center">
+                        <input type="submit" value="commenter">
+                    </div>
+                </form>
             </div>
         </div>
     </section>

@@ -195,7 +195,7 @@
             <div class="row">
                 <div class="col-lg-12 d-flex flex-column align-items-center">
                     <nav aria-label="...">
-                        <ul class="pagination">
+                        <ul class="pagination pagination-lg"">
                             <li class="page-item disabled">
                                 <a class="page-link">Précédent</a>
                             </li>

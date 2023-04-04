@@ -7,14 +7,20 @@ if ($_SESSION['user']->admin != 1) {
 }
 
 require_once(__DIR__ . '/../../../models/Video.php');
+require_once(__DIR__ . '/../../../models/Submodule.php');
 
 try {
     $id_videos = intval(filter_input(INPUT_GET, 'id_videos', FILTER_SANITIZE_NUMBER_INT));
+    $id_sub_modules = intval(filter_input(INPUT_GET, 'id_sub_modules', FILTER_SANITIZE_NUMBER_INT));
+    
     $video = Video::getData($id_videos);
+    $submodule = Submodule::getData($id_sub_modules);
     
 } catch (\Throwable $th) {
-    header('Location: /controllers/errorCtrl.php');
+    var_dump($th);
     die;
+    // header('Location: /controllers/errorCtrl.php');
+    // die;
 }
 
 /* ************* VIEWS DISPLAY **********************************************/

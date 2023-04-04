@@ -8,13 +8,15 @@ if ($_SESSION['user']->admin != 1) {
 
 require_once(__DIR__ . '/../../../config/config.php');
 require_once(__DIR__ . '/../../../models/Video.php');
+require_once(__DIR__ . '/../../../models/Submodule.php');
 
 try{
+
+    $allSubmodules = Submodule::getAll();
     $id_videos = intval(filter_input(INPUT_GET, 'id_videos', FILTER_SANITIZE_NUMBER_INT));
+    $videos = Video::getData($id_videos);
 
-    $video = Video::getData($id_videos);
-
-    if ($video === false) {
+    if ($videos === false) {
         $errors['global'] = ERRORS[6];
     } else {
 
@@ -25,6 +27,11 @@ try{
             if(empty($title)) {
                 $errors['title'] = 'Le champs est obligatoire';
             }
+            /* ************* ID_SUB_MODULES NETTOYAGE ET VERIFICATION **************************/
+            $id_sub_modules = intval(trim(filter_input(INPUT_POST, 'id_sub_modules', FILTER_SANITIZE_NUMBER_INT)));
+            if($id_sub_modules == 0) {
+                $errors['id_sub_modules'] = ERRORS[8];
+            }
             
             
             // IF NOT ERRORS, SAVE TRAINING IN DATABASE
@@ -32,8 +39,9 @@ try{
                 //**** HYDRATATION ****/
                 $video = new Video;
                 $video->setTitle($title);
+                $video->setId_sub_modules($id_sub_modules);
 
-                $video = $video->update($id_videos);
+                $response = $video->update($id_videos);
                 
                 if (isset($_FILES['file'])) {
                     $file = $_FILES['file']['name'];
@@ -55,7 +63,7 @@ try{
                     }
                 }
 
-                if($video) {
+                if($response) {
                     $errors['global'] = MESSAGES[3];
                     header('Location: /controllers/dashboard/list/admin-videosCtrl.php');
                     die;
@@ -68,8 +76,10 @@ try{
     $video = Video::getData($id_videos);
     
 } catch (\Throwable $th) {
-    header('Location: /controllers/errorCtrl.php');
+    var_dump($th);
     die;
+    // header('Location: /controllers/errorCtrl.php');
+    // die;
 }
 
 /* ************* VIEWS DISPLAYS **************************/

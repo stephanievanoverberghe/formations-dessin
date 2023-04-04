@@ -39,7 +39,7 @@
                                 <a class="nav-link" aria-current="page" href="/controllers/formation/formationCtrl.php">Formation</a>
                             </li>
                             <li class="nav-item me-lg-5 navOrange">
-                                <a class="nav-link" aria-current="page" href="/controllers/forum/forumCtrl.php">Forums</a>
+                                <a class="nav-link" aria-current="page" href="/controllers/forum/publics/forumCtrl.php">Forums</a>
                             </li>
                             <li class="nav-item me-lg-5 navOrange">
                                 <a class="nav-link" aria-current="page" href="/controllers/magazine/magazineCtrl.php">Magazine</a>
@@ -53,7 +53,7 @@
                                 <a class="nav-link" aria-current="page" href="/controllers/sign/signInCtrl.php">Formation</a>
                             </li>
                             <li class="nav-item me-lg-5 navOrange">
-                                <a class="nav-link" aria-current="page" href="/controllers/sign/signInCtrl.php">Forums</a>
+                                <a class="nav-link" aria-current="page" href="/controllers/forum/publics/forumCtrl.php">Forums</a>
                             </li>
                             <li class="nav-item me-lg-5 navOrange">
                                 <a class="nav-link" aria-current="page" href="/controllers/magazine/magazineCtrl.php">Magazine</a>

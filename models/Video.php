@@ -4,9 +4,10 @@ require_once(__DIR__ . '/../helpers/database.php');
 
 class Video
 {
-    private int $id;
+    private int $id_videos;
     private string $title;
     private string $deleted_at;
+    private int $id_sub_modules;
 
     private object $pdo;
 
@@ -18,14 +19,14 @@ class Video
         $this->pdo = Database::getInstance();
     }
 
-    // ID GETTER AND SETTER ************************************************************************
-    public function setId(int $id): void
+    // ID_VIDEOS GETTER AND SETTER ************************************************************************
+    public function setId_videos(int $id_videos): void
     {
-        $this->id = $id;
+        $this->id_videos = $id_videos;
     }
-    public function getId(): int
+    public function getId_videos(): int
     {
-        return $this->id;
+        return $this->id_videos;
     }
     // TITLE GETTER AND SETTER ************************************************************************
     public function setTitle(string $title): void
@@ -45,6 +46,15 @@ class Video
     {
         return $this->deleted_at;
     }
+    // ID_SUB_MODULES GETTER AND SETTER ************************************************************************
+    public function setId_sub_modules(int $id_sub_modules): void
+    {
+        $this->id_sub_modules = $id_sub_modules;
+    }
+    public function getId_sub_modules(): int
+    {
+        return $this->id_sub_modules;
+    }
 
     /**
      * 
@@ -55,12 +65,13 @@ class Video
     public function insert(): bool
     {
         // CREATE REQUEST
-        $sql = 'INSERT INTO `videos` (`title`)
-                VALUE (:title)';
+        $sql = 'INSERT INTO `videos` (`title`, `id_sub_modules`)
+                VALUE (:title, :id_sub_modules)';
         // PREPARE REQUEST
         $sth = $this->pdo->prepare($sql);
         // AFFECT VALUE
         $sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
+        $sth->bindValue(':id_sub_modules', $this->getId_sub_modules(), PDO::PARAM_STR);
         // EXECUTE REQUEST
         return $sth->execute();
     }
@@ -158,11 +169,13 @@ class Video
         // CREATE REQUEST
         $sql = 'UPDATE `videos` SET
                         `title` = :title,
+                        `id_sub_modules` = :id_sub_modules
                 WHERE `id_videos` = :id_videos;';
         // PREPARE REQUEST
         $sth = $this->pdo->prepare($sql);
         // AFFECT VALUE
-        $sth->bindValue(':title', $this->getTitle());
+        $sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
+        $sth->bindValue(':id_sub_modules', $this->getId_sub_modules(), PDO::PARAM_INT);
         $sth->bindValue(':id_videos', $id_videos, PDO::PARAM_INT);
         // EXECUTE REQUEST
         if ($sth->execute()) {
