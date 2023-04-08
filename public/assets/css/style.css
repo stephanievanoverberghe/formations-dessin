@@ -188,6 +188,7 @@ button {
     font-size: 1.5rem;
 }
 
+#editComment .btn:hover,
 button:hover {
     background-color: #ff9b42;
     color: #111112;
@@ -626,6 +627,11 @@ li {
 }
 
 /* ADMIN PAGE */
+
+#navbar-admin .logo {
+    width: 125px;
+    height: 125px;
+}
 .buttonDash {
     background-color: #202124;
     color: #ff9b42;
@@ -673,13 +679,14 @@ li {
 #articles-list h1,
 #categories-list h1,
 #subcategories-list h1,
-#comments-list h1 {
+#comments-list h1,
+#pending-comment h1 {
     font-size: 45px;
 }
 
 th {
     color: #ff9b42 !important;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 td {
@@ -711,6 +718,8 @@ td {
     color: #111112;
 }
 
+#editComment .btn,
+#admin-article .btn,
 #addCategory .btn,
 #addSubcategory .btn,
 #addArticle .btn,
@@ -754,6 +763,8 @@ td {
     font-weight: bold;
 }
 
+#searchComments input,
+#searchArticles input,
 #admin-article input,
 #searchSubmodules input,
 #searchUsers input {
@@ -761,18 +772,23 @@ td {
     color: #e8eddf;
 }
 
+#searchComments input:hover,
+#searchArticles input:hover,
 #admin-article input:hover {
     background-color: #ff9b42;
     color: #111112;
     font-weight: bold;
 }
 
+#searchComments .btn,
+#searchArticles .btn,
 #searchSubmodules .btn,
 #searchUsers .btn {
     background-color: #202124;
     color: #1fbfff;
 }
 
+#editComment h1,
 #editUser h1,
 #editTraining h1,
 #editModule h1,
@@ -781,6 +797,7 @@ td {
     font-size: 2.5rem;
 }
 
+#editComment h2,
 #editUser h2,
 #editTraining h2,
 #editModule h2,
@@ -789,6 +806,7 @@ td {
     font-size: 1.5rem;
 }
 
+.editComment,
 .admin-article {
     background-color: #202124;
     border-radius: 10px;

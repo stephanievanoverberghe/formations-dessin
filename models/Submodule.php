@@ -105,7 +105,7 @@ class Submodule
         $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
         $sth->bindValue(':id_modules', $this->getId_modules(), PDO::PARAM_STR);
         // EXECUTE REQUEST
-        if($sth->execute()) {
+        if ($sth->execute()) {
             return ($sth->rowCount() > 0) ? true : false;
         }
     }
@@ -123,7 +123,7 @@ class Submodule
                     WHERE `title` LIKE :search
                     ORDER BY `title` ASC';
 
-                if (!is_null($limit)) {
+        if (!is_null($limit)) {
             $sql .= ' LIMIT :limit OFFSET :offset';
         }
         $sql .= ';';
@@ -145,29 +145,29 @@ class Submodule
         }
     }
     /**
-         * 
-         * Méthode qui permet d'afficher le nombre de sous-modules dans la recherche
-         * 
-         * @param string $search
-         * 
-         * @return [type]
-         */
-        public static function getAllCount($search = ""): array
-        {
-            // CREATE REQUEST
-            $sql = 'SELECT * FROM `submodules`
+     * 
+     * Méthode qui permet d'afficher le nombre de sous-modules dans la recherche
+     * 
+     * @param string $search
+     * 
+     * @return [type]
+     */
+    public static function getAllCount($search = ""): array
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `submodules`
                         WHERE `title` LIKE :search;';
-            // PREPARE REQUEST
-            $sth = Database::getInstance()->prepare($sql);
-            // AFFECT VALUE
-            $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
-            // EXECUTE REQUEST
-            if ($sth->execute()) {
-                return ($sth->fetchAll());
-            } else {
-                return [];
-            }
-        } 
+        // PREPARE REQUEST
+        $sth = Database::getInstance()->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return ($sth->fetchAll());
+        } else {
+            return [];
+        }
+    }
     /**
      * 
      * Méthode permettant de récupérer toutes les données d'un sous module

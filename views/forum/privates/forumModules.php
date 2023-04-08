@@ -36,7 +36,6 @@
     <!-- END BREADCRUMB -->  
 
     <!-- START SEARCH -->
-
     <section id="search" class="pt-5">
         <div class="container">
             <div class="forums px-4">

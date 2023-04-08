@@ -3,12 +3,14 @@
 require_once(__DIR__ . '/../../config/constants.php');
 require_once(__DIR__ . '/../../models/Training.php');
 require_once(__DIR__ . '/../../models/Module.php');
+require_once(__DIR__ . '/../../models/Video.php');
 
 try {
     $id_trainings = intval(filter_input(INPUT_GET, 'id_trainings', FILTER_SANITIZE_NUMBER_INT));
     $id_modules = 1;
-
+    
     $trainings = Training::getData($id_trainings, $id_modules);
+
     
 } catch (\Throwable $th) {
     header('location: /controllers/errorCtrl.php');

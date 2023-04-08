@@ -130,10 +130,13 @@ class Training
                         `modules`.`title` AS `modules_title`, 
                         `modules`.`content` AS `modules_content`,
                         `submodules`.`title` AS `submodules_title`,
-                        `submodules`.`content` AS `submodules_content`
+                        `submodules`.`content` AS `submodules_content`,
+                        `submodules`.`id_sub_modules`
+                        -- `videos`. `id_videos` AS `videos_id`
                 FROM `trainings`
                 JOIN `modules` ON `modules`.`id_trainings` = `trainings`.`id_trainings`
                 JOIN `submodules` ON `submodules`.`id_modules` = `modules`.`id_modules`
+                -- LEFT JOIN `videos` ON `videos`.`id_sub_modules` = `submodules`.`id_sub_modules`
                 WHERE `trainings`.`id_trainings` = :id_trainings AND `modules`.`id_modules` = :id_modules;';
         // PREPARE REQUEST
         $pdo = Database::getInstance();
@@ -144,7 +147,7 @@ class Training
         // EXECUTE REQUEST
         if ($sth->execute()) {
             return $sth->fetchAll();
-        }
+        } 
     }
     /**
      * 

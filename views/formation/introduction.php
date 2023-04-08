@@ -76,7 +76,7 @@
 
                     <div class="accordion" id="accordion">
                         <?php $accordionId = 1;
-                        foreach ($trainings as $training) { ?>
+                        foreach ($trainings as $training) {?>
                             <div class="accordion-item mb-2">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $accordionId ?>" aria-expanded="true" aria-controls="collapseOne">
@@ -87,7 +87,17 @@
                                     <div class="accordion-body">
                                         <!-- ACCORDION INTERIOR -->
                                         <p class="text-start mb-5"><?= $training->submodules_content ?></p>
-                                        <video src="/public/uploads/videos/video_642ade1105079.mp4" width="50%" controls></video>
+
+                                        <?php 
+                                        $videos = Video::getAllVideos($training->id_sub_modules);
+                                        foreach ($videos as $video) { 
+                                            
+                                        ?>
+                                            
+                                            <video src="/public/uploads/videos/video_<?= $video->id_videos ?>.mp4" width="50%" controls></video>
+                                        <?php } ?>
+                                        
+
                                         <div class="row">
                                             <div class="col-12 text-center mt-3 mb-5">
                                                 <div class="form-check form-switch">

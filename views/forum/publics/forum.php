@@ -66,6 +66,7 @@
                 </div>
             </div>
             <div class="row">
+            
                 <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">
                     <div class="card mt-5" style="width: 22rem;">
                         <img src="/public/assets/img/peinture_la-flagellation-du-chri.png" class="card-img-top" alt="La Flagellation du Christ de Piero della Franscesca">
@@ -131,7 +132,7 @@
             </div>
         </div>
     </section>
-
+    <?php if (isset($_SESSION['user'])) { ?>
     <section class="my-4 text-center" id="forums-privés">
         <div class="container">
             <div class="row">
@@ -244,6 +245,7 @@
             </div>
         </div>
     </section>
+    <?php } ?>
 
     <section class="my-4 text-center">
         <div class="container">

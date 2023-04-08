@@ -9,6 +9,7 @@ class Article
     private string $hook;
     private string $subtitle;
     private string $content;
+    private string $excerpt;
     private string $conclusion;
     private string $created_at;
     private string $updated_at;
@@ -79,6 +80,15 @@ class Article
     {
         return $this->conclusion;
     }
+    // EXCERPT GETTER AND SETTER ************************************************************************
+    public function setExcerpt(string $excerpt): void
+    {
+        $this->excerpt = $excerpt;
+    }
+    public function getExcerpt(): string
+    {
+        return $this->excerpt;
+    }
     // CREATED_AT GETTER AND SETTER ************************************************************************
     public function setCreated_at(string $created_at): void
     {
@@ -125,8 +135,8 @@ class Article
     public function insert(): bool
     {
         // CREATE REQUEST
-        $sql = 'INSERT INTO `articles` (`title`, `hook`, `subtitle`, `content`, `conclusion`, `created_at`)
-                    VALUE (:title, :hook, :subtitle, :content, :conclusion, :created_at);';
+        $sql = 'INSERT INTO `articles` (`title`, `hook`, `subtitle`, `content`, `conclusion`, `excerpt`)
+                    VALUE (:title, :hook, :subtitle, :content, :conclusion, :excerpt);';
         // PREPARE REQUEST
         $sth = $this->pdo->prepare($sql);
         // AFFECT VALUE
@@ -135,7 +145,7 @@ class Article
         $sth->bindValue(':subtitle', $this->getSubtitle(), PDO::PARAM_STR);
         $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
         $sth->bindValue(':conclusion', $this->getConclusion(), PDO::PARAM_STR);
-        $sth->bindValue(':created_at', $this->getCreated_at(), PDO::PARAM_STR);
+        $sth->bindValue(':excerpt', $this->getExcerpt(), PDO::PARAM_STR);
         // RETURN TRUE IF REQUEST EXECUTE OR FALSE IF NOT EXECUTE
         return $sth->execute();
     }
@@ -145,20 +155,120 @@ class Article
      * 
      * @return array
      */
-    public static function getAll(): array
+    public static function getAll($search = '', int $limit = null, int $offset = 0): array
     {
         // CREATE REQUEST
-        $sql = '    SELECT * FROM `articles`
-                        ORDER BY `created_at`
-                        DESC
-                        LIMIT 12;';
+        $sql = 'SELECT * 
+            FROM `articles`
+            WHERE `title` LIKE :search
+            ORDER BY `created_at` DESC';
+
+        if (!is_null($limit)) {
+            $sql .= ' LIMIT :limit OFFSET :offset';
+        }
+
         // PREPARE REQUEST
         $sth = Database::getInstance()->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+        // EXECUTE REQUEST
+        if (!is_null($limit)) {
+            $sth->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
+        }
+
+        if ($sth->execute()) {
+            return ($sth->fetchAll());
+        } else {
+            return [];
+        }
+    }
+    public static function getAllCount($search = ""): array
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `articles`
+                    WHERE `title` LIKE :search;';
+        // PREPARE REQUEST
+        $sth = Database::getInstance()->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
         // EXECUTE REQUEST
         if ($sth->execute()) {
             return ($sth->fetchAll());
         } else {
             return [];
         }
+    }
+    public static function getData(int $id_articles): object|bool
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `articles`
+                    WHERE `id_articles` = :id_articles';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_articles', $id_articles, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return $sth->fetch();
+        }
+    }
+    public static function getDataSerialized($id_articles)
+    {
+        // CREATE REQUEST 
+        $sql = 'SELECT * FROM articles 
+                    WHERE id_articles = :id_articles';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_articles', $id_articles, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        $sth->execute();
+        $article = $sth->fetch(PDO::FETCH_OBJ);
+
+        return $article->subtitle;
+    }
+    public function update(int $id_articles): bool
+    {
+        // CREATE REQUEST
+        $sql = 'UPDATE `articles` SET
+                        `title` = :title,
+                        `hook` = :hook,
+                        `subtitle` = :subtitle,
+                        `content` = :content,
+                        `conclusion` = :conclusion,
+                        `excerpt` = :excerpt
+                WHERE `id_articles` = :id_articles;';
+        // PREPARE REQUEST
+        $sth = $this->pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
+        $sth->bindValue(':hook', $this->getHook(), PDO::PARAM_STR);
+        $sth->bindValue(':subtitle', $this->getSubtitle(), PDO::PARAM_STR);
+        $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
+        $sth->bindValue(':conclusion', $this->getConclusion(), PDO::PARAM_STR);
+        $sth->bindValue(':excerpt', $this->getExcerpt(), PDO::PARAM_STR);
+        $sth->bindValue(':id_articles', $id_articles, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return ($sth->rowCount() > 0) ? true : false;
+        }
+    }
+    public static function delete(int $id_articles): bool
+    {
+        // CREATE REQUEST
+        $sql = 'DELETE FROM `articles`
+                    WHERE `articles`.`id_articles` = :id_articles;';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_articles', $id_articles, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        $sth->execute();
+        $result = $sth->rowCount();
+        return ($result > 0) ? true : false;
     }
 }

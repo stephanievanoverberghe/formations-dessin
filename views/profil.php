@@ -258,7 +258,7 @@
                                             <p>En supprimant mon compte, je le supprime définitivement.</p>
                                         </div>
                                         <div class="btnParameter col-12 mt-2">
-                                            <a class="delete" data-bs-toggle="modal" data-bs-target="#deleteUsers" data-idUsers="<?= $user->id_users ?>">
+                                            <a class="deleteUsers" data-bs-toggle="modal" data-bs-target="#deleteUsers" data-idUsers="<?= $user->id_users ?>">
                                                 Supprimer
                                                 <i class="bi bi-trash3-fill mx-2" data-idUsers="<?= $user->id_users ?>"></i>
                                             </a>
@@ -315,6 +315,8 @@
             </div>
         </div>
     </section>
+
+
     <!-- Modal -->
     <div class="modal fade" id="deleteUsers" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
         <div class="modal-dialog">

@@ -68,7 +68,13 @@
                                     <div class="accordion-body">
                                         <!-- ACCORDION INTERIOR -->
                                         <p class="text-start mb-5"><?= $training->submodules_content ?></p>
-                                        <video src="/public/assets/video/00-00-introduction.mp4" width="50%" controls></video>
+                                        <?php 
+                                        $videos = Video::getAllVideos($training->id_sub_modules);
+                                        foreach ($videos as $video) { 
+                                            
+                                        ?>
+                                        <video src="/public/uploads/videos/video_<?= $video->id_videos ?>.mp4" width="50%" controls></video>
+                                        <?php } ?>
                                         <div class="row">
                                             <div class="col-12 text-center mt-3 mb-5">
                                                 <div class="form-check form-switch">
@@ -88,51 +94,40 @@
                         } ?>
                     </div>
 
-                    <!-- ACCORDION 2 -->
-                    <!-- <div class="accordion-item mb-2">
-                            <h2 class="accordion-header" id="headingSix">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                    <!-- ACCORDION 1 -->
+                    <div class="accordion" id="accordion">
+                        <div class="accordion-item mb-2">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                     Envoi du dessin
                                 </button>
                             </h2>
-                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordion"> -->
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
 
-                    <!-- ACCORDION INTERIOR -->
-                    <!-- <div class="accordion-body">
+                                <!-- ACCORDION INTERIOR -->
+                                <div class="accordion-body">
                                     <p class="text-start mb-2">
                                         Lorem Ipsum has been the industry's standard dummy text ever since the
                                         1500s, when an unknown printer took a galley of type and scrambled it to
                                         make a type specimen book. It has survived not only five centuries, but also
-                                        the leap into electronic typesetting, remaining essentially unchanged.</p> -->
+                                        the leap into electronic typesetting, remaining essentially unchanged.</p>
 
-                    <!-- SHARE A FILE-->
-                    <!-- <div class="finalExercice my-5 px-5 py-5">
+                                    <!-- SHARE A FILE-->
+                                    <div class="finalExercice my-5 px-5 py-5">
                                         <div class="row">
                                             <div class="col-lg-6 text-start mt-3 mb-5">
-                                                <input
-                                                    name="filePicture"
-                                                    id="filePicture"
-                                                    type="file" 
-                                                    class="form-control"
-                                                    accept="image/png, image/jpeg"
-                                                >
+                                                <input name="filePicture" id="filePicture" type="file" class="form-control" accept="image/png, image/jpeg">
                                                 <small id="filePictureHelp" class="form-text error"><?= $error['filePicture'] ?? '' ?></small>
                                             </div>
                                             <div class="col-lg-6 text-start mt-3 mb-5 px-5">
                                                 <p>nomdufichier.jpg</p>
-                                            </div> -->
+                                            </div>
 
-                    <!-- TEXTAREA -->
-                    <!-- <div class="row">
+                                            <!-- TEXTAREA -->
+                                            <div class="row">
                                                 <div class="col-12 text-start mt-3 mb-5">
                                                     <label for="textarea" class="form-label">Message d'accompagnement</label>
-                                                    <textarea 
-                                                        class="form-control" 
-                                                        name="finalExercice"
-                                                        id="finalExercice" 
-                                                        rows="10" 
-                                                        placeholder="Tu peux écrire les difficulés rencontrées, les méthodes qui t'ont le plus servis, ce que tu as aimé, les axes que tu penses devoir améliorer..."><?= $finalExercice ?? '' ?>
-                                                    </textarea>
+                                                    <textarea class="form-control" name="finalExercice" id="finalExercice" rows="10" placeholder="Tu peux écrire les difficulés rencontrées, les méthodes qui t'ont le plus servis, ce que tu as aimé, les axes que tu penses devoir améliorer..."><?= $finalExercice ?? '' ?></textarea>
                                                     <small class="form-text error"><?= $error['finalExercice'] ?? '' ?></small>
                                                 </div>
                                             </div>
@@ -144,10 +139,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- AND MODUL - VIDEOS -->

@@ -81,6 +81,19 @@ deleteBtnsCategory.forEach(element => {
     element.addEventListener('click', createLinkCategory)
 });
 
+// MODAL ARTICLES *******************************************************
+const deleteBtnsArticle = document.querySelectorAll('.deleteArticle');
+const deleteLinkArticle = document.getElementById('deleteLinkArticle');
+
+const createLinkArticle = (event) => {
+    let id_articles = event.target.dataset.idarticles;
+    deleteLinkArticle.setAttribute('href', 'deleteArticlesCtrl.php?id_articles=' + id_articles);
+};
+
+deleteBtnsArticle.forEach(element => {
+    element.addEventListener('click', createLinkArticle);
+});
+
 // MODAL USERS *********************************************************
 const deleteBtnsUser = document.querySelectorAll('.deleteUsers');
 const deleteLinkUser = document.getElementById('deleteLinkUser');
@@ -97,87 +110,26 @@ deleteBtnsUser.forEach(element => {
 
 // ADMIN ADD ARTICLE ******************************************************
 
-let title = document.getElementById('title');
-let hook = document.getElementById('hook');
-let subtitle = document.getElementById('subtitle');
-let content = document.getElementById('content');
-let picture = document.getElementById('picture');
-let conclusion = document.getElementById('conclusion');
-let createdAt = document.getElementById('created-at');
-
-// ADD TITLE
-title.addEventListener('click', function () {
-    // Créer le label
-    let labelTitle = document.createElement("label");
-    labelTitle.setAttribute("for", "title");
-    labelTitle.setAttribute("class", "form-label");
-    labelTitle.textContent = "Titre";
-
-    // Créer l'input
-    let inputTitle = document.createElement("input");
-    inputTitle.setAttribute("type", "text");
-    inputTitle.setAttribute("id", "title");
-    inputTitle.setAttribute("name", "title");
-    inputTitle.setAttribute("class", "form-control form-control-lg");
-
-    // Récupérer la div à partir de son ID
-
-    let titleArticle = document.getElementById('titleArticle');
-    console.log(titleArticle);
-
-    // Ajouter les éléments à la div
-
-    titleArticle.appendChild(labelTitle);
-    titleArticle.appendChild(inputTitle);
-})
-
-// ADD HOOK
-
-hook.addEventListener('click', function () {
-    // Créer label
-    let labelHook = document.createElement("label");
-    labelHook.setAttribute("for", "textareaHook");
-    labelHook.setAttribute("class", "form-label");
-    labelHook.textContent = "Accroche";
-
-    // Créer l'input
-    let inputHook = document.createElement("textarea");
-    inputHook.setAttribute("class", "form-control");
-    inputHook.setAttribute("id", "textareaHook");
-    inputHook.setAttribute("rows", "3");
-    inputHook.setAttribute("name", "textareaHook");
-    inputHook.setAttribute("placeholder", "Écrire l'accroche de l'article");
-
-    // Récupérer la div à partir de son ID
-
-    let hookArticle = document.getElementById('hookArticle');
-
-    // Ajouter les éléments à la DIV
-
-    hookArticle.appendChild(labelHook);
-    hookArticle.appendChild(inputHook);
-
-})
-
 // ADD SUBTITLE
 
 subtitle.addEventListener('click', function () {
     // Créer le label
     let labelSubtitle = document.createElement("label");
     labelSubtitle.setAttribute("for", "subtitle");
-    labelSubtitle.setAttribute("class", "form-label");
+    labelSubtitle.setAttribute("class", "form-label orange mt-4 mb-2");
     labelSubtitle.textContent = "Sous-titre";
 
     // Créer l'input
     let inputSubtitle = document.createElement("input");
     inputSubtitle.setAttribute("type", "text");
-    inputSubtitle.setAttribute("id", "subtitle");
-    inputSubtitle.setAttribute("name", "subtitle");
+    inputSubtitle.setAttribute("value", "");
+    inputSubtitle.setAttribute("id", "sub-title");
+    inputSubtitle.setAttribute("name", "subtitle[]");
     inputSubtitle.setAttribute("class", "form-control form-control-lg");
 
     // Récupérer la div à partir de son ID
 
-    let subtitleArticle = document.getElementById('subtitleArticle');
+    let subtitleArticle = document.getElementById('input');
 
     // Ajouter les éléments à la div
 
@@ -187,27 +139,25 @@ subtitle.addEventListener('click', function () {
 
 // ADD CONTENT
 
-// Récupérer les div à partir de son ID
-
-let contentArticle = document.getElementById('contentArticle');
-let pictureArticle = document.getElementById('pictureArticle');
-
-// Ajouter en cliquant bouton
-
 content.addEventListener('click', function () {
     // Créer label
     let labelContent = document.createElement("label");
-    labelContent.setAttribute("for", "textareaContent-" + (contentArticle.children.length + 1));
-    labelContent.setAttribute("class", "form-label");
+    labelContent.setAttribute("for", "textareaContent");
+    labelContent.setAttribute("class", "form-label orange mt-4 mb-2");
     labelContent.textContent = "Paragraphe";
 
     // Créer l'input
     let inputContent = document.createElement("textarea");
     inputContent.setAttribute("class", "form-control");
-    inputContent.setAttribute("id", "textareaContent-" + (contentArticle.children.length + 1));
+    inputContent.setAttribute("id", "textareaContent");
+    inputContent.setAttribute("value", "");
     inputContent.setAttribute("rows", "10");
-    inputContent.setAttribute("name", "textareaContent-" + (contentArticle.children.length + 1));
+    inputContent.setAttribute("name", "textareaContent[]");
     inputContent.setAttribute("placeholder", "Écrire un paragraphe");
+
+    // Ajouter les éléments à la div
+
+    let contentArticle = document.getElementById('input');
 
     contentArticle.appendChild(labelContent);
     contentArticle.appendChild(inputContent);
@@ -218,18 +168,20 @@ content.addEventListener('click', function () {
 picture.addEventListener('click', function () {
     // Créer le label
     let labelPicture = document.createElement("label");
-    labelPicture.setAttribute("for", "picture-" + (pictureArticle.children.length + 1));
-    labelPicture.setAttribute("class", "form-label");
+    labelPicture.setAttribute("for", "picture");
+    labelPicture.setAttribute("class", "form-label orange mt-4 mb-2");
     labelPicture.textContent = "Image";
 
     // Créer l'input
     let inputPicture = document.createElement("input");
     inputPicture.setAttribute("type", "file");
-    inputPicture.setAttribute("id", "picture-" + (pictureArticle.children.length + 1));
-    inputPicture.setAttribute("name", "picture-"  + (pictureArticle.children.length + 1));
+    inputPicture.setAttribute("id", "picture");
+    inputPicture.setAttribute("name", "picture");
     inputPicture.setAttribute("class", "form-control form-control-lg");
 
     // Ajouter les éléments à la div
+
+    let pictureArticle = document.getElementById('input');
 
     pictureArticle.appendChild(labelPicture);
     pictureArticle.appendChild(inputPicture);

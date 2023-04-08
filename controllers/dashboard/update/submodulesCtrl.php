@@ -65,10 +65,8 @@ try{
     $submodule = Submodule::getData($id_sub_modules);
     
 } catch (\Throwable $th) {
-    var_dump($th);
+    header('Location: /controllers/errorCtrl.php');
     die;
-    // header('Location: /controllers/errorCtrl.php');
-    // die;
 }
 
 /* ************* VIEWS DISPLAYS **************************/

@@ -19,20 +19,32 @@ try{
         if(empty($title)) {
             $errors['title'] = 'Le champs est obligatoire';
         }
-        /* ************* SLUG NETTOYAGE ET VERIFICATION **************************/
-        $slug = trim((string)filter_input(INPUT_POST, 'slug', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
-        if(empty($slug)) {
-            $errors['slug'] = 'Le champs est obligatoire';
+        /* ************* HOOK NETTOYAGE ET VERIFICATION **************************/
+        $hook = trim((string)filter_input(INPUT_POST, 'textareaHook', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
+        if(empty($hook)) {
+            $errors['textareaHook'] = 'Le champs est obligatoire';
         }
+        /* ************* SUBTITLE NETTOYAGE ET VERIFICATION **************************/
+        $subtitle = filter_input(INPUT_POST, 'subtitle', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+        if(empty($subtitle)) {
+            $errors['subtitle'] = 'Le champs est obligatoire';
+        } 
+        $subtitle = serialize($subtitle);
         /* ************* CONTENT NETTOYAGE ET VERIFICATION **************************/
-        $content = trim((string)filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
+        $content = filter_input(INPUT_POST, 'textareaContent', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
         if(empty($content)) {
-            $errors['content'] = 'Le champs est obligatoire';
+            $errors['textareaContent'] = 'Le champs est obligatoire';
         }
-        /* ************* CREATED_AT NETTOYAGE ET VERIFICATION **************************/
-        $created_at = trim((string)filter_input(INPUT_POST, 'created_at', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
-        if(empty($created_at)) {
-            $errors['created_at'] = 'Le champs est obligatoire';
+        $content = serialize($content);
+        /* ************* CONCLUSION NETTOYAGE ET VERIFICATION **************************/
+        $conclusion = trim((string)filter_input(INPUT_POST, 'textareaConclusion', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
+        if(empty($conclusion)) {
+            $errors['textareaConclusion'] = 'Le champs est obligatoire';
+        }
+        /* ************* EXCERPT NETTOYAGE ET VERIFICATION **************************/
+        $excerpt = trim((string)filter_input(INPUT_POST, 'textareaExcerpt', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
+        if(empty($excerpt)) {
+            $errors['textareaExcerpt'] = 'Le champs est obligatoire';
         }
         
         // IF NOT ERRORS, SAVE CATEGORIE IN DATABASE
@@ -40,21 +52,47 @@ try{
             //**** HYDRATATION ****/
             $article = new Article;
             $article->setTitle($title);
-            $article->setSlug($slug);
+            $article->setHook($hook);
+            $article->setSubtitle($subtitle);
             $article->setContent($content);
-            $article->setCreated_at($created_at);
+            $article->setConclusion($conclusion);
+            $article->setExcerpt($excerpt);
             
             $response = $article->insert();
             
             if($response) {
                 $errors['global'] = 'L\'article a bien été créé';
+                header('Location: /controllers/dashboard/list/admin-articlesCtrl.php');
+                die;
             }
+
+            // if (isset($_FILES['picture'])) {
+            //     $file = $_FILES['picture']['name'];
+            //     $fileType = $_FILES['picture']['type'];
+            //     $fileError = $_FILES['picture']['error'];
+                
+            //     if (!empty($file)) {
+            //         if ($fileError > 0) {
+            //             $errors['picture'] = 'Erreur lors du transfert du fichier';
+            //         } else {
+            //             $extension = pathinfo($file, PATHINFO_EXTENSION);
+            //             $from = $_FILES['picture']['tmp_name'];
+            //             $filename = 'picture_' . $id_articles . '.' . $extension;
+            //             $to = __DIR__ . '/../../../public/uploads/articles/' . $filename;
+            //             move_uploaded_file($from, $to);
+            //             // var_dump($to);
+            //             // die;
+            //         }
+            //     }
+            // }
         }
     }
     
 } catch (\Throwable $th) {
-    header('Location: /controllers/errorCtrl.php');
+    var_dump($th);
     die;
+    // header('Location: /controllers/errorCtrl.php');
+    // die;
 }
 
 /* ************* VIEWS DISPLAYS **************************/

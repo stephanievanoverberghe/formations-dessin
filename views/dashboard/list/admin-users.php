@@ -39,6 +39,9 @@
                                         <td><?= $user->firstname ?></td>
                                         <td>
                                             <a href="/controllers/dashboard/edit/usersCtrl.php?id_users=<?= $user->id_users ?>"><i class="bi bi-eye-fill"></i></a>
+                                            <a class="deleteUsers" data-bs-toggle="modal" data-bs-target="#deleteUsers" data-idUsers="<?= $user->id_users ?>">
+                                                <i class="bi bi-trash3-fill mx-2" data-idUsers="<?= $user->id_users ?>"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php }
@@ -68,24 +71,42 @@
 
                                 for ($i = max($page - 1, 1); $i <= min($page + 1, $pageNb); $i++) { ?>
 
-                                <li class="page-item <?= ($page == $i) ? "active" : "" ?>" aria-current="page">
-                                    <a class="page-link" href="/controllers/dashboard/list/admin-usersCtrl.php?page=<?= $i ?>"><?= $i ?></a>
-                                </li>
+                                    <li class="page-item <?= ($page == $i) ? "active" : "" ?>" aria-current="page">
+                                        <a class="page-link" href="/controllers/dashboard/list/admin-usersCtrl.php?page=<?= $i ?>"><?= $i ?></a>
+                                    </li>
                                 <?php } ?>
 
                                 <!-- AFFICHE ICONE PAGE SUIVANTE SAUF DERNIERE PAGE -->
                                 <?php if ($page < $pageNb) { ?>
-                                <li class="page-item <?= ($page == $pageNb) ? "disabled" : "" ?>">
-                                    <a class="page-link" href="/controllers/dashboard/list/admin-usersCtrl.php?page=<?= $page + 1 ?>" aria-label="Next">
-                                        Suivant
-                                    </a>
-                                <?php } ?>
-                                </li>
+                                    <li class="page-item <?= ($page == $pageNb) ? "disabled" : "" ?>">
+                                        <a class="page-link" href="/controllers/dashboard/list/admin-usersCtrl.php?page=<?= $page + 1 ?>" aria-label="Next">
+                                            Suivant
+                                        </a>
+                                    <?php } ?>
+                                    </li>
                             </ul>
                         </nav>
                     </div>
                 </div>
             </div>
         </section>
+        <!-- Modal -->
+    <div class="modal fade" id="deleteUsers" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteUserLabel">Supprimer mon compte</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes-vous sûr de bien vouloir supprimer votre compte ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <a type="button" class="btn btn-danger" id="deleteLinkUser">Supprimer</a>
+                </div>
+            </div>
+        </div>
+    </div>
     </main>
 <?php } ?>

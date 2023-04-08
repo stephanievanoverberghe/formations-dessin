@@ -83,7 +83,15 @@
                                     <div class="accordion-body">
                                         <!-- ACCORDION INTERIOR -->
                                         <p class="text-start mb-5"><?= $training->submodules_content ?></p>
-                                        <video src="/public/uploads/videos/video_642300fa203e1.mp4" width="50%" controls></video>
+                                        
+                                        <?php 
+                                        $videos = Video::getAllVideos($training->id_sub_modules);
+                                        foreach ($videos as $video) { 
+                                            
+                                        ?>
+                                        <video src="/public/uploads/videos/video_<?= $video->id_videos ?>.mp4" width="50%" controls></video>
+                                        <?php } ?>
+
                                         <div class="row">
                                             <div class="col-12 text-center mt-3 mb-5">
                                                 <div class="form-check form-switch">

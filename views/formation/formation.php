@@ -46,16 +46,14 @@
                     foreach ($trainings as $training) {
                 ?>
                 <div class="col-lg-4 col-12 col-md-6 mb-5 d-flex flex-column align-items-center">
-                    <div class="card mt-5">
+                    <div class="card mt-5" style="width: 22rem; height: 100%;">
                         <img src="/public/assets/img/formation1.png" class="card-img-top" alt="Bannière de la formation">
-                        <div class="card-body text-center d-flex flex-column justify-content-around">
-                            <h3 class="mt-3"><?= $training->title?></h3>
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <h3 class="card-title mt-3"><?= $training->title?></h3>
                             <p class="card-text mt-3"><?= $training->content ?></p>
-
                             <p> 
                                 <a href="/controllers/formation/introductionCtrl.php?id_trainings=<?= $training->id_trainings ?>" class="card-btn">Accéder à la formation</a>
                             </p>
-
                         </div>
                     </div>
                 </div>

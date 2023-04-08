@@ -67,7 +67,7 @@
                     <h2 class="text-center mb-5">Sujets</h2>
                 </div>
             </div>
-            <a href="/controllers/forum/privates/forumSubjectsCtrl.php">
+            <a href="/controllers/forum/privates/forumSubjectsCtrl.php" titre="Ajouter un sujet">
                 <div class="forums px-5 py-3">
                     <div class="row">
                         <div class="col-12">

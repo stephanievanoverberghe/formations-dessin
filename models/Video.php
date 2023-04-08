@@ -133,6 +133,28 @@ class Video
                 return [];
             }
         } 
+        /**
+         * 
+         * Méthode qui permet d'afficher toute les videos d'un sous module
+         * 
+         * @return array
+         */
+        public static function getAllVideos($id_sub_modules): array
+        {
+            // CREATE REQUEST
+            $sql = 'SELECT `id_videos` FROM `videos` 
+                        WHERE `id_sub_modules` = :id_sub_modules;';
+            // PREPARE REQUEST
+            $sth = Database::getInstance()->prepare($sql);
+            // AFFECT VALUE
+            $sth->bindValue(':id_sub_modules', $id_sub_modules, PDO::PARAM_INT);
+            // EXECUTE REQUEST
+            if ($sth->execute()) {
+                return ($sth->fetchAll());
+            } else {
+                return [];
+            }
+        }
     /**
      * 
      * Méthode permettant de récupérer toutes les données d'une video
