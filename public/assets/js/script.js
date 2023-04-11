@@ -94,6 +94,19 @@ deleteBtnsArticle.forEach(element => {
     element.addEventListener('click', createLinkArticle);
 });
 
+// MODAL COMMENTS *******************************************************
+const deleteBtnsComment = document.querySelectorAll('.deleteComments');
+const deleteLinkComment = document.getElementById('deleteLinkComment');
+
+const createLinkComment = (event) => {
+    let id_comments = event.target.dataset.idcomments;
+    deleteLinkComment.setAttribute('href', 'deleteCommentsCtrl.php?id_comments=' + id_comments);
+};
+
+deleteBtnsComment.forEach(element => {
+    element.addEventListener('click', createLinkComment);
+});
+
 // MODAL USERS *********************************************************
 const deleteBtnsUser = document.querySelectorAll('.deleteUsers');
 const deleteLinkUser = document.getElementById('deleteLinkUser');
@@ -108,6 +121,33 @@ deleteBtnsUser.forEach(element => {
     element.addEventListener('click', createLinkUser)
 });
 
+// MODAL USERS ADMIN *********************************************************
+const deleteBtnsUserAdmin = document.querySelectorAll('.deleteUsersAdmin');
+const deleteLinkUserAdmin = document.getElementById('deleteLinkUserAdmin');
+// console.log(deleteLinkUser);
+
+const createLinkUserAdmin = (event) => {
+    let id_users = event.target.dataset.idusersadmin;
+    deleteLinkUserAdmin.setAttribute('href', 'deleteUsersAdminCtrl.php?id_users=' + id_users);
+};
+
+deleteBtnsUserAdmin.forEach(element => {
+    element.addEventListener('click', createLinkUserAdmin)
+});
+
+// MODAL ADD PICTURE PROFIL *********************************************************
+const addBtnsPictureProfil = document.querySelectorAll('.addProfilPicture');
+const addLinkPictureProfil = document.getElementById('addProfilPictureLinkUser');
+// console.log(deleteLinkUser);
+
+const createLinkUserPictureProfil = (event) => {
+    let id_users = event.target.dataset.idusers;
+    addLinkPictureProfil.setAttribute('href', 'profilCtrl.php?id_users=' + id_users);
+};
+
+addBtnsPictureProfil.forEach(element => {
+    element.addEventListener('click', createLinkUserPictureProfil)
+});
 // ADMIN ADD ARTICLE ******************************************************
 
 // ADD SUBTITLE
