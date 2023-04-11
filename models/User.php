@@ -422,7 +422,9 @@ class User
     public static function delete(int $id_users): bool
     {
         // CREATE REQUEST
-        $sql = 'DELETE FROM `users`
+        $sql = 'DELETE FROM `comments`
+                    WHERE `id_users` = :id_users;
+                DELETE FROM `users`
                     WHERE `users`.`id_users` = :id_users;';
         // PREPARE REQUEST
         $pdo = Database::getInstance();

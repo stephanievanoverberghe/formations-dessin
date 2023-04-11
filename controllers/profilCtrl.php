@@ -11,8 +11,6 @@ try {
     $user = $_SESSION['user'];
     $id_users = $user->id_users;
 
-
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_POST['updateInfos'])) {
             /* ************* PSEUDO NETTOYAGE ET VERIFICATION **************************/
@@ -43,11 +41,35 @@ try {
                 if ($result) {
 
                     $_SESSION['user'] = User::getData($id_users);
-                    header('Location: /controllers/profilCtrl.php');
-                    die;
+                    $errors['global'] = 'Les modifications de votre compte ont bien été pris en compte !';
                 } else {
                     $errors['global'] = 'Impossible de mettre à jour le compte';
                 }
+
+                if ($result) {
+                    $pdo= Database::getInstance();
+                    $id_videos = $pdo->lastInsertId();
+                }
+                if (isset($_FILES['file'])) {
+                    $file = $_FILES['file']['name'];
+                    $fileType = $_FILES['file']['type'];
+                    $fileError = $_FILES['file']['error'];
+                    
+                    if (!empty($file)) {
+                        if ($fileError > 0) {
+                            $errors['file'] = 'Erreur lors du transfert du fichier';
+                        } else {
+                            $extension = pathinfo($file, PATHINFO_EXTENSION);
+                            $from = $_FILES['file']['tmp_name'];
+                            $filename = 'video_' . $id_videos . '.' . $extension;
+                            $to = __DIR__ . '/../../../public/uploads/videos/' . $filename;
+                            move_uploaded_file($from, $to);
+                            // var_dump($to);
+                            // die;
+                        }
+                    }
+                }
+    
             }
         } else if (isset($_POST['updateEmail'])) {
             /* ************* EMAIL NETTOYAGE ET VERIFICATION **************************/
@@ -79,8 +101,9 @@ try {
                 if ($result) {
 
                     $_SESSION['user'] = User::getData($id_users);
-                    header('Location: /controllers/profilCtrl.php');
-                    die;
+                    $errors['global'] = 'Votre email a bien été modifié !';
+                    // header('Location: /controllers/profilCtrl.php');
+                    // die;
                 } else {
                     $errors['global'] = 'Impossible de mettre à jour l\'adresse e-mail';
                 }
@@ -105,8 +128,8 @@ try {
 
                 if ($result) {
                     $_SESSION['user'] = User::getData($id_users);
-                    header('Location: /controllers/profilCtrl.php');
-                    die;
+                    $errors['global'] = 'Votre mot de passe a bien été modifié !';
+
                 } else {
                     $errors['global'] = 'Impossible de mettre à jour le mot de passe';
                 }

@@ -127,12 +127,42 @@ class Comment
         // RETURN TRUE IF REQUEST EXECUTE OR FALSE IF NOT EXECUTE
         return $sth->execute();
     }
-    public static function getAll() : array
+    public static function getAll($search = '', int $limit = null, int $offset = 0): array
     {
         // CREATE REQUEST
-        $sql = '    SELECT * FROM `comments`;';
+        $sql = 'SELECT * 
+                    FROM `comments`
+                    WHERE `title` LIKE :search
+                    ORDER BY `created_at` DESC';
+
+        if (!is_null($limit)) {
+            $sql .= ' LIMIT :limit OFFSET :offset';
+        }
         // PREPARE REQUEST
         $sth = Database::getInstance()->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+        // EXECUTE REQUEST
+        if (!is_null($limit)) {
+            $sth->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
+        }
+
+        if ($sth->execute()) {
+            return ($sth->fetchAll());
+        } else {
+            return [];
+        }
+    }
+    public static function getAllCount($search = ""): array
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `comments`
+                    WHERE `title` LIKE :search;';
+        // PREPARE REQUEST
+        $sth = Database::getInstance()->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
         // EXECUTE REQUEST
         if ($sth->execute()) {
             return ($sth->fetchAll());
@@ -155,7 +185,8 @@ class Comment
             return $sth->fetch();
         }
     }
-    public static function validateComment($id_comments) {
+    public static function validateComment($id_comments)
+    {
         // CREATE REQUEST
         $sql = 'UPDATE `comments` SET
                         `validated_at` = NOW()
@@ -166,9 +197,54 @@ class Comment
         // AFFECT VALUE
         $sth->bindValue(':id_comments', $id_comments);
         // EXECUTE REQUEST
-        if($sth->execute()) {
+        if ($sth->execute()) {
             return ($sth->rowCount() > 0) ? true : false;
         }
     }
-}
+    public static function getUnvalidatedComment(): array
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * FROM `comments` 
+                    WHERE `validated_at` IS NULL;';
+        // PREPARE REQUEST
+        $sth = Database::getInstance()->prepare($sql);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return ($sth->fetchAll());
+        } else {
+            return [];
+        }
+    }
+    public static function getAllValidateComments()
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT * 
+                    FROM `comments`
+                    WHERE `validated_at` IS NOT NULL
+                        ORDER BY `validated_at` DESC';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        // EXECUTE REQUEST
+        $sth->execute();
+        $comments = $sth->fetchAll(PDO::FETCH_OBJ);
 
+        return $comments;
+    }
+    public static function delete(int $id_comments): bool
+    {
+        // CREATE REQUEST
+        $sql = 'DELETE FROM `comments`
+                    WHERE `comments`.`id_comments` = :id_comments;';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_comments', $id_comments, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        $sth->execute();
+        $result = $sth->rowCount();
+        return ($result > 0) ? true : false;
+    }
+}

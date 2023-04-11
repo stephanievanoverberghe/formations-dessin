@@ -1,7 +1,6 @@
 <?php 
 
-require_once(__DIR__ . '/../helpers/SessionFlash.php');
-SessionFlash::start();
+
 
 // INITIALIZATION DATA BASE
 define('DSN', 'mysql:host=localhost;dbname=formationsdessins;charset=utf8mb4;port=3306');
@@ -9,7 +8,7 @@ define('LOGIN', 'steffievano');
 define('PASSWORD', '2D@chB3Bek]CR/h[');
 
 // INITIALIZATION PAGINATION
-define('NB_ELEMENTS_BY_PAGE', 5);
+define('NB_ELEMENTS_BY_PAGE', 6);
 
 // INITIALIZATION ERRORS
 define('ERRORS', [

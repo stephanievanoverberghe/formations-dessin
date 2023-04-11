@@ -16,8 +16,10 @@
                     <img src="/public/assets/img/profil_couverture.jpg" alt="Photo de couverture" class="banner">
                     <a href="" class="iconBanner"><i class="bi bi-camera"></i></a>
                     <div class="col text-center profilPicture">
-                        <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil">
-                        <a href="" class="icon"><i class="bi bi-camera"></i></a>
+                        <img src="/public/uploads/users/profile/autoportrait.jpg" alt="Photo de profil">
+                        <a class="addProfilPicture icon" data-bs-toggle="modal" data-bs-target="#addProfilPicture" data-idUsers="<?= $user->id_users ?>">
+                            <i class="bi bi-camera" data-idUsers="<?= $user->id_users ?>"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -26,8 +28,8 @@
     <!-- END BANNER -->
 
     <!-- START BREADCRUMB -->
-    <section>
-        <div class="container" id="breadcrumb">
+    <section id="breadcrumb" class="d-none d-lg-block">
+        <div class="container">
             <div class="row">
                 <div class="col mb-3">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -44,7 +46,7 @@
     <!-- END BREADCRUMB -->
 
     <!-- START PROFIL TITLE -->
-    <section class="text-center mb-3 mt-5">
+    <section class="text-center mb-3 mt-5" id="pseudoProfil">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -114,16 +116,7 @@
                                             <!-- PSEUDO -->
                                             <div class="col-lg-6">
                                                 <h2 class="mb-3">Pseudo</h2>
-                                                <input 
-                                                    type="text" 
-                                                    name="pseudo" 
-                                                    class="form-control form-control-lg <?= isset($errors['pseudo']) ? 'is-invalid' : '' ?>" 
-                                                    id="pseudo" 
-                                                    placeholder="Ex: Norel-art" 
-                                                    value="<?= $user->pseudo ?>" 
-                                                    minlenght="2" 
-                                                    maxlength="70"
-                                                    >
+                                                <input type="text" name="pseudo" class="form-control form-control-lg <?= isset($errors['pseudo']) ? 'is-invalid' : '' ?>" id="pseudo" placeholder="Ex: Norel-art" value="<?= $user->pseudo ?>" minlenght="2" maxlength="70">
                                                 <small id=pseudoHelp class="form-text error"><?= $errors['pseudo'] ?? '' ?>
                                                 </small>
                                             </div>
@@ -331,6 +324,28 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                     <a type="button" class="btn btn-danger" id="deleteLinkUser">Supprimer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addProfilPicture" tabindex="-1" aria-labelledby="addProfilPictureLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addProfilPictureLabel">Ajouter une photo de profi</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <label for="formFileLg" class="form-label">Sélectionner une image</label>
+                        <input class="form-control form-control-lg" id="formFileLg" type="file">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <a type="button" class="btn btn-danger" id="addProfilPictureLinkUser">Ajouter</a>
                 </div>
             </div>
         </div>

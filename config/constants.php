@@ -13,6 +13,7 @@ define('LEGAL_NOTICE', ["Conditions Générales d'utilisation.", "Politique de P
 define('AUTHORIZED_IMAGE_FORMAT', ['image/jpeg', 'image/png']);
 define('ARRAY_COUNTRIES', ['France', 'Belgique', 'Luxembourg', 'Suisse', 'Monaco', 'Bénin', 'Burkina Faso', 'RDC', 'Côte d\'ivoire', 'Gabon', 'Guinée', 'Mali', 'Niger', 'Sénégal', 'Togo', 'Canada', 'Burundi', 'Cameron', 'Comores', 'Djibouti', 'Guinée équatoriale', 'Madagascar', 'République centrafrique', 'Rwanda', 'Seychelles', 'Tchad', 'Haïti', 'Vanuatu', 'Algérie', 'Maroc', 'Tunisie', 'Mauritanie', 'Liban', 'Maurice', 'Andorre']);
 
+
 // CONSTANTES PICTURES
 define('MAX_FILESIZE', 5*1024*1024);
 define('EXTENSIONS', ['image/jpg']);

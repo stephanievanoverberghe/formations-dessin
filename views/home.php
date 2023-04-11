@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-12 ">
                         <div class="banner-text">
-                            <h1 class="">Formations<br>Dessin</h1>
+                            <h1 class="">Formation<br>Dessin</h1>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,16 @@
                                     Pratiquer avec des exercices adaptés
                                 </li>
                             </ul>
-                            <button class="mt-4 mb-5"><a href="/controllers/formation/formationCtrl.php" class="btnInscription">En savoir +</a></button>
+                            <?php
+                            if (isset($_SESSION['user'])) { ?>
+                                <button class="mt-4 mb-5">
+                                    <a href="/controllers/formation/formationCtrl.php" class="btnInscription">En savoir +</a>
+                                </button>
+                            <?php } else { ?>
+                                <button class="mt-4 mb-5">
+                                    <a href="/controllers/sign/signUpCtrl.php" class="btnInscription">En savoir +</a>
+                                </button>
+                            <?php } ?>
                         </div>
                         <div class="col-lg-6 col-12 mb-5">
                             <img src="/public/assets/img/visage_platre_recadre.png" alt="Dessin de visage en plâtre" class="image-platre">
@@ -131,7 +140,7 @@
                 </div>
                 <div class="row">
                     <?php
-                    
+
                     foreach ($last_three_articles as $article) {
                     ?>
                         <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">

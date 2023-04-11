@@ -33,7 +33,7 @@
         </div>
     </section>
 
-    <!-- END BREADCRUMB -->  
+    <!-- END BREADCRUMB -->
 
     <!-- START SEARCH -->
     <section id="search" class="pt-5">
@@ -60,27 +60,27 @@
                     <h2 class="text-center my-5">Observer en 2d</h2>
                 </div>
                 <div class="col-12">
-                    <h3 class="my-5">A lire avant de poster sur les forums</h3>
+                    <h3 class="my-5 text-center text-xl-start">A lire avant de poster sur les forums</h3>
                 </div>
             </div>
             <a href="">
                 <div class="forums px-5 py-3">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 text-center text-xl-start">
                             <h4 class="mb-5">Règles et bonnes pratiques du forum</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -92,26 +92,27 @@
                 <div class="forums px-5 py-3 my-4 mb-5">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">FAQ Observer en 2d</h4>
+                            <h4 class="mb-5 text-center text-xl-start">FAQ Observer en 2d</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </a>
         </div>
 
@@ -120,27 +121,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="my-5">La ligne</h3>
+                    <h3 class="my-5 text-center text-xl-start">La ligne</h3>
                 </div>
             </div>
             <a href="/controllers/forum/privates/forumSubmodulesCtrl.php">
                 <div class="forums px-5 py-3">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">La droite</h4>
+                            <h4 class="mb-5 text-center text-xl-start">La droite</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -152,45 +153,46 @@
                 <div class="forums px-5 py-3 my-4">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">La courbe</h4>
+                            <h4 class="mb-5 text-center text-xl-start">La courbe</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </a>
             <a href="">
                 <div class="forums px-5 py-3">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 text-center text-xl-start">
                             <h4 class="mb-5">Les obliques et les diagonales</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -201,21 +203,21 @@
             <a href="">
                 <div class="forums px-5 py-3 my-4">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 text-center text-xl-start">
                             <h4 class="mb-5">Les lignes de direction</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -226,21 +228,21 @@
             <a href="">
                 <div class="forums px-5 py-3">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 text-center text-xl-start">
                             <h4 class="mb-5">Les figures géométriques</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -251,21 +253,21 @@
             <a href="">
                 <div class="forums px-5 py-3 my-4">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 text-center text-xl-start">
                             <h4 class="mb-5">Combinaisons de lignes</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -280,27 +282,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="my-5">La forme</h3>
+                    <h3 class="my-5 text-center text-xl-start">La forme</h3>
                 </div>
             </div>
             <a href="">
                 <div class="forums px-5 py-3">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">Le cadrage</h4>
+                            <h4 class="mb-5 text-center text-xl-start">Le cadrage</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -311,21 +313,21 @@
             <a href="">
                 <div class="forums px-5 py-3 my-4">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 text-center text-xl-start">
                             <h4 class="mb-5">Les formes et contreformes</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -337,20 +339,20 @@
                 <div class="forums px-5 py-3">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">La profondeur relative</h4>
+                            <h4 class="mb-5 text-center text-xl-start">La profondeur relative</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -362,20 +364,20 @@
                 <div class="forums px-5 py-3 my-4">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">L'axe de symétrie</h4>
+                            <h4 class="mb-5 text-center text-xl-start">L'axe de symétrie</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -387,20 +389,20 @@
                 <div class="forums px-5 py-3">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">Les lignes existantes</h4>
+                            <h4 class="mb-5 text-center text-xl-start">Les lignes existantes</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -412,20 +414,20 @@
                 <div class="forums px-5 py-3 my-4">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">Les angles</h4>
+                            <h4 class="mb-5 text-center text-xl-start">Les angles</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -437,20 +439,20 @@
                 <div class="forums px-5 py-3 my-4">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">Les raccourcis</h4>
+                            <h4 class="mb-5 text-center text-xl-start">Les raccourcis</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -465,27 +467,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="my-5">Les mesures</h3>
+                    <h3 class="my-5 text-center text-xl-start">Les mesures</h3>
                 </div>
             </div>
             <a href="">
                 <div class="forums px-5 py-3">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">La mesure comparative</h4>
+                            <h4 class="mb-5 text-center text-xl-start">La mesure comparative</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -497,20 +499,20 @@
                 <div class="forums px-5 py-3 my-4">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">La mesure de l'oeil</h4>
+                            <h4 class="mb-5 text-center text-xl-start">La mesure de l'oeil</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -522,20 +524,20 @@
                 <div class="forums px-5 py-3">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">La mesure relationnelle</h4>
+                            <h4 class="mb-5 text-center text-xl-start">La mesure relationnelle</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>
@@ -550,27 +552,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="my-5">Exercices</h3>
+                    <h3 class="my-5 text-center text-xl-start">Exercices</h3>
                 </div>
             </div>
             <a href="">
                 <div class="forums px-5 py-3">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">Exercices de fin de module</h4>
+                            <h4 class="mb-5 text-center text-xl-start">Exercices de fin de module</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
                                 <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-xl-4 d-none d-xl-block text-center">
                                 <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
                                 <p>Crée par L'alchimiste</p>
                                 <p>Il y a environ 1 an</p>
                             </div>

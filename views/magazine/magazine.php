@@ -44,14 +44,14 @@
 
         <!-- START CATEGORY -->
 
-        <section class="mb-5">
+        <section class="mb-5" id="search-categories">
             <div class="container">
                 <h2 class="text-center my-5">Toute l'actualité, les pas à pas,<br>les conseils ou les cours, c'est dans le magazine</h2>
                 <div class="category pb-5 px-4">
                     <div class="row">
                         <div class="offset-lg-3 col-lg-6 my-5">
-                            <form class="d-flex" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Rechercher sur le magazine" aria-label="Search">
+                            <form class="d-flex mt-3 mb-5" role="search" method="GET" action="magazineCtrl.php">
+                                <input class="research form-control me-2" type="search" name="search" value="<?= $search ?? '' ?>" placeholder="Rechercher sur le magazine" aria-label="Search">
                                 <button class="button" type="submit"><i class="bi bi-search icon"></i></button>
                             </form>
                         </div>
@@ -59,36 +59,28 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <h3 class="mb-4">Catégories</h3>
-                            <?php
-                            foreach ($categories as $category) {
-                            ?>
-                                <a href=""><?= $category->title ?></a><br>
-                            <?php } ?>
+                            <!-- SUBCATEGORIE -->
+                            <select name="id_categories" id="id_categories" class="form-select">
+                                <?php
+                                foreach ($categories as $category) {
+                                    $state = ($category->id_categories) ? "selected" : "";
+                                    echo '<option value="' . $category->id_categories . '" ' .  $state  . '>' . $category->title . ' ' . '</option>';
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="offset-lg-1 col-lg-7">
                             <h3 class="mb-4">Sous catégories</h3>
-                            <?php
-                            foreach ($subcategories as $subcategory) {
-                            ?>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a href=""><?= $subcategory->title ?></a><br>
-                                    </div>
-                                    <!-- <div class="col-4">
-                                <a href="">Artistes célèbres</a><br>
-                                <a href="">Mouvements dans l'art</a><br>
-                                <a href="">Les crayons</a><br>
-                                <a href="">Les papiers</a><br>
-                                <a href="">Les gommes</a>
-                            </div>
-                            <div class="col-4">
-                                <a href="">La perspective</a><br>
-                                <a href="">La composition</a><br>
-                                <a href="">L'ombre et la lumière</a><br>
-                                <a href="">Les textures</a><br>
-                            </div> -->
-                                </div>
-                            <?php } ?>
+                            <!-- SUBCATEGORIE -->
+                            <select name="id_sub_categories" id="id_sub_categories" class="form-select">
+                                <?php
+                                foreach ($subcategories as $subcategory) {
+                                    $state = ($subcategory->id_sub_categories == $categories->id_sub_modules) ? "selected" : "";
+                                    echo '<option value="' . $subcategory->id_sub_categories . '" ' .  $state  . '>' . $subcategory->title . ' ' . '</option>';
+                                }
+                                ?>
+                            </select>
+                            <div class="error"><?= $errors['id_modules'] ?? '' ?></div>
                         </div>
                     </div>
                 </div>
@@ -111,7 +103,7 @@
                 <div class="row">
                     <?php
 
-                    foreach ($last_three_articles as $article) {
+                    foreach ($articles as $article) {
                     ?>
                         <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">
                             <div class="card mt-5" style="width: 22rem; height: 100%;">
@@ -136,23 +128,36 @@
 
         <!-- START PAGINATION -->
 
-        <section class="">
+        <section id="pagination">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 d-flex flex-column align-items-center">
+                    <div class="col-lg-12 d-flex flex-column align-items-center my-5">
                         <nav aria-label="...">
-                            <ul class="pagination pagination-lg"">
-                            <li class=" page-item disabled">
-                                <a class="page-link">Précédent</a>
+                            <ul class="pagination pagination-lg">
+
+                                <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>">
+                                    <a class="page-link" href="/controllers/magazine/magazineCtrl.php?page=<?= $page - 1 ?>" aria-label="Preview">
+                                        Précédent
+                                    </a>
                                 </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item" aria-current="page">
-                                    <a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Suivant</a>
-                                </li>
+                                <!-- EFFECTUER UNE BOUCLE -->
+                                <?php
+
+                                for ($i = max($page - 1, 1); $i <= min($page + 1, $pageNb); $i++) { ?>
+
+                                    <li class="page-item <?= ($page == $i) ? "active" : "" ?>" aria-current="page">
+                                        <a class="page-link" href="/controllers/magazine/magazineCtrl.php?page=<?= $i ?>"><?= $i ?></a>
+                                    </li>
+                                <?php } ?>
+
+                                <!-- AFFICHE ICONE PAGE SUIVANTE SAUF DERNIERE PAGE -->
+                                <?php if ($page < $pageNb) { ?>
+                                    <li class="page-item <?= ($page == $pageNb) ? "disabled" : "" ?>">
+                                        <a class="page-link" href="/controllers/magazine/magazineCtrl.php?page=<?= $page + 1 ?>" aria-label="Next">
+                                            Suivant
+                                        </a>
+                                    <?php } ?>
+                                    </li>
                             </ul>
                         </nav>
                     </div>

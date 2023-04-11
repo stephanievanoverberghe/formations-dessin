@@ -23,21 +23,23 @@ if ($article) { ?>
         <!-- END BANNER -->
 
         <!-- START BREADCRUMB -->
-        <section id="breadcrumb">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/controllers/homeCtrl.php">Accueil</a></li>
-                                <li class="breadcrumb-item"><a href="/controllers/magazine/magazineCtrl.php">Magazine</a></li>
-                                <li class="breadcrumb-item active" aria-current="page"><?= $article->title ?></li>
-                            </ol>
-                        </nav>
+
+            <section id="breadcrumb" class="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/controllers/homeCtrl.php">Accueil</a></li>
+                                    <li class="breadcrumb-item"><a href="/controllers/magazine/magazineCtrl.php">Magazine</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><?= $article->title ?></li>
+                                </ol>
+                            </nav>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
         <!-- END BREADCRUMB -->
 
         <!-- START ARTICLE -->
@@ -88,12 +90,12 @@ if ($article) { ?>
         <section id="author" class="text-center">
             <div class="container">
                 <div class="author my-5 px-4 py-5">
-                    <div class="row">
-                        <div class="col-lg-2">
+                    <div class="row text-center flex-column flex-sm-row">
+                        <div class="col-xl-2 col-12 mb-3 my-5 my-md-0">
                             <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                         </div>
-                        <div class="col-lg-10">
-                            <div class="row text-start">
+                        <div class="col-xl-10 col-12">
+                            <div class="row text-xl-start">
                                 <div class="col-12">
                                     <h5>Auteur de l'article : L'Alchimiste</h5>
                                 </div>
@@ -134,29 +136,34 @@ if ($article) { ?>
         <!-- END NETWORK -->
 
         <!-- START ADD-TRAINING -->
-        <section id="addTraining" class="text-center">
-            <div class="container">
-                <div class="addTraining my-5 px-4 py-5">
-                    <div class="row">
-                        <div class="col-12">
-                            <h3>Formation - Les fondamentaux du dessin</h3>
+        <?php
+        if (!isset($_SESSION['user'])) { ?>
+            <section id="addTraining" class="text-center">
+                <div class="container">
+
+                    <div class="addTraining my-5 px-4 py-5">
+                        <div class="row">
+                            <div class="col-12">
+                                <h3>Formation - Les fondamentaux du dessin</h3>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-4">
-                            <img src="/public/assets/img/formation1.png" alt="Image de la formation">
-                        </div>
-                        <div class="col-8 mt-5 px-5 ">
-                            <p>Le dessin, ça s'apprend, ça s'explore !</p>
-                            <p>Si tu es ici, c'est que tu es motivé(e) à entrer dans cet univers incroyable qu'est son apprentissage.</p>
-                            <p class="mb-5">Alors n'hésites plus et</p>
-                            <h4>Deviens Explorateur de l'art</h4>
-                            <a href="/controllers/sign/signUpCtrl.php" class="btn mt-4">S'inscrire</a>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-4">
+                                <img src="/public/assets/img/formation1.png" alt="Image de la formation">
+                            </div>
+                            <div class="col-8 mt-5 px-5 ">
+                                <p>Le dessin, ça s'apprend, ça s'explore !</p>
+                                <p>Si tu es ici, c'est que tu es motivé(e) à entrer dans cet univers incroyable qu'est son apprentissage.</p>
+                                <p class="mb-5">Alors n'hésites plus et</p>
+                                <h4>Deviens Explorateur de l'art</h4>
+                                <a href="/controllers/sign/signUpCtrl.php" class="btn mt-4">S'inscrire</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        <?php }
+        ?>
         <!-- END ADD-TRAINING -->
 
         <!-- START MORE ARTCILE -->
@@ -197,12 +204,12 @@ if ($article) { ?>
         <section id="commentsArticle">
             <div class="container">
                 <h2 class="text-center mt-5 mb-4">Commentaire</h2>
-                <div class="forums p-5">
+                <div class="forums p-md-5 mb-4 p-3 pb-5">
 
                     <div class="row justify-content-center align-items-center">
-                        <div class="col-3">
-                            <div class="row text-center">
-                                <div class="col-12">
+                        <div class="col-lg-3 col-md-12">
+                            <div class="row text-center flex-column flex-sm-row">
+                                <div class="col-12 mb-3 my-5 my-md-0">
                                     <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                                 </div>
                                 <div class="col-12">
@@ -216,9 +223,9 @@ if ($article) { ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-9">
+                        <div class="col-lg-9 col-md-12">
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-12 text-center text-lg-start">
                                     <h3 class="mb-5">Bonjour @Thom Vi</h3>
                                 </div>
                                 <div class="col-12">
@@ -230,13 +237,20 @@ if ($article) { ?>
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-5">
-                        <div class="col-12 text-end">
-                            <a href="" class="me-4">Répondre</a>
-                            <a href="" class="me-4">Citer</a>
-                            <a href="">Signaler ce message</a>
+                    <?php
+                    if (isset($_SESSION['user'])) { ?>
+                        <div class="row mt-lg-5">
+                            <div class="col-12 offset-lg-3 col-lg-3 text-center text-lg-end mb-3 mb-lg-0">
+                                <a href="" class="">Répondre</a>
+                            </div>
+                            <div class="col-12 col-lg-3 text-center mb-3 mb-lg-0">
+                                <a href="" class="">Citer</a>
+                            </div>
+                            <div class="col-12 col-lg-3 text-center text-lg-start">
+                                <a href="">Signaler ce message</a>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </section>
@@ -245,35 +259,35 @@ if ($article) { ?>
         <!-- START ADD COMMENTS -->
         <?php
         if (isset($_SESSION['user'])) { ?>
-        <section id="topics-comments">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="text-start mt-5 mb-4">Ajouter un commentaire</h3>
+            <section id="topics-comments">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="text-lg-start text-center mt-5 mb-4">Ajouter un commentaire</h3>
+                        </div>
+                    </div>
+                    <div class="forums p-md-5 mb-4 px-1 pb-5">
+                        <form method="POST">
+                            <div class="col-12 mb-3">
+                                <label for="title" class="form_label orange mb-2">Titre
+                                    <span class="orange"> *</span>
+                                </label>
+                                <input type="text" value="" class="form-control form-control-lg <?= isset($errors['title']) ? 'is-invalid' : '' ?>" id="title" name="title" required>
+                                <div class="error"><?= $errors['title'] ?? '' ?></div>
+                            </div>
+                            <div class="col-12">
+                                <label for="contentArticle" class="form_label orange mt-4 mb-2">Commentaire
+                                    <span class="orange"> *</span>
+                                </label>
+                                <textarea class="form-control" id="contentArticle" rows="10" placeholder="Écrire mon commentaire ici" name="contentArticle"></textarea>
+                            </div>
+                            <div class="col-12 mt-4 text-center">
+                                <input type="submit" value="Commenter">
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="forums p-5 mb-4">
-                    <form method="POST">
-                        <div class="col-12 mb-3">
-                            <label for="title" class="form_label orange mb-2">Titre
-                                <span class="orange"> *</span>
-                            </label>
-                            <input type="text" value="" class="form-control form-control-lg <?= isset($errors['title']) ? 'is-invalid' : '' ?>" id="title" name="title" required>
-                            <div class="error"><?= $errors['title'] ?? '' ?></div>
-                        </div>
-                        <div class="col-12">
-                            <label for="contentArticle" class="form_label orange mt-4 mb-2">Commentaire
-                                <span class="orange"> *</span>
-                            </label>
-                            <textarea class="form-control" id="contentArticle" rows="10" placeholder="Écrire mon commentaire ici" name="contentArticle"></textarea>
-                        </div>
-                        <div class="col-12 mt-4 text-center">
-                            <input type="submit" value="commenter">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
+            </section>
         <?php } ?>
 
         <!-- END ADD COMMENTS -->

@@ -58,7 +58,7 @@
     <section id="general-topics">
         <div class="container">
             <div class="row">
-            <div class="col-12">
+                <div class="col-12">
                     <div class="addTopics text-end mt-5">
                         <a href="#"><i class="bi bi-plus-square-fill icon"></i></a>
                     </div>
@@ -71,22 +71,22 @@
                 <div class="forums px-5 py-3">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">Un autre moyen de tracer des droites ?</h4>
+                            <h4 class="mb-5 text-center text-xl-start">Un autre moyen de tracer des droites ?</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
+                            <div class="col-12 col-xl-3 text-center text-xl-start">
                                 <p>Dernier message par L'alchimiste</p>
-                                <p>16 mars 2023 à 10:03:06</p>
+                                <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
-                                <p>2 messages</p>
+                            <div class="col-12 col-xl-4 d-none d-xl-block text-center">
+                                <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
-                                <p>Crée par Thom</p>
-                                <p>Il y a 2 jour</p>
+                            <div class="col-12 col-xl-3 d-none d-xl-block text-center text-xl-end">
+                                <p>Crée par L'alchimiste</p>
+                                <p>Il y a environ 1 an</p>
                             </div>
                         </div>
                     </div>
@@ -96,22 +96,22 @@
                 <div class="forums px-5 py-3 my-4">
                     <div class="row">
                         <div class="col-12">
-                            <h4 class="mb-5">Mes exercices</h4>
+                            <h4 class="mb-5 text-center text-xl-start">Mes exercices</h4>
                         </div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-2">
+                            <div class="col-xl-2 col-12 text-center mb-3 mb-lg-0">
                                 <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                             </div>
-                            <div class="col-3">
-                                <p>Dernier message par Marie Hello</p>
-                                <p>16 mars 2023 à 12:12:54</p>
+                            <div class="col-xl-3 text-center text-xl-start">
+                                <p>Dernier message par L'alchimiste</p>
+                                <p>16 mars 2023</p>
                             </div>
-                            <div class="col-4 text-center">
-                                <p>6 messages</p>
+                            <div class="col-xl-4 d-none d-xl-block text-center">
+                                <p>1254 messages </p>
                             </div>
-                            <div class="col-3 text-end">
-                                <p>Crée par Marie Hello</p>
-                                <p>Il y a 4 jours</p>
+                            <div class="col-xl-3 d-none d-xl-block text-center text-xl-end">
+                                <p>Crée par L'alchimiste</p>
+                                <p>Il y a environ 1 an</p>
                             </div>
                         </div>
                     </div>
@@ -120,16 +120,16 @@
         </div>
     </section>
 
-        <!-- START PAGINATION -->
+    <!-- START PAGINATION -->
 
-        <section>
+    <section>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 d-flex flex-column align-items-center mt-4">
                     <nav aria-label="...">
                         <ul class="pagination pagination-lg"">
-                            <li class="page-item disabled">
-                                <a class="page-link">Précédent</a>
+                            <li class=" page-item disabled">
+                            <a class="page-link">Précédent</a>
                             </li>
                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
                             <li class="page-item" aria-current="page">

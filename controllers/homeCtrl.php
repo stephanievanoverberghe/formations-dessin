@@ -8,8 +8,9 @@ require_once(__DIR__ . '/../models/Article.php');
 
 try {
     $id_articles = intval(filter_input(INPUT_GET, 'id_articles', FILTER_SANITIZE_NUMBER_INT));
+    
     $articles = Article::getAll();
-    $last_three_articles = array_slice($articles, -3);
+    $last_three_articles = Article::getAll('', 3);
 
 } catch (\Throwable $th) {
     header('Location: /controllers/errorCtrl.php');

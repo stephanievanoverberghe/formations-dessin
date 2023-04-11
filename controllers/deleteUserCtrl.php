@@ -9,8 +9,6 @@ require_once(__DIR__ . '/../models/User.php');
 try {
 
 $id_users = intval(filter_input(INPUT_GET, 'id_users', FILTER_SANITIZE_NUMBER_INT));
-// var_dump($id_users);
-// die;
 
 $isDelete = User::delete($id_users);
 
@@ -22,12 +20,16 @@ if($isDelete) {
 
 unset($_SESSION['user']);
 session_destroy();
+$errors['global'] = 'Le compte a bien été supprimé !';
 header('location: /');
 
 
 } catch (\Throwable $th) {
+
+
 header('Location: /controllers/errorCtrl.php');
 die;
+
 }
 
 /* ************* VIEWS DISPLAY **********************************************/

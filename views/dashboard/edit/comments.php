@@ -33,14 +33,12 @@ if ($comment) { ?>
                             <form action="" method="POST" role="form">
                                 <div class="row">
                                     <div class="col-6 text-end">
-                                        <a class="deleteComments btn" data-bs-toggle="modal" data-bs-target="#deleteComments" data-idComments="">Refuser
-                                            <i class="bi bi-trash3-fill" data-idComments=""></i>
+                                        <a class="deleteComments btn" data-bs-toggle="modal" data-bs-target="#deleteComments" data-idComments="<?= $comment->id_comments ?>">Refuser
+                                            <i class="bi bi-trash3-fill" data-idComments="<?= $comment->id_comments ?>"></i>
                                         </a>
                                     </div>
                                     <div class="col-6 text-start">
-                                        <a href="" class="btn">Valider
-                                            <i class="bi bi-check2"></i>
-                                        </a>
+                                    <input type="submit" class="btn" id="validateButton" name="validatComment" value="Valider">
                                     </div>
                                 </div>
                             </form>

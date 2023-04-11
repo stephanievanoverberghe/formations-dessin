@@ -39,8 +39,8 @@
                                         <td><?= $user->firstname ?></td>
                                         <td>
                                             <a href="/controllers/dashboard/edit/usersCtrl.php?id_users=<?= $user->id_users ?>"><i class="bi bi-eye-fill"></i></a>
-                                            <a class="deleteUsers" data-bs-toggle="modal" data-bs-target="#deleteUsers" data-idUsers="<?= $user->id_users ?>">
-                                                <i class="bi bi-trash3-fill mx-2" data-idUsers="<?= $user->id_users ?>"></i>
+                                            <a class="deleteUsersAdmin" data-bs-toggle="modal" data-bs-target="#deleteUsersAdmin" data-idUsersAdmin="<?= $user->id_users ?>">
+                                                <i class="bi bi-trash3-fill mx-2" data-idUsersAdmin="<?= $user->id_users ?>"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -91,11 +91,11 @@
             </div>
         </section>
         <!-- Modal -->
-    <div class="modal fade" id="deleteUsers" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteUsersAdmin" tabindex="-1" aria-labelledby="deleteUserAdminLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="deleteUserLabel">Supprimer mon compte</h1>
+                    <h1 class="modal-title fs-5" id="deleteUserAdminLabel">Supprimer mon compte</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -103,7 +103,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <a type="button" class="btn btn-danger" id="deleteLinkUser">Supprimer</a>
+                    <a type="button" class="btn btn-danger" id="deleteLinkUserAdmin">Supprimer</a>
                 </div>
             </div>
         </div>

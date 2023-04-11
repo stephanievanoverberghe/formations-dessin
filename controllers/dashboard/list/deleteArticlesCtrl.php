@@ -23,8 +23,8 @@ try {
     die;
 
 } catch (\Throwable $th) {
-    var_dump($th);
-    die;
-    // header('location: /controllers/errorCtrl.php');
+    // var_dump($th);
     // die;
+    header('location: /controllers/errorCtrl.php');
+    die;
 }

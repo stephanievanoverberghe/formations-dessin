@@ -132,7 +132,9 @@ if ($user) {
                                         aria-describedby="countryHelp"
                                         aria-label=".form-select-lg"
                                     >
-                                    <?php foreach (ARRAY_COUNTRIES as $countryInSelect) {
+                                    
+                                    <?php 
+                                    foreach (ARRAY_COUNTRIES as $countryInSelect) {
                                         $isSelected = ($countryInSelect == $country) ? 'selected' : '';
                                         echo "<option $isSelected>$countryInSelect</option>";
                                     } ?>

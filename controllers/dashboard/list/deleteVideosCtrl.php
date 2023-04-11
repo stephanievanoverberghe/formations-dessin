@@ -22,8 +22,6 @@ try {
     die;
     
 } catch (\Throwable $th) {
-    var_dump($th);
+    header('location: /controllers/errorCtrl.php');
     die;
-    // header('location: /controllers/errorCtrl.php');
-    // die;
 }

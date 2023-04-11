@@ -12,7 +12,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col text-center">
-                    <div class="banner-text">
+                    <div class="banner-text banner-text-mobile">
                         <h1>Les formations</h1>
                     </div>
                 </div>
