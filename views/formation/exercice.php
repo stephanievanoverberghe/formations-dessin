@@ -59,12 +59,12 @@
                         <?php $accordionId = 8;
                         foreach ($trainings as $training) { ?>
                             <div class="accordion-item mb-2">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $accordionId ?>" aria-expanded="true" aria-controls="collapseOne">
+                                <h2 class="accordion-header" id="heading<?= $accordionId ?>">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $accordionId ?>" aria-expanded="true">
                                         <?= $training->submodules_title ?>
                                     </button>
                                 </h2>
-                                <div id="collapse<?= $accordionId ?>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
+                                <div id="collapse<?= $accordionId ?>" class="accordion-collapse collapse" aria-labelledby="heading<?= $accordionId ?>" data-bs-parent="#accordion">
                                     <div class="accordion-body">
                                         <!-- ACCORDION INTERIOR -->
                                         <p class="text-start mb-5"><?= $training->submodules_content ?></p>

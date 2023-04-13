@@ -164,7 +164,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="btnParameter col-12 text-center mt-5 d-flex flex-column align-items-center">
-                                                <input type="submit" value="Modifier" name="updateInfos" id="validForm">
+                                                <input type="submit" value="Modifier" name="updateInfos" id="validForm" title="Modifier les informations">
                                             </div>
                                         </div>
                                     </div>
@@ -191,7 +191,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="btnParameter col-12 text-center mt-5 mb-5 d-flex flex-column align-items-center">
-                                                    <input type="submit" value="Modifier" name="updateEmail" id="validForm">
+                                                    <input type="submit" value="Modifier" name="updateEmail" id="validForm" title="Modifier l'email">
                                                 </div>
                                             </div>
                                         </div>
@@ -234,7 +234,7 @@
                                                 </small>
                                             </div>
                                             <div class="btnParameter col-12 text-center my-5 d-flex flex-column align-items-center">
-                                                <input type="submit" value="Modifier" name="updatePassword" id="validForm">
+                                                <input type="submit" value="Modifier" name="updatePassword" id="validForm" title="Modifier le mot de passe">
                                             </div>
                                         </div>
                                     </div>
@@ -251,7 +251,7 @@
                                             <p>En supprimant mon compte, je le supprime définitivement.</p>
                                         </div>
                                         <div class="btnParameter col-12 mt-2">
-                                            <a class="deleteUsers" data-bs-toggle="modal" data-bs-target="#deleteUsers" data-idUsers="<?= $user->id_users ?>">
+                                            <a class="deleteUsers" data-bs-toggle="modal" data-bs-target="#deleteUsers" data-idUsers="<?= $user->id_users ?>" title="Supprimer le compte">
                                                 Supprimer
                                                 <i class="bi bi-trash3-fill mx-2" data-idUsers="<?= $user->id_users ?>"></i>
                                             </a>
@@ -273,7 +273,7 @@
                                                 <input type="file" class="form-control" id="pictureGalleryUpload" name="pictureGalleryUpload" value="" accept="image/jpeg">
                                                 <small class="form-text error"><?= $errors['pictureGalleryUpload'] ?? '' ?>
                                                 </small>
-                                                <input type="submit" value="Ajouter" class="my-4">
+                                                <input type="submit" value="Ajouter" class="my-4" title="Ajouter une image">
                                             </div>
                                         </form>
                                     </div>

@@ -9,12 +9,12 @@
                             </h6>
                         </div>
                         <div class="col-12">
-                            <a href="">
+                            <a href="/">
                                 Me contacter
                             </a>
                         </div>
                         <div class="col-12">
-                            <a href="">
+                            <a href="/controllers/forum/publics/forumCtrl.php">
                                 FAQ
                             </a>
                         </div>
@@ -28,12 +28,12 @@
                             </h6>
                         </div>
                         <div class="col-12">
-                            <a href="">
+                            <a href="/controllers/cguCtrl.php">
                                 Conditions générales d'utilisation
                             </a>
                         </div>
                         <div class="col-12">
-                            <a href="">
+                            <a href="/controllers/cookiesCtrl.php">
                                 Politique de protection des données personnelles
                             </a>
                         </div>

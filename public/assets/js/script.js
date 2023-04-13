@@ -229,21 +229,24 @@ picture.addEventListener('click', function () {
 
 // VALIDATE PASSWORD ***************************************************
 
-const checkPasswords = (event) => {
-    event.preventDefault();
+// Fonction fléchée
+const checkPasswords = (event) => { /** Paramètre event qui est déclenché lorsque le formulaire est soumis */
+    event.preventDefault(); /** Méthode qui empèche le regargement de la page */
+    // Récupération des éléments HTML, mot de passe et zone d'erreur
     const password = document.getElementById('password');
     const passwordCheck = document.getElementById('passwordCheck');
     const errorPasswords = document.querySelector('.errorPasswords');
 
-    if (password.value != passwordCheck.value) {
-        const message = 'Les mots de passe ne correspondent pas';
-        errorPasswords.innerHTML = message;
+    // Condition qui compare les deux champs de mot de passe
+    if (password.value != passwordCheck.value) { /** Si les valeurs sont différentes */
+        const message = 'Les mots de passe ne correspondent pas'; /** afficher message d'erreur dans zone d'erreur */
+        errorPasswords.innerHTML = message; /** grâce à la méthode innerHTML */
     } else {
-        signUp.submit();
+        signUp.submit(); /** Si valeurs identiques, soummettre le formulaire avec la méthode submit() sur l'élément signUp */
     }
 };
-const signUp = document.getElementById('signUp');
-signUp.addEventListener('submit', checkPasswords);
+const signUp = document.getElementById('signUp'); 
+signUp.addEventListener('submit', checkPasswords); /** Ecouteur d'évenement à l'élément signUp qui déclenche la fonction quand le form est soumis */
 
 
 // BANNER COOKIES

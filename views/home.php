@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-12 ">
                         <div class="banner-text">
-                            <h1 class="">Formation<br>Dessin</h1>
+                            <h1 class="">Formations<br>Dessin</h1>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                         <p>et</p>
                         <h2 class="mt-5">Deviens Explorateur de l'art</h2>
                         <button class="mt-5">
-                            <a href="/controllers/sign/signUpCtrl.php" class="btnInscription">S'inscrire</a>
+                            <a href="/controllers/sign/signUpCtrl.php" class="btnInscription" title="S'inscrire aux formations">S'inscrire</a>
                         </button>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                 <div class="row">
                     <div class="col-12 mb-5">
                         <h2>
-                            La formation
+                            Les formations
                         </h2>
                     </div>
                 </div>
@@ -76,16 +76,16 @@
                             <?php
                             if (isset($_SESSION['user'])) { ?>
                                 <button class="mt-4 mb-5">
-                                    <a href="/controllers/formation/formationCtrl.php" class="btnInscription">En savoir +</a>
+                                    <a href="/controllers/formation/formationCtrl.php" class="btnInscription" title="Accéder aux formations">Accéder aux formations</a>
                                 </button>
                             <?php } else { ?>
                                 <button class="mt-4 mb-5">
-                                    <a href="/controllers/sign/signUpCtrl.php" class="btnInscription">En savoir +</a>
+                                    <a href="/controllers/sign/signUpCtrl.php" class="btnInscription" title="S'incrire aux formations">En savoir +</a>
                                 </button>
                             <?php } ?>
                         </div>
                         <div class="col-lg-6 col-12 mb-5">
-                            <img src="/public/assets/img/visage_platre_recadre.png" alt="Dessin de visage en plâtre" class="image-platre">
+                            <img src="/public/assets/img/chat.jpg" alt="Dessin de chat" class="image-platre">
                         </div>
                     </div>
                 </div>
@@ -145,12 +145,12 @@
                     ?>
                         <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">
                             <div class="card mt-5" style="width: 22rem; height: 100%;">
-                                <img src="/public/assets/img/peinture_la-flagellation-du-chri.png" class="card-img-top" alt="La Flagellation du Christ de Piero della Franscesca">
+                                <img src="/public/uploads/articles/thumbnails/thumbnail_<?= $article->id_articles ?>.jpg" class="card-img-top" alt="La Flagellation du Christ de Piero della Franscesca">
                                 <small>Publié le <?= date('d.m.Y', strtotime($article->created_at)) ?></small>
                                 <div class="card-body d-flex flex-column justify-content-between">
                                     <h3 class="card-title"><?= $article->title ?></h3>
                                     <p class="card-text"><?= $article->excerpt ?></p>
-                                    <a href="/controllers/magazine/articleCtrl.php?id_articles=<?= $article->id_articles ?>" class="card-btn">Lire l'article</a>
+                                    <a href="/controllers/magazine/articleCtrl.php?id_articles=<?= $article->id_articles ?>" class="card-btn" title="Accéder à l'article <?= $article->title ?>">Lire l'article</a>
                                 </div>
                             </div>
                         </div>

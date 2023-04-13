@@ -44,7 +44,7 @@
                     <div class="offset-lg-3 col-lg-6 my-5">
                         <form class="d-flex" role="search">
                             <input class="form-control form-control-lg me-2" type="search" placeholder="Rechercher un forum" aria-label="Search">
-                            <button class="button" type="submit"><i class="bi bi-search icon"></i></button>
+                            <button class="button" type="submit" title="Rechercher un forum"><i class="bi bi-search icon"></i></button>
                         </form>
                     </div>
                 </div>
@@ -123,6 +123,18 @@
                         <div class="card-body">
                             <h3 class="card-title d-flex flex-column justify-content-between">Problèmes techniques</h3>
                             <p class="card-text">Vous rencontrez un problème sur le site, demandez de l'aide</p>
+                            <p>
+                                <a href="#" class="card-btn">Accéder au forum</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">
+                    <div class="card mt-5" style="width: 22rem; height: 100%;">
+                    <img src="/public/assets/img/grotte-chauvet.jpg" class="card-img-top" alt="Peinture pariétal de la grotte Chauvet">
+                        <div class="card-body">
+                            <h3 class="card-title d-flex flex-column justify-content-between">FAQ</h3>
+                            <p class="card-text">Vous trouverez ici, les questions fréquentes liées au site</p>
                             <p>
                                 <a href="#" class="card-btn">Accéder au forum</a>
                             </p>

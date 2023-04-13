@@ -11,6 +11,7 @@ require_once(__DIR__ . '/../../../config/config.php');
 require_once(__DIR__ . '/../../../models/Article.php');
 
 try {
+    
     $search = trim((string)filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS));
     
     $limit = NB_ELEMENTS_BY_PAGE;

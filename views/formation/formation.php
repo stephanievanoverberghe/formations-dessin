@@ -44,6 +44,7 @@
             <div class="row">
                 <?php
                     foreach ($trainings as $training) {
+                        $id_modules = Training::getDataByFirstModule($training->id_trainings);
                 ?>
                 <div class="col-lg-4 col-12 col-md-6 mb-5 d-flex flex-column align-items-center">
                     <div class="card mt-5" style="width: 22rem; height: 100%;">
@@ -52,7 +53,7 @@
                             <h3 class="card-title mt-3"><?= $training->title?></h3>
                             <p class="card-text mt-3"><?= $training->content ?></p>
                             <p> 
-                                <a href="/controllers/formation/introductionCtrl.php?id_trainings=<?= $training->id_trainings ?>" class="card-btn">Accéder à la formation</a>
+                                <a href="/controllers/formation/introductionCtrl.php?id_trainings=<?= $training->id_trainings ?>&id_modules=<?= $id_modules ?>" class="card-btn">Accéder à la formation</a>
                             </p>
                         </div>
                     </div>

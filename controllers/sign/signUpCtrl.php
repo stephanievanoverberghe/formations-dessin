@@ -99,8 +99,6 @@ try {
             $message = 'Bonjour<br>Merci de valider votre compte en cliquant sur ce <a href="'. $link .'">lien</a> !';
             mail($to, $subject, $message);
 
-            die;
-
 
             $errors['global'] = 'Votre compte a bien été créé, veuillez validez votre inscription par mail.';
             header('location: /');

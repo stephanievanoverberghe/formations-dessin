@@ -1,8 +1,8 @@
 <?php if (isset($errors['global'])) { ?>
 
-<div class="alert alert-warning" role="alert">
-    <?= nl2br($errors['global']) ?>
-</div>
+    <div class="alert alert-warning" role="alert">
+        <?= nl2br($errors['global']) ?>
+    </div>
 <?php } ?>
 <main>
     <section id="addArticle">
@@ -21,21 +21,14 @@
                     <div class="col-10">
 
                         <!-- FORM ADD ARTICLE -->
-                        <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>?id_articles=<?= $id_articles ?? '' ?>" method="POST" role="form" class="formArticle">
+                        <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>?id_articles=<?= $id_articles ?? '' ?>" method="POST" role="form" class="formArticle" enctype="multipart/form-data">
                             <div class="row justify-content-center">
                                 <!-- TITLE -->
                                 <div class="col-8 mb-3">
                                     <label for="title" class="form_label orange mt-5 mb-2">Titre
                                         <span class="orange"> *</span>
                                     </label>
-                                    <input 
-                                        type="text" 
-                                        value="<?= $article->title ?? $title ?? '' ?>" 
-                                        class="form-control form-control-lg <?= isset($errors['title']) ? 'is-invalid' : '' ?>" 
-                                        id="title" 
-                                        name="title" 
-                                        required
-                                        >
+                                    <input type="text" value="<?= $article->title ?? $title ?? '' ?>" class="form-control form-control-lg <?= isset($errors['title']) ? 'is-invalid' : '' ?>" id="title" name="title" required>
                                     <div class="error"><?= $errors['title'] ?? '' ?></div>
                                 </div>
                                 <!-- HOOK -->
@@ -48,8 +41,8 @@
                                 </div>
                                 <!-- CONTENT -->
                                 <div class="col-8 mb-3" id="input">
-                                    <?php 
-                                    
+                                    <?php
+
                                     if (!empty($article->subtitle) && !empty($article->content)) {
                                         $subtitlesArray = unserialize($article->subtitle);
                                         foreach ($subtitlesArray as $subtitleArray) {
@@ -60,7 +53,6 @@
                                         foreach ($contentsArray as $contentArray) {
                                             echo '<label for="textareaContent" class="form-label orange mt-4 mb-2">Paragraphe *</label></br><textarea class="form-control" id="textareaContent" rows="10" name="textareaContent[]">' . $article->content . '</textarea>';
                                         }
-                                        
                                     }
                                     ?>
                                 </div>
@@ -80,8 +72,16 @@
                                     <textarea class="form-control" name="textareaExcerpt" id="textareaExcerpt" rows="4" required><?= $article->excerpt ?? $excerpt ?? '' ?></textarea>
                                     <div class="error"><?= $errors['textareaExcerpt'] ?? '' ?></div>
                                 </div>
+                                <!-- FILE -->
+                                <div class="col-8 mb-3">
+                                    <label for="file" class="form_label orange mt-4 mb-2">Vignette
+                                        <span class="orange"> *</span>
+                                    </label>
+                                    <input class="form-control form-control-lg <?= isset($errors['file']) ? 'is-invalid' : '' ?>" id="file" type="file" name="file" value="<?= $article->file ?? $file ?? '' ?>">
+                                    <div class="error"><?= $errors['file'] ?? '' ?></div>
+                                </div>
 
-                                
+
                             </div>
                             <!-- VALIDATE FORM -->
                             <div class="col-12 text-center">

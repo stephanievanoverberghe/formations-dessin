@@ -52,7 +52,7 @@
                         <div class="offset-lg-3 col-lg-6 my-5">
                             <form class="d-flex mt-3 mb-5" role="search" method="GET" action="magazineCtrl.php">
                                 <input class="research form-control me-2" type="search" name="search" value="<?= $search ?? '' ?>" placeholder="Rechercher sur le magazine" aria-label="Search">
-                                <button class="button" type="submit"><i class="bi bi-search icon"></i></button>
+                                <button class="button" type="submit" title="Rechercher dans des articles dans le magazine"><i class="bi bi-search icon"></i></button>
                             </form>
                         </div>
                     </div>
@@ -107,13 +107,13 @@
                     ?>
                         <div class="col-xl-4 col-lg-6 col-md-6 col-12 mb-5 d-flex flex-column align-items-center">
                             <div class="card mt-5" style="width: 22rem; height: 100%;">
-                                <img src="/public/assets/img/peinture_la-flagellation-du-chri.png" class="card-img-top" alt="La Flagellation du Christ de Piero della Franscesca">
+                                <img src="/public/uploads/articles/thumbnails/thumbnail_<?= $article->id_articles ?>.jpg" class="card-img-top" alt="La Flagellation du Christ de Piero della Franscesca">
                                 <small>Publié le <?= date('d.m.Y', strtotime($article->created_at)) ?></small>
                                 <div class="card-body d-flex flex-column justify-content-between">
                                     <h3 class="card-title"><?= $article->title ?></h3>
                                     <p class="card-text"><?= $article->excerpt ?></p>
                                     <p>
-                                        <a href="/controllers/magazine/articleCtrl.php?id_articles=<?= $article->id_articles ?>" class="card-btn">Lire l'article</a>
+                                        <a href="/controllers/magazine/articleCtrl.php?id_articles=<?= $article->id_articles ?>" class="card-btn" title="Accéder à l'article <?= $article->title ?>">Lire l'article</a>
                                     </p>
                                 </div>
                             </div>

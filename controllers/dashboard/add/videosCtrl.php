@@ -77,10 +77,9 @@ try {
     }
 
 } catch (\Throwable $th) {
-    var_dump($th);
+
+    header('Location: /controllers/errorCtrl.php');
     die;
-    // header('Location: /controllers/errorCtrl.php');
-    // die;
 }
 
 /* ************* VIEWS DISPLAYS **************************/

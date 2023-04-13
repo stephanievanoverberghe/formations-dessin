@@ -102,8 +102,8 @@ try {
 
                     $_SESSION['user'] = User::getData($id_users);
                     $errors['global'] = 'Votre email a bien été modifié !';
-                    // header('Location: /controllers/profilCtrl.php');
-                    // die;
+                    header('Location: /controllers/profilCtrl.php');
+                    die;
                 } else {
                     $errors['global'] = 'Impossible de mettre à jour l\'adresse e-mail';
                 }

@@ -5,6 +5,9 @@ require_once(__DIR__ . '/../../models/Training.php');
 require_once(__DIR__ . '/../../models/Module.php');
 require_once(__DIR__ . '/../../models/Video.php');
 
+session_start();
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 //************************************* FILEPICTURE CLEAN AND VALIDATE ******************************************* *//

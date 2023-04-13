@@ -97,7 +97,7 @@ if ($article) { ?>
                         <div class="col-xl-10 col-12">
                             <div class="row text-xl-start">
                                 <div class="col-12">
-                                    <h5>Auteur de l'article : L'Alchimiste</h5>
+                                    <h3>Auteur de l'article : L'Alchimiste</h3>
                                 </div>
                                 <div class="col-12">
                                     <p>Depuis sa plus tendre enfance, l'Alchimiste est passionnée de dessin et de peinture.
@@ -124,10 +124,10 @@ if ($article) { ?>
                             <h3>Cet article t'a plu ? Partages-le</h3>
                         </div>
                         <div class="col-6 text-end mt-4">
-                            <a href="#" target="_blank"><img src="/public/assets/img/facebook.png" alt="Logo Facebook" width="50"></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode($articleUrl) ?>" target="_blank"><img src="/public/assets/img/facebook.png" alt="Logo Facebook" width="50"></a>
                         </div>
                         <div class="col-6 text-start mt-4">
-                            <a href="#" target="_blank"><img src="/public/assets/img/pinterest.png" alt="Logo Pinterest" width="50"></a>
+                            <a href="https://pinterest.com/pin/create/button/?url=<?= urlencode($articleUrl) ?>" target="_blank"><img src="/public/assets/img/pinterest.png" alt="Logo Pinterest" width="50"></a>
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,7 @@ if ($article) { ?>
                                 <p>Si tu es ici, c'est que tu es motivé(e) à entrer dans cet univers incroyable qu'est son apprentissage.</p>
                                 <p class="mb-5">Alors n'hésites plus et</p>
                                 <h4>Deviens Explorateur de l'art</h4>
-                                <a href="/controllers/sign/signUpCtrl.php" class="btn mt-4">S'inscrire</a>
+                                <a href="/controllers/sign/signUpCtrl.php" class="btn mt-4" title="S'incrire à la formation Les fondamentaux du dessin">S'inscrire</a>
                             </div>
                         </div>
                     </div>
@@ -187,7 +187,7 @@ if ($article) { ?>
                                     <div class="card-body d-flex flex-column justify-content-between">
                                         <h3 class="card-title"><?= $article->title ?></h3>
                                         <p class="card-text"><?= $article->excerpt ?></p>
-                                        <a href="/controllers/magazine/articleCtrl.php?id_articles=<?= $article->id_articles ?>" class="card-btn">Lire l'article</a>
+                                        <a href="/controllers/magazine/articleCtrl.php?id_articles=<?= $article->id_articles ?>" class="card-btn" title="Accéder à l'article <?= $article->title ?>">Lire l'article</a>
                                     </div>
                                 </div>
                             </div>
@@ -203,55 +203,53 @@ if ($article) { ?>
         <!-- START COMMENTS ARTICLE -->
         <section id="commentsArticle">
             <div class="container">
-                <h2 class="text-center mt-5 mb-4">Commentaire</h2>
+                <h2 class="text-center mt-5 mb-4">Commentaires</h2>
+                <?php foreach ($comments as $comment) { ?>
                 <div class="forums p-md-5 mb-4 p-3 pb-5">
-
                     <div class="row justify-content-center align-items-center">
+                        
                         <div class="col-lg-3 col-md-12">
                             <div class="row text-center flex-column flex-sm-row">
                                 <div class="col-12 mb-3 my-5 my-md-0">
                                     <img src="/public/assets/img/autoportrait.jpg" alt="Photo de profil" class="profilPicture" width="150">
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 mt-4">
                                     <p>L'alchimiste</p>
                                 </div>
                                 <div class="col-12">
                                     <p>Formateur</p>
                                 </div>
                                 <div class="col-12">
-                                    <p>Le 16 mars 2023 à 15:15:14</p>
+                                    <p><?= date('d.m.Y H:i', strtotime($comment['created_at'])) ?></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-12">
                             <div class="row">
                                 <div class="col-12 text-center text-lg-start">
-                                    <h3 class="mb-5">Bonjour @Thom Vi</h3>
+                                    <h3 class="mb-5"><?= $comment['title'] ?></h3>
                                 </div>
                                 <div class="col-12">
-                                    <p>Le premier conseil que je vais te donner est de ne surtout pas utiliser de règle pour tracer tes droites. Elles sembleraient bien trop rigides et sans vies. La meilleure façon est de t'entraîner un peu chaque jour.</p>
-                                </div>
-                                <div class="col-12">
-                                    <p class="mb-5">En ce qui concerne tes exercices, tes droites me semblent plutôt bien. Tu n'as pas de raison de douter de toi, continues à t'exercer et tout ira bien. Tu peux passer au chapitre suivant sur les courbes. A bientôt</p>
+                                    <p><?= $comment['content'] ?></p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                     <?php
                     if (isset($_SESSION['user'])) { ?>
-                        <div class="row mt-lg-5">
+                        <div class="row mt-lg-3">
                             <div class="col-12 offset-lg-3 col-lg-3 text-center text-lg-end mb-3 mb-lg-0">
                                 <a href="" class="">Répondre</a>
                             </div>
-                            <div class="col-12 col-lg-3 text-center mb-3 mb-lg-0">
-                                <a href="" class="">Citer</a>
-                            </div>
-                            <div class="col-12 col-lg-3 text-center text-lg-start">
+                            <div class="col-12 col-lg-3 text-center text-lg-end">
                                 <a href="">Signaler ce message</a>
                             </div>
                         </div>
                     <?php } ?>
                 </div>
+                <?php } ?>
+                
             </div>
         </section>
         <!-- END COMMENTS ARTICLE -->

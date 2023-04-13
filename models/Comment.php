@@ -247,4 +247,5 @@ class Comment
         $result = $sth->rowCount();
         return ($result > 0) ? true : false;
     }
+    
 }

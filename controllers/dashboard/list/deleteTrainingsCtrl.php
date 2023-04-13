@@ -15,9 +15,9 @@ try {
     $isDelete = Training::delete($id_trainings);
 
     if($isDelete) {
-        SessionFlash::setMessage('La formation a bien été supprimé');
+        $code = 5;
     } else {
-        SessionFlash::setMessage('Un problème est survenu lors de la suppression de la formation');
+        $code = 6;
     }
     header('Location: /controllers/dashboard/list/admin-trainingsCtrl.php?code=');
     die;

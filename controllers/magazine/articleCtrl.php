@@ -11,16 +11,17 @@ require_once(__DIR__ . '/../../models/Article.php');
 
 
 try {
-
-    
-    // $users = User::getData($id_users);
-
-    
     $id_articles = intval(filter_input(INPUT_GET, 'id_articles', FILTER_SANITIZE_NUMBER_INT));
     $article = Article::getData($id_articles);
     $serialized_data = Article::getDataSerialized($id_articles);
     $article_data = unserialize($serialized_data);
     
+    $comments = Article::getAllByArticle($id_articles);
+    
+    // Partager un article sur les réseaux sociaux
+    $articleUrl = 'https://' . $_SERVER['HTTP_HOST'] . '/' . basename($_SERVER['SCRIPT_FILENAME'], '.php');
+
+    // Retourne les 3 derniers articles
     $articles = Article::getAll();
     $last_three_articles = array_slice($articles, -3);
     

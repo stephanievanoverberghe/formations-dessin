@@ -242,4 +242,5 @@ class Module
         return ($result > 0) ? true : false;
 
     }
+
 }

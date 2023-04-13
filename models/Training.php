@@ -92,7 +92,7 @@ class Training
         $sth->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
         $sth->bindValue(':content', $this->getContent(), PDO::PARAM_STR);
 
-        if($sth->execute()) {
+        if ($sth->execute()) {
             return ($sth->rowCount() > 0) ? true : false;
         }
     }
@@ -134,8 +134,8 @@ class Training
                         `submodules`.`id_sub_modules`
                         -- `videos`. `id_videos` AS `videos_id`
                 FROM `trainings`
-                JOIN `modules` ON `modules`.`id_trainings` = `trainings`.`id_trainings`
-                JOIN `submodules` ON `submodules`.`id_modules` = `modules`.`id_modules`
+                LEFT JOIN `modules` ON `modules`.`id_trainings` = `trainings`.`id_trainings`
+                LEFT JOIN `submodules` ON `submodules`.`id_modules` = `modules`.`id_modules`
                 -- LEFT JOIN `videos` ON `videos`.`id_sub_modules` = `submodules`.`id_sub_modules`
                 WHERE `trainings`.`id_trainings` = :id_trainings AND `modules`.`id_modules` = :id_modules;';
         // PREPARE REQUEST
@@ -146,9 +146,31 @@ class Training
         $sth->bindValue(':id_modules', $id_modules, PDO::PARAM_INT);
         // EXECUTE REQUEST
         if ($sth->execute()) {
+            // var_dump($sth->fetchAll());
+            // die;
             return $sth->fetchAll();
-        } 
+        }
     }
+    public static function getDataByFirstModule(int $id_trainings) :int
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT `id_modules`
+                    FROM `modules`
+                    WHERE `id_trainings` = :id_trainings
+                    ORDER BY `id_modules`
+                    LIMIT 1;';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_trainings', $id_trainings, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        if ($sth->execute()) {
+            return $sth->fetchColumn();
+
+        }
+    }
+
     /**
      * 
      * Méthode permettant de récupérer toutes les données d'une formation
@@ -221,5 +243,4 @@ class Training
         $result = $sth->rowCount();
         return ($result > 0) ? true : false;
     }
-
 }

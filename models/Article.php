@@ -259,7 +259,9 @@ class Article
     public static function delete(int $id_articles): bool
     {
         // CREATE REQUEST
-        $sql = 'DELETE FROM `articles`
+        $sql = 'DELETE FROM `comments`
+                    WHERE `id_articles` = :id_articles;
+                DELETE FROM `articles`
                     WHERE `articles`.`id_articles` = :id_articles;';
         // PREPARE REQUEST
         $pdo = Database::getInstance();
@@ -270,5 +272,22 @@ class Article
         $sth->execute();
         $result = $sth->rowCount();
         return ($result > 0) ? true : false;
+    }
+    public static function getAllByArticle(int $id_articles): array
+    {
+        // CREATE REQUEST
+        $sql = 'SELECT *
+            FROM `comments`
+            WHERE `id_articles` = :id_articles
+            ORDER BY `created_at` DESC;';
+        // PREPARE REQUEST
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare($sql);
+        // AFFECT VALUE
+        $sth->bindValue(':id_articles', $id_articles, PDO::PARAM_INT);
+        // EXECUTE REQUEST
+        $sth->execute();
+        // RETURN RESULTS
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 }

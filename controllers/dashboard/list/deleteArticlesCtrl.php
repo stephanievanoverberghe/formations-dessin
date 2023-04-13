@@ -15,16 +15,14 @@ try {
     $isDelete = Article::delete($id_articles);
 
     if($isDelete) {
-        SessionFlash::setMessage('L\'article a bien été supprimé');
+        $code = 5;
     } else {
-        SessionFlash::setMessage('Un problème est survenu lors de la suppression de l\'article');
+        $code = 6;
     }
     header('Location: /controllers/dashboard/list/admin-articlesCtrl.php?code=');
     die;
 
 } catch (\Throwable $th) {
-    // var_dump($th);
-    // die;
     header('location: /controllers/errorCtrl.php');
     die;
 }
